@@ -1,0 +1,216 @@
+% Kota Miura (miura@embl.de)
+% Course Textbook: Image Processing and Analysis Basics
+% Copyright 2006 - 2011, Kota Miura
+%　＝
+% This file was converted to LaTeX by Writer2LaTeX ver. 1.0.2
+% see http://writer2latex.sourceforge.net for more info
+%\documentclass[a4paper]{article}
+\documentclass[11pt,a4paper,oneside]{report}
+\usepackage{mathpazo} % math & rm
+\linespread{1.05}        % Palatino needs more leading (space between lines)
+\usepackage[scaled]{helvet} % ss
+\usepackage{courier} % tt
+
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman,english,french,spanish,english]{babel}
+\normalfont
+\usepackage[footnotesize]{caption}
+\usepackage{subfig}
+\usepackage{float}
+
+\linespread{1.05}         % Palatino needs more leading (space between lines)
+\usepackage{hyperref}
+%\hypersetup{colorlinks=true, linkcolor=blue}
+\hypersetup{pdftex, colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue, pdftitle=CMCI Image processing / Analysis Course Series , pdfauthor=Kota Miura, pdfsubject=, pdfkeywords=}
+
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,textcomp}
+%\usepackage{mathtools}
+\usepackage{color}
+\definecolor{gray09}{rgb}{0.9,0.9,0.9}  %background for codes
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{blue}{rgb}{0,0,1}
+
+\usepackage{array}
+\usepackage{supertabular}
+\usepackage{hhline}
+\usepackage[pdftex]{graphicx}
+
+%new commands
+\newcommand\textsubscript[1]{\ensuremath{{}_{\text{#1}}}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%for header
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+%\pagestyle{fancy}
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}{}}
+ 
+\lhead{\fancyplain{}{\textit{EMBL CMCI ImageJ Basic Course}}}
+\chead{}
+\rhead{\fancyplain{}{\textit{\rightmark}}}
+\lfoot{}
+\cfoot{\fancyplain{}{\thepage}}
+\rfoot{}
+
+% space between paragraphs
+\parskip 7.2pt
+
+% indent
+\setlength{\parindent}{0in} % avoids indent at the beginning of paragraph
+
+\newenvironment{indentexercise}[1]%
+{{\setlength{\leftmargin}{2em}}%
+\textbf{Exercise \thesubsection-#1}%
+\begin{list}{}% 
+	\item%
+}
+{\end{list}}
+
+%indenting for case with Fiji
+\newenvironment{indentFiji}%
+{\begin{list}{}%
+         {\setlength{\leftmargin}{1em}}%
+         \item[]%
+}
+{\end{list}}
+
+%indenting for case with Command Definition
+\newenvironment{indentCom}%
+{\begin{list}{}%
+         {\setlength{\leftmargin}{1em}}%
+         \item[]%
+}
+{\end{list}}
+
+%command for menu tree
+\newcommand{\ijmenu}[1]{\texttt{\small#1}}
+
+%command for inline code
+\newcommand{\ilcom}[1]{\texttt{\small#1}}
+
+%quick command for making space
+ \newcommand{\tab}{\hspace*{3em}}
+ 
+%making 1.5 spaced lines
+\usepackage{setspace}
+\onehalfspacing
+
+%for inserting PDF 
+\usepackage{pdfpages}
+
+%for placing code
+
+% packge for codes
+% --- source code matters ---
+\usepackage{listings}
+%\usepackage{listingsutf8}
+\lstset{ %
+%language=Octave,                % choose the language of the code
+%basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+basicstyle=\small\ttfamily, % same as above, but use typewriter
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line 
+                                % will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{gray09},  % choose the background color. You must add \usepackage{color}
+keywordstyle=\color{blue}, 	%added
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+%frame=single,                   % adds a frame around the code
+%frame=trBL,
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+%breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                % also try caption instead of title
+escapeinside={\%*}{*)},         % if you want to add a comment within your code
+morekeywords={*,...},            % if you want to add more keywords to the set
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/},
+morestring=[b]",
+%aboveskip={7.2pt}	%supposed to be the space above llisting but dows not work. 
+%belowskip={7.2pt}
+}
+
+%using eps
+\usepackage{epstopdf}
+
+%using natbib
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{,}{,}
+\renewcommand\bibname{References}
+
+% title page matters
+% http://sunsite.bilkent.edu.tr/pub/tex/ctan/info/latex-samples/titlepages.pdf
+\newcommand*{\titleTH}{\begingroup% T&H Typography
+\raggedleft
+\HRule\\
+\vspace*{\baselineskip}
+{\Large Kota Miura}\\[0.167\textheight]
+
+{\bfseries EMBL-CMCI course I}\\[\baselineskip]
+{\textcolor{Medium}{\Huge Basics of Image Processing and Analysis}}\\[\baselineskip]
+{\small ver 2.0.0}\par
+\vfill
+%{\Large Centre for Molecular \& Cellular Imaging\\EMBL Heidelberg\\\plogo}\par
+{\Large Centre for Molecular \& Cellular Imaging\\EMBL Heidelberg}\par
+\includegraphics[width=0.15\textwidth]{eps/rgb_logo_2006_win.eps} 
+\includegraphics[width=0.07\textwidth]{./Icon30pedge.jpg}\\[1cm] 
+\vspace*{3\baselineskip}
+\HRule\\
+\endgroup}
+
+\definecolor{Dark}{gray}{.2}
+\definecolor{Medium}{gray}{.6}
+\definecolor{Light}{gray}{.8}
+
+\usepackage{pdfsync}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\include{sections/titlepage}
+%\setcounter{tocdepth}{3}
+%\renewcommand\contentsname{}
+%\tableofcontents
+
+\begingroup
+\hypersetup{linkcolor=black}
+\tableofcontents
+\endgroup
+\setcounter{chapter}{1}
+
+% section 1
+\include{sections/s1Basics}
+% section 2
+\include{sections/s2intensity}
+% section 3
+\include{sections/s3filtering}
+% section 4
+\include{sections/s4segmentation}
+% section 5
+\include{sections/s5timeseries}
+
+\clearpage
+%\section{References}
+%\cleardoublepage
+\bibliographystyle{plainnat}
+%\bibliographystyle{plain}
+%\renewcommand{\bibname}{\section{References}}
+\renewcommand*{\bibname}{References} % This will define heading of bibliography to be empty, so you can...
+%\section{}     % ...place a normal section heading before the bibliography entries.
+\addcontentsline{toc}{section}{References}
+\bibliography{sptdesk}
+\clearpage
+
+\include{sections/appendix}
+
+\end{document}
+
