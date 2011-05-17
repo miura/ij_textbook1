@@ -16,7 +16,9 @@ values out of intensity distribution.
 
 If there is an 8-bit image with 100 pixel width and 100pixel height,
 there are 10,000 pixels. Each of these pixels has certain pixel value.
-Intensity histogram of an image is a plot that shows distribution of pixel counts over a range of pixel values, typically its bit depth or between the minimum and the maximum pixel value with in the image. Histogram is useful for examining the signal and
+Intensity histogram of an image is a plot that shows distribution of pixel counts over a range of pixel values, 
+typically its bit depth or between the minimum and the maximum pixel value with in the image. 
+Histogram is useful for examining the signal and
 background pixel values for determining a threshold value to do segmentation.
 We will study image threshold in \ref{sec:segmentation}). 
 
@@ -63,7 +65,8 @@ minimum and the maximum pixel values in the image and bit-depth. If the minimum 
 
 Equalization converts pixel values so that the values are distributed
 evenly within the dynamic range. Instead of describing this in detail
-using math formula, I explain with a simple example below (Fig. \ref{fig:equalizationSimple}). We consider an image with its pixel value ranging
+using math formula, I explain with a simple example below (Fig. \ref{fig:equalizationSimple}). 
+We consider an image with its pixel value ranging
 between 0 and 9. We plot histogram from this image and the result looks
 like black bars in the figure below (Fig. \ref{fig:img30}). For equalization, a cumulative
 plot is first prepared from such histogram (adding up histogram values:
@@ -106,7 +109,8 @@ Compare histogram of original, normalized and equalized images
 Local Histogram Equalization (Optional):
 \item Histogram equalization could be done on local bases. This becomes
 powerful, as more local details could be contrast enhanced. You could
-try this with the same image g1.tif, by \ijmenu{[Pligins > CMCICourseModules > CLAHE]} (if you have installed course plugin in ImageJ) or if you are using Fiji, \ijmenu{[Process > Enhance Local Contrast (CLAHE)] }
+try this with the same image g1.tif, by \ijmenu{[Pligins > CMCICourseModules > CLAHE]} 
+(if you have installed course plugin in ImageJ) or if you are using Fiji, \ijmenu{[Process > Enhance Local Contrast (CLAHE)] }
 \end{indentexercise}
 
 
@@ -304,9 +308,11 @@ pit-fall if you artificially saturate the image: this happens often
 especially in the case of low bit-depth images. 
 
 \begin{indentexercise}{1}
-Open image gel\_inv.tif. Do \ijmenu{[Image > Adjust > Brightness/Contrast]}. Pop-up window appears which looks like the
+Open image gel\_inv.tif. Do \ijmenu{[Image > Adjust > Brightness/Contrast]}. 
+Pop-up window appears which looks like the
 figure below (left). The graph shown in the upper part of the window is
-histogram of the image just like you have seen in the section \ref{subsec:histogram} Histogram. Since the image is 8-bit, scale in the x axis is 0 to 255.
+histogram of the image just like you have seen in the section \ref{subsec:histogram} Histogram. 
+Since the image is 8-bit, scale in the x axis is 0 to 255.
 There is also a black diagonal line. This corresponds to the LUT of the
 image on the screen: pixel values in x is translated into the gray
 value on the screen (brightness on the screen is y-axis). 
@@ -359,7 +365,8 @@ inspections. But with digital images, it is possible to evaluate the
 degree of co-localization more quantitatively. This is done by plotting
 a so called "co-localization
 plot". To do this in ImageJ one could download a
-plugin \textbf{Colocalization\_Finder}\footnote{download from \url{http://rsb.info.nih.gov/ij/plugins/colocalization-finder.html}}and install it.
+plugin \textbf{Colocalization\_Finder}\footnote{download from \url{http://rsb.info.nih.gov/ij/plugins/colocalization-finder.html}}
+and install it.
 
 Degree of colocalization could be then parametrized by using statistical
 values such as Pearson"s coefficient and
