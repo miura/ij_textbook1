@@ -55,10 +55,17 @@ Make a new image by \ijmenu{[File > New > Image\ldots]}. In dialog window, make 
 \label{fig:img1}
 \end{center}
 \end{figure}
-Clicking "OK", you will see a new window showing a black image. At the top of the window you could see the file dimension ("10 x 15"), bit-depth and the file size (I explain these values later. Fig. \ref{fig:mostbasic}). Take the pen tool and draw some shape (what ever you want. If you do not see anything drawn, then you need to change the color of the pen to white by \ijmenu{[Edit Option Colors\ldots]} and set Foreground Color to white). Then do \ijmenu{[File > Save as > Text image]} and save the file. \\
+Clicking "OK", you will see a new window showing a black image. 
+At the top of the window you could see the file dimension ("10 x 15"), 
+bit-depth and the file size (I explain these values later. 
+Fig. \ref{fig:mostbasic}). Take the pen tool and draw some shape (what ever you want. 
+If you do not see anything drawn, then you need to change the color of the pen to white by 
+\ijmenu{[Edit Option Colors\ldots]} and set Foreground Color to white). 
+Then do \ijmenu{[File > Save as > Text image]} and save the file. \\
 
-You will find that the name of the file ends with ".txt". Open File Explorer (Win) or Finder (Mac) and double click the file. The file will be opened in text
-editor.
+You will find that the name of the file ends with ".txt". 
+Open File Explorer (Win) or Finder (Mac) and double click the file. 
+The file will be opened in text editor.
 
 What you see now is a "text image", a 2D
 matrix of tab-delimited numbers. At the left most column in the example
@@ -219,7 +226,10 @@ study its effect and associated possible errors.
 
 
 \begin{indentexercise}{1}
-Let's first open a 16-bit image from the sample. \ijmenu{[File > Open > m51.tif]}. Choose line selection tool and draw a vertical line (should be yellow by default: called line ROI). Then do \ijmenu{[Analyze > Plot Profile\ldots]}. A window pops up. See figures \ref{fig:img6} and \ref{fig:img7}.
+Let's first open a 16-bit image from the sample. 
+\ijmenu{[File > Open > m51.tif]}. Choose line selection tool and draw a vertical line 
+(should be yellow by default: called line ROI). Then do \ijmenu{[Analyze > Plot Profile\ldots]}. 
+A window pops up. See figures \ref{fig:img6} and \ref{fig:img7}.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -237,7 +247,10 @@ Let's first open a 16-bit image from the sample. \ijmenu{[File > Open > m51.tif]
 \end{center}
 \end{figure}
 
-Figure \ref{fig:img6} is the profile of the pixel values along the line ROI you just have drawn on the image (Fig. \ref{fig:img7}). X-axis is the distance from the starting point (in pixel) and the y axis is the pixel value along the line ROI. The peak corresponds to the bright spot at the center of the image. 
+Figure \ref{fig:img6} is the profile of the pixel values along the line ROI 
+you just have marked on the image (Fig. \ref{fig:img7}). X-axis is the distance 
+from the starting point (in pixel) and the y axis is the pixel value along the line ROI. 
+The peak corresponds to the bright spot at the center of the image. 
 
 Let's convert the image to 8-bit. First check the state
 of "Conversion" option by
@@ -255,7 +268,8 @@ converting" is off.
 
 
 Do \ijmenu{[Image > Type > 8-bit]}. The line
-ROI is still there after the conversion. Do \ijmenu{[Analyze > Plot Profile\ldots] }again. You will find another graph pops up. Compare the previous profile (16-bit) and the new profile (8-bit).
+ROI is still there after the conversion. Do \ijmenu{[Analyze > Plot Profile\ldots] }again. 
+You will find another graph pops up. Compare the previous profile (16-bit) and the new profile (8-bit).
 
 Conversion causes changes in the y-value. Shapes of the profile look
 mostly similar, so if you normalize two images, the curve may overlap.
@@ -359,7 +373,8 @@ Simple math on 8-bit image: Prepare a new
 image following the initial part of the exercise \ref{exer:1111}. Now,
 bring the mouse pointer over the image and check the
 "value" that appears in the
-status bar in the ImageJ window\footnote{\ In the exercise \ref{exer:1111}, we converted the image to a text file and check the pixel
+status bar in the ImageJ window\footnote{\ In the exercise \ref{exer:1111}, 
+we converted the image to a text file and check the pixel
 values, but it is also possible to check the value pixel by pixel using
 this method.}. All pixel values in the image should be
 "value = 0".
