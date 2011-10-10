@@ -351,24 +351,29 @@ You could track different particles by repeating steps between 2 and 3. Results 
 \label{fig:ManualTrackResults}
 \end{figure} 
 
-Tracked data can be saved by activating "Resut" window and \ijmenu{[File > Save as\dots]}.  \textbf{OPTIONAL:} Copy and paste the result table and plot the track in Excel.
+Tracked data can be saved by activating "Result" window and \ijmenu{[File > Save
+as\dots]}.  \textbf{OPTIONAL:} Copy and paste the result table and plot the track in Excel.
 \end{indentexercise}
 
 \subsection{Automatic Tracking}
 \label{subsubsec:autotracker}
 
-Automatic tracking reduces the workloads of the researcher, enabling
+Automatic tracking reduces the work loads of the researcher, enabling
 them to deal with a huge amount of data\footnote{ Texts of this section is mostly from \citep{MiuraME2005}.}. Statistical treatments can
 then be more reliable. In addition, the results can be regarded more
 objective than manual tracking. Automatic tracking is an optional
-function that can be added onto some imaging software. However, these
-readily available functions are not adaptable for all analyses since
+function that can be added onto some imaging software including ImageJ. However,
+these readily available functions are not adaptable for all analyses since
 the characteristics of target objects in biological research vary
 greatly. Especially when the target object changes shape over time,
-further difficulty arises. For these reasons, automatic tracking often
-requires custom programs. In ImageJ, Pascal-like macro programming is
-possible and there are many programming functions that enable such
-automated segmentation and position measurements.
+further difficulty arises. We try an automatic tracking plugin in this section,
+but keep in mind that the algorithm for automated tracking has large variety
+so that knowing the algorithm well and examination of whether a certain
+algorithm matches to your object is inevitable for successful tracking.
+
+In the following, I will list some of the standard methods for the
+automatic segmentation of objects, which is the first part of the automated
+tracking. Detected objects are then linked from a frame to the other.
 
 \subsubsection{CentroidMethod}
 The centroid is the average of all pixel coordinates inside the
@@ -518,7 +523,7 @@ Here is a list of object tracking plugins available in ImageJ (Nov. 2006).
 
 \begin{itemize}
 \item Particle Tracker
-\subitem \url{http://weeman.inf.ethz.ch/particletracker/#general}
+\subitem \url{http://www.mosaic.ethz.ch/Downloads/ParticleTracker}
 \subitem Uses local maxima for estimating particle position, and custom criteria
 for discriminating non particles. 
 
@@ -536,10 +541,73 @@ for discriminating non particles.
 
 \begin{indentexercise}{1}
 Open image stack \textbf{TransportOfEndosomalVirus.tif}. 
-We use "Particle Tracker" for experiencing the automatic tracking \citep{Sbalzarini2005}. 
-Refer to "Particle Tracker Tutorials" in the Appendix \ref{app4} and 
-examine the difference in the automatic detection and tracking of virus particles 
-when different parameters are used.
+We use "Particle Tracker" for experiencing the automatic tracking
+\citep{Sbalzarini2005}. There is also a detailed tutorial available in the web
+site, "Particle Tracker Tutorials" also added to this textbook in the
+Appendix \ref{app4}, so refer to it as well for the following exercise. 
+
+\textbf{Set correct dimensions of the image by}\\
+\ijmenu{[Image > Properties...]}\\
+\dots Image stacks are by default taken as a z-series and not t-series. 
+Set Slices to 1, and Frames to appropriate size (number of frames).
+
+\textbf{Start the ParticleTracker plugin}\\
+Start the particleTracker by \ijmenu"[Plugins > Mosaic > ParticleTracker
+2D/3D]".
+
+\textbf[Study Dot Detection Parameter]\hfill\\
+This tracking tool has two parts. 
+First, all dots in each frame are detected, and then dots in successive frames are linked. 
+The first task then is to determine three parameters for dot detection. There are three parameters. 
+\begin{itemize}
+\item \textbf{Radius}\hfill\\
+Expected diameter of dot to be detected in pixels. 
+\item \textbf{CutOff}\hfill\\
+Cutoff level for the none-particle discrimination criteria, 
+a value for each dot that is based on intensity moment order 0 and 2. 
+\item \textbf{Percentile}\hfill\\
+Larger the value, more particles with dark intensity will be detected. 
+Corresponds to the area proportion below intensity histogram in the upper part of the histogram. 
+\end{itemize}
+Try setting different numbers for these parameters and click "Preview Detected". 
+Red circles appear in the image stack. You could change the frames using the slider below the button. 
+
+After some trials, set parameters to what you think is optimum. 
+
+\textbf{Set Linking parameters}\\
+
+Two parameters for linking detected dots should be set. 
+\begin{itemize}
+\item \textbf{Link Range}\hfill\\
+\dots could be more than 1, if you want to link dots that disappears and reappears. 
+If not, set the value to 1.
+\item \textbf{Displacement}\hfill\\
+\dots expected maximum distance that dots could move from one frame to the next. 
+Unit is in pixels. 
+\end{itemize}
+After parameters are set, click "OK". Tracking starts. 
+
+\textbf{Inspect the Tracking Results}\\
+When tracking is done, a new window titled "Results" appears. 
+At the bottom of the window, there are many buttons. 
+Click "Visualize all trajectories", and then a duplicate of 
+the image stack overlaid with trajectories will appear. 
+
+Select a region within the stack using rectangular ROI tool 
+and then click "Focus on Area". This will create another image stack, 
+with only that region. Since this image is zoomed, 
+you could carefully check if the tracking was successful or not. 
+
+If you think the tracking was not successful, 
+then you should reset all the parameters and do the tracking again.
+
+\textbf{Export the tracking results}\\
+To analyze the results in other software, data should be saved as a file. To do
+so, first click "All Trajectories to Table". Results table will then created. 
+In this results table window, select \ijmenu{[File > Save As...]} and save the
+file on your desktop. By default, file type extension is ".xls", excel format, but change this to ".csv". 
+CSV stands for "comma separated file", and this is more classic but general data format 
+which you could easily import in many software such as R.
 
 \end{indentexercise}
 
