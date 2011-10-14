@@ -25,7 +25,7 @@ images.
 
 
 
-\subsection{Convolution }
+\subsection{Convolution}\label{subsecConvolution}
 
 In the \ijmenu{[Process]} menu, we see a long list of
 filters. An important concept for understanding what these commands
@@ -863,6 +863,135 @@ Signals with lower frequency, such as objects, will be placed close to
 the origin (center of the 2D power spectrum image), while higher frequency signals
 such as noise will be placed further from the origin. Noise in general has no spatial bias, so the signal of noise will predominantly appear in all over the peripheral region of 2D power spectrum (FFT image). 
 Anisotropic patterns in original image will results in anisotropic signal in 2D power spectrum \textit{e.g.} horizontal pattern will cause horizontally aligned high intensity peaks. 
+
+\subsection{Frequency-domain Convolution}
+
+Convolution we studied in section~\ref{subsecConvolution} was a iterative
+procedure. Convolution kernel was applied every time you slide the position of
+the kernel by one pixel in x or y direction. This processing could be much
+simpler by using the FFT image, just by multiplying FFT kernel to it. We
+experence this in the exercise below. 
+
+\begin{indentexercise}{1} Convolution in Frequency-domain.
+
+Edit Laplacian filter kernel using the convolution interface
+(\ijmenu{[Process > Filter > COnvolution]}). 3 x 3 Laplacian kernel looks like
+this:
+\[
+\begin{matrix}
+0 & -1 & 0\\
+-1 & 4 & -1\\
+0 & -1 & 0
+\end{matrix}
+\]
+Save the kernel somewhere in your computer as ‘laplace3x3.txt’.
+
+Open sample image blobs.tif by
+\ijmenu{[File > Open]}.
+%figure
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{fig/fig1_3_fftconvolv1.png}
+\caption{ blobs.gif}
+\label{fig:fftconv1}
+\end{center}
+\end{figure}
+and then convert the image to 32-bit.
+
+\ijmenu{[Image > Type > 32-bit]}
+
+then increase the canvas size to 256 x 256. ``Position'' should be ``center''.
+
+\ijmenu{[Image > Adjust > Canvas Size]}. 
+
+Duplicate the image, so that we can do both spatial-domain convolution and
+frequency domain convolution. 
+
+We first do the convolution in spatial-domain, similar to what we
+have done already in the section~\ref{subsecConvolution} but we do this for
+compatison with convolution in frequency domain.\\
+
+\textbf{Spatial-Domain Convolution}
+
+\ijmenu{[Process > Filter > Convolution]}
+
+In the convolution panel, click ``open'' and choose the Laplacian you created in
+above. Be sure to check ``Check Nomalized''. Result shoud look like
+%figure
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{fig/fig1_3_fftconvolv2.png}
+\caption{ blobs.gif, Laplacian kernel applied}
+\label{fig:fftconv2}
+\end{center}
+\end{figure}
+
+\textbf{Frequency-Domain Convolution}
+
+We first prepare the the Laplacian kernel image. Open the kernel
+laplacian3x3.txt by:
+
+\ijmenu{[Image Import Text Image]}
+
+It should be very small, but if you zoom up the image is should look like:
+
+%figure
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{fig/fig1_3_fftconvolv3.png}
+\caption{ Laplacian3x3.txt, text image zoomed up}
+\label{fig:fftconv3}
+\end{center}
+\end{figure}
+
+Then adjust the image size to 256 x 256. 
+
+\ijmenu{[Image > Adjust > Canvas Size\dots]}
+
+Be sure to set ``position'' to ``center'' and check ``zero fill''.
+
+%figure
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{fig/fig1_3_fftconvolv4.png}
+\caption{ Laplacian3x3.txt, canvas size adjusted}
+\label{fig:fftconv4}
+\end{center}
+\end{figure}
+
+Then we do the convolution by:
+
+\ijmenu{[Process > FFT > FD math\dots]}
+
+choose blob.gif and laplace3x3.txt for image1 and image2 respectively. 
+Operation should be ``Convolve''. Uncheck ``Do Inverse transform'', and OK.
+Image named ``Result'' appears. 
+
+%figure
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{fig/fig1_3_fftconvolv8.png}
+\caption{Frequency domain convolvolution of Blob image}
+\label{fig:fftconv8}
+\end{center}
+\end{figure}
+
+Then do the inverse FFT by:
+
+\ijmenu{[Process > FFT > Inverse FFT]}
+
+%figure
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=4cm]{fig/fig1_3_fftconvolv7.png}
+\caption{Frequency domain convolvolution of Blob image, now in Spatial domain}
+\label{fig:fftconv7}
+\end{center}
+\end{figure}
+
+Check that you could get the original image by ``deconvolve'' operation using
+FD math.
+\end{indentexercise}
 
 \subsection{Frequency-domain Filtering}
 
