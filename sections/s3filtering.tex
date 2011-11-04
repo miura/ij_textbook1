@@ -572,8 +572,8 @@ element is circular). Find a radius that removes rice from the image.
 Successfully removed image is the background image. Then remove the
 background image from the original image. 
 
-\textit{Note}: removal should
-be based on division for brightfield images and such as: 
+\textit{Note}: For bright field images, background actually should
+be removed by division rather than subtraction such as: 
 \[
 Corrected\_Image = \frac{Specimen - Darkfield}{Brightfield - Darkfield} * 255
 \]
@@ -610,12 +610,40 @@ Change the Rolling ball radius and study the effect. Question: what
 happens when the rolling ball radius is smaller?
 \end{indentexercise}
 
-More practical information on background subtraction (including
-microscopy set up) is available in ImageJ
-wiki\footnote{\url{http://imagejdocu.tudor.lu/imagej-documentation-wiki/how-to/how-to-correct-background-illumination-in-brightfield-microscopy}}. For flat field correction protocol, see "Optical
-Microscopy Primer"
+Background subtraction explained so far uses morphological processing. 
+There are several other methods including
+ 
+\begin{enumerate}
+  \item High-pass filter
+  \item Flat-field correction by polynomial fitting
+  \item Deconvolution
+\end{enumerate}
+
+Pseudo high-pass filtering could be done by subtracting 
+largely blurred image by Gaussian blurr (such as with sigma of 20)  
+from the original image. Otherwise, band-pass function under \ijmenu{[Process >
+FFT]} could be used for high-pass filtering.  
+
+For polynomial fitting, ImageJ plugin ``Polynomial\_Fit'' written by Bob
+Dougherty could be used to estimate the background
+\footnote{\url{http://www.optinav.com/Polynomial_Fit.htm}}.
+
+Practical information on background subtraction for bright field images is
+available in ImageJ wiki\footnote{\url{http://imagejdocu.tudor.lu/imagej-documentation-wiki/how-to/how-to-correct-background-illumination-in-brightfield-microscopy}}. 
+For flat field correction protocol, see "Optical Microscopy Primer"
 site\footnote{\url{http://micro.magnet.fsu.edu/primer/digitalimaging/imageprocessingintro.html}}.
 
+Protocol for the background subtraction for fluorescence
+images using calibration slide and ImageJ could be found in
+ \cite{MiuraME2005}.
+
+For the background removal of fluorescence time series, bleaching of
+fluorescence should be considered. See recent article by
+\cite{Schwarzfischer2011}.
+
+Deconvolution removes out-of-focus emission signal. See appendix 8 for an
+extensive tutorial using ImageJ plugin. You could also refer to a classic review
+\citep{Wallace2001}.
 
 \subsection{Other Functions: Fill holes, Skeltonize, Outline}
 
