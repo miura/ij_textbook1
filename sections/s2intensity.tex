@@ -93,8 +93,8 @@ applied point-by-point. }
 
 \begin{indentexercise}{2}
 Histogram Normalization and Equalization:
-item\ Open sample image \textbf{g1.tif}, and then duplicate the image by \ijmenu{[Image > Duplicate]}. Click the duplicate and then \ijmenu{[Image > Process > Enhance Contrast]}. A dialog
-window pops up. Set "Saturated Pixels" to 0.0\% and check "Normalize", while uncheck "Equalize Histogram", then click OK.
+\item Open sample image \textbf{g1.tif}, and then duplicate the image by
+\ijmenu{[Image > Duplicate]}. Click the duplicate and then \ijmenu{[Image > Process > Enhance Contrast]}. A dialog window pops up. Set "Saturated Pixels" to 0.0\% and check "Normalize", while uncheck "Equalize Histogram", then click OK.
 Compare histogram of original and normalized images .  
 
 \item Duplicate g1.tif again by \ijmenu{[Image > Duplicate]}. Click the
@@ -170,13 +170,12 @@ know pixel values (intensity), but it only works for each single
 pixels. Here we learn a way to get statistical information of a group
 of pixels within ROI. This has more practical usages for research. 
 
-To measure pixel values of a ROI, ImageJ has a function \ijmenu{[Analyze
-Measure]}. Before using this function, you could specify
-the parameters you want to measure by \ijmenu{[Analyze >
-Set measurements]}. There are many parameters in the
-"Set measurement" window. Details on
-these parameters are listed in the Appendix \ref{app2}. For intensity
-measurements following parameters are important. 
+To measure pixel values of a ROI, ImageJ has a function \ijmenu{[Analyze >
+Measure]}. Before using this function, you could specify the parameters 
+you want to measure by \ijmenu{[Analyze > Set measurements]}. There are many parameters
+in the "Set measurement" window. Details on these parameters are listed in the
+Appendix \ref{app2}. For intensity measurements following parameters are
+important.
 
 \begin{itemize}
 \item \textbf{Mean Gray Value} - Average gray value within the selection. This

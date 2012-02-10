@@ -175,21 +175,26 @@ mobility and production. Here, we study how to obtain the intensity
 dynamics out of image sequences.
 
 \begin{indentexercise}{1}
-Load image stack \textbf{1703-2(3s-20s).stk}. 
-Make a ROI (could be any closed ROI) at the area where the photobleaching will take place. 
-Then do \ijmenu{[Image > Stacks > Plot z-axis Profile]}. 
+Load image stack \textbf{1703-2(3s-20s).stk}. This is a sequence of FRAP
+experiment. Draw a ROI (could be any closed ROI) surrounding the area where the
+photobleaching takes place. Then do \ijmenu{[Image > Stacks > Plot z-axis
+Profile]}.
 
 There will be two windows: "Results" window and a graph of intensity dynamics. 
 
-Try adding Second ROI to measure the background, simply by making another ROI. So the intensity measurement again with this new ROI. 
+Try adding Second ROI to measure the background, simply by making another ROI. 
+So the intensity measurement again with this new ROI. 
 
-\textbf{OPTIONAL:} Numerical values in the table can be copy and pasted in spread sheet software like Excel or OpenOffice Calc. Try draw a graph in your favorite plotting software.
+\textbf{OPTIONAL:} Numerical values in the table can be copy and pasted 
+in spread sheet software like Excel or OpenOffice Calc. If you know how to use
+R, then you could save the results table as a CSV file and read it from R. Try
+draw a graph in your favorite plotting software.
 \end{indentexercise}
 
-When you measure the fluorescence level, it is necessary to measure the
-baseline intensity and subtract the value from the measured
+When you measure the fluorescence level, it is very important to measure the
+background intensity and subtract the value from the measured
 fluorescence. This is because the baseline level adds offset to the
-measured value.
+measured value, so you could not quantify the true value.
 
 \subsection{Measurement of Movement Dynamics}
 
@@ -235,7 +240,11 @@ visualize motion and dynamics in microscopy images.
 
 \begin{indentexercise}{1}
 
-Measurement of speed using Kymographs. For doing this exercise, you need "Slice Remover" PlugIn \footnote{ To install the plugin refer to \ref{app1.5}}. 
+We try measuring the speed of tubulin flux using Kymographs. 
+For doing this exercise, you need "Slice Remover" PlugIn 
+\footnote{ To install the plugin refer to \ref{app1.5}. If you are using Fiji,
+Slice Remover is already installed. Access the command by \ijmenu{[Image >
+Stack > Manipulation > Slice Remover]}}.
 
 (1) Load the image stack of a spindle labeled with speckle amounts of tubulin. Name of the file is \textbf{control\_1.stk}. Observe the movie. Note that the tubulin speckles flux towards the both spindle
 poles. One way to measure the rate of flux is to create a kymograph along a straight line that runs from one spindle pole to the other.
