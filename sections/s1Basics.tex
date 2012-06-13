@@ -19,23 +19,24 @@ Ethics" by \citet{cromey2007}.
 \subsection{Digital image is a matrix of numbers}
 \label{subsec:imageEQmatrix}
 Digital image we see on computer screen is made up of pixels. We can see
-individual pixel by zooming up the image using magnifying
-tool\footnote{\ Zooming in / out of the image does not change the
-content of the image.}. Width and height of the image are defined by
-the number of pixels in x and y direction. Each pixel has brightness,
-or intensity (or more strictly, amplitude) between black and white.
-Within image file saved in computer hard disk, intensity of each pixel
-is written. The number is converted to the grayness of that pixel on
-monitor screen. We usually do not see these numbers in the image
-displayed on monitor, but we could access these numbers in the image
-file by converting the image file to a text file (It"s
-also possible in a limited way by putting mouse pointer over the
-image). 
+individual pixel by zooming up the image using magnifying tool\footnote{\
+Zooming in / out of the image does not change the content of the image.}. Width
+and height of the image are defined by the number of pixels in x and y
+directions. Each pixel has brightness, or intensity (or more strictly,
+amplitude) somewhere between black and white represented as a number. Within
+image file saved in computer hard disk, intensity values of pixels are
+written. The value is converted to the grayness of that pixel on monitor screen.
+We usually do not see these values, or numbers, in the image displayed on
+monitor, but we could access these numbers in the image file by converting 
+the image file to a text file \footnote{It's also possible in a limited way by
+putting mouse pointer over the image and checking the number indicated in
+ImageJ menu bar.}.
 
 \begin{indentexercise}{1}
 \label{exer:1111}
 \item Conversion of image to a text file
-Make a new image by \ijmenu{[File > New > Image\ldots]}. In dialog window, make a new image with the following parameters:
+\item Make a new image by \ijmenu{[File > New > Image\ldots]}. In dialog window,
+make a new image with the following parameters:
 
 \begin{itemize}
 \item name = test.txt
@@ -55,19 +56,19 @@ Make a new image by \ijmenu{[File > New > Image\ldots]}. In dialog window, make 
 \label{fig:img1}
 \end{center}
 \end{figure}
-Clicking "OK", you will see a new window showing a black image. 
-At the top of the window you could see the file dimension ("10 x 15"), 
-bit-depth and the file size (I explain these values later. 
-Fig. \ref{fig:mostbasic}). Take the pen tool and draw some shape (what ever you want. 
+Clicking "OK", you will see a new window showing a black image (Fig.
+\ref{fig:mostbasic}). At the top of the window you could see the file dimension ("10 x 15"), 
+bit-depth and the file size (I explain these values later.
+). Take the pen tool and draw some shape (what ever you want. 
 If you do not see anything drawn, then you need to change the color of the pen to white by 
-\ijmenu{[Edit Option Colors\ldots]} and set Foreground Color to white). 
+\ijmenu{[Edit > Option > Colors\ldots]} and set Foreground Color to white). 
 Then do \ijmenu{[File > Save as > Text image]} and save the file. \\
 
 You will find that the name of the file ends with ".txt". 
 Open File Explorer (Win) or Finder (Mac) and double click the file. 
 The file will be opened in text editor.
 
-What you see now is a "text image", a 2D
+What you see now in the text editor is a "text image", a 2D
 matrix of tab-delimited numbers. At the left most column in the example
 (Fig. \ref{fig:mostbasic2}), there are only zeros. This corresponds to the left column
 pixels in the image, where the color is black. In the middle in the
@@ -75,12 +76,10 @@ example image, there are several "255".
 These are the white part of the image.
 In the text image, edit one of the numbers (either 0 or 255) and change
 to 100. Then save the file with a different name, such as
-"temp.txt". Then from ImageJ, \ijmenu{[File > Import > Text Image\dots]}. Now, you see some
-difference. You might easily find out that the image now has a dark
-gray dot.
+"temp.txt". Then in ImageJ open the file by \ijmenu{[File > Import > Text
+Image\dots]}. You should see some difference in the image now. 
+The image now has a dark gray dot, not black nor white.
 \end{indentexercise}
-
-
 
 %double figure
 \begin{figure}[htbp]
@@ -110,7 +109,7 @@ gray dot.
 
 
 Note: In hard disk, pixel values are not written as a 2D matrix but as
-single array. Matrix is reproduced after loading according to the width
+a single array. Matrix is reproduced after loading according to the width
 and height of the image. Pixel values of image stacks (3D or 4D), are
 also in 1D array in hard disk. 3D or 4D matrix is reproduced according
 to additional information such as slice and channel number. Such
