@@ -134,14 +134,14 @@ into 256 steps. 16-bit means $2^{16} = 65536$ steps. The
 difference is that with 16-bit, one can assign gray-level much more
 precise for each pixel; in other words "grayness
 resolution" is higher. Microscope images are generated
-mostly by CCD camera (or something similar, with matrix of
-photo-sensor). CCD chip is a matrix of sensors. Each sensor receives
-photons and converts the number received to the grayness number for a
+mostly by CCD camera (or something similar). 
+CCD chip has a matrix of sensors. Each sensor receives
+photons and converts the number of photons to a value for a
 pixel at the corresponding position within the image. Larger bit-depth
 enables larger dynamic range with more precise conversion results.~ For
 this reason, larger bit-depth is normally recommended for quantitative
 imaging. Draw back is that it takes longer time for data transferring
-as the bit-depth becomes larger. This may intern limits the time
+as the bit-depth becomes larger. This may in turn limits the time
 resolution of image sequences. \\
 ~\\
 Why do we use "$2^{n}$"? This
@@ -157,8 +157,7 @@ versa). In case of 16-bit image, the scale is $2^{16}$ so
 there are 65536 steps. 
 
 
-
-We must keep in our mind that the nature is continuous. In conventional
+We must not forget that the nature is continuous. In conventional
 mathematics you learn in school, decimal point enables you to represent
 infinite steps between 0 and 1. But digitization of the nature loses
 the infinite steps such that 0.44 will be rounded to 0 and 0.56 will be
