@@ -367,15 +367,17 @@ Likewise images could also be subtracted, multiplied and divided by
 number. 
 
 \begin{indentexercise}{1}
-Simple math on 8-bit image: Prepare a new
+Simple math using 8-bit image: Prepare a new
 image following the initial part of the exercise \ref{exer:1111}. Now,
 bring the mouse pointer over the image and check the
 "value" that appears in the
-status bar in the ImageJ window\footnote{\ In the exercise \ref{exer:1111}, 
-we converted the image to a text file and check the pixel
+status bar in the ImageJ window\footnote{\ In the previous exercise \ref{exer:1111}, 
+we converted the image to a text file and then checked the pixel
 values, but it is also possible to check the value pixel by pixel using
-this method.}. All pixel values in the image should be
-"value = 0".
+this method. From ImageJ 1.46i (release: Mar. 15, 2012), 
+you could check the pixel values by \ijmenu{[Image > Transform > Image to Results]}. 
+This command will send the image matrix shown in Results window as numbers.}. 
+All pixel values in the image should be"value = 0".
 "x=\ldots, y=\ldots " in the
 status bar. 
 
@@ -554,7 +556,7 @@ Working with RGB image:
 %figure
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=5cm]{img/CMCIBasicCourse201102-img14.png}
+\includegraphics[width=5cm]{img/dialog_colormerge.png}
 \caption{ Color Merge Dialog}
 \label{fig:img14}
 \end{center}
@@ -667,7 +669,12 @@ processing of single channel by simply selecting a channel by horizontal scroll 
 \subsection{Look-Up Table }
 \label{subsec:LUT}
 
-We now look at how matrix of numbers is converted to actual image. Let"s think about a row of pixels with increasing pixel values from 0 to 255 (so there are 256 pixels in this row). Computer monitor will show a gradient of intensity that is linearly increasing its brightness from black to white. This is because the software is giving a command to the monitor, such that "this pixel $(x, y)$ is 158 so the corresponding voltage required for this position $(x, y)$ in the screen should be **mV". For this command to be composed, software needs a so called "look-up table" (LUT). 
+We now look at how matrix of numbers is converted to actual image. Let"s think about 
+a row of pixels with increasing pixel values from 0 to 255 (so there are 256 pixels in this row). 
+Computer monitor will show a gradient of intensity that is linearly increasing its brightness 
+from black to white. This is because the software is giving a command to the monitor, 
+such that "this pixel $(x, y)$ is 158 so the corresponding voltage required for this position $(x, y)$ 
+in the screen should be **mV". For this command to be composed, software needs a so called "look-up table" (LUT). 
 
 
 This is just like a situation when you start checking a menu in a
@@ -687,7 +694,14 @@ sliding your sight to the left and find out which pizza to order).
 
 
 \begin{indentexercise}{1}
-For 8-bit images, there is a default LUT normally called "grayscale". To see the LUT, open the image \textbf{Cell\_Colony.jpg} and then do \ijmenu{[Image > Color > Show LUT]}. LUT window pops up showing the relationship between pixel value and pixel intensity. Try change the LUT by \ijmenu{[Image > Lookup Tables >Spectrum]}. Pixel value does not change by this operation, but the pixel intensity changes that the image appears differently now. Check the LUT again by do \ijmenu{[Image > Color > Show LUT]}. 
+For 8-bit images, there is a default LUT normally called "grayscale". 
+To see the LUT, open the image \textbf{Cell\_Colony.jpg} and then 
+do \ijmenu{[Image > Color > Show LUT]}. LUT window pops up showing 
+the relationship between pixel value and pixel intensity. 
+Try change the LUT by \ijmenu{[Image > Lookup Tables >Spectrum]}. 
+Pixel value does not change by this operation, but the pixel intensity changes 
+that the image appears differently now. Check the LUT again by do \ijmenu{[Image > Color > Show LUT]}. 
+Actual numbers in each LUT could be checked using ``'list' button at the left-bottom corner of each LUT window. 
 \end{indentexercise}
 
 %double figure
