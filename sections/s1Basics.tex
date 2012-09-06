@@ -732,20 +732,52 @@ Actual numbers in each LUT could be checked using ``'list' button at the left-bo
 
 \subsection{Image File Formats: Header and Data, Stacks, Multi-dimensional images}
 
-Image file contains two types of information. One is the image data, the matrix of numerical values. Another is called "header", which contains the information about the architecture of image. Since software must know information such as bit-depth, width and height, and the size of the header before opening the image, the information is written in the "header". The total file size of an image file is then 
+Image file contains two types of information. 
+One is the image data, the matrix of numerical values. 
+Another is called "header", which contains the information about the architecture of image. 
+Since software must know information such as bit-depth, width and height, and the size of 
+the header before opening the image, the information is written in the "header". 
+The total file size of an image file is then 
 
 $Total file size = header size + data size$
 
-There are many different types of image formats, such as TIFF, BMP, PICT and so on. Each format has differently sized header, and also the location of the information. In biology, microscope companies create their own formats to include more parameters about the image, such as the type of microscope used, used objectives, binning, shutter speed, time intervals, user name and so on. 
+There are many different types of image formats, such as TIFF, BMP, PICT and so
+on. Each format has differently sized header, and also the location of the
+information. In biology, microscope companies create their own formats to
+include more parameters about the image, such as the type of microscope used,
+used objectives, binning, shutter speed, time intervals, user name and so on.
 
-Presence of company-specific formats complicates us because that image could only be openable from software provided by that company. For this reason, there are an excellent Plug-in which enable importing of specific format to ImageJ \footnote{\tab LOCI Bioformat Plugin:\\
+Presence of company-specific formats complicates us because that image could
+only be openable from software provided by that company. For this reason, there
+are an excellent Plug-in which enable importing of specific format to ImageJ
+\footnote{\tab LOCI Bioformat Plugin:\\
 \url{http://www.loci.wisc.edu/ome/formats.html}}
 
-You do not have to know all the details about the architecture of various image formats (thanks to the bioformats plugin), but it is important for you to know that the difference resides mainly in the header. The data part is in most cases same, something like what we have seen already using text image (for more details on header, refer to the appendix \ref{app1} ). 
+You do not have to know all the details about the architecture of various image
+formats (thanks to the bioformats plugin), but it is important for you to know
+that the difference resides mainly in the header. The data part is in most cases
+same, something like what we have seen already using text image (for more
+details on header, refer to the appendix \ref{app1} ).
 
-\textit{Multidimensional data}: When you take time-lapse images or z-stack, then there will be a series of images with same prefix and serial number like image0001.tif, image0002.tif, image0003.tif\dots\ and so on. These files could be imported by ImageJ and watch the sequence like a movie. Such an image series is called "stack" in ImageJ and can be saved as a single file. File extension is typically ".tif", which is same as the single frame file. In Metamorph, popular software used in biology, uses .stk as the file extension. These files can be loaded directly in ImageJ. We will study more on the actual use of the image stacks in section \ref{sec:timeseries}.
+\textit{Multidimensional data}: When you take time-lapse images or z-stack, then
+there will be a series of images with same prefix and serial number like
+image0001.tif, image0002.tif, image0003.tif\dots\ and so on. These files could
+be imported by ImageJ and watch the sequence like a movie. Such an image series
+is called "stack" in ImageJ and can be saved as a single file. File extension is
+typically ".tif", which is same as the single frame file. In Metamorph, popular
+software used in biology, uses .stk as the file extension. These files can be
+loaded directly in ImageJ. We will study more on the actual use of the image
+stacks in section \ref{sec:timeseries}.
 
-\textit{Compression}: Another important point that we must keep in our mind is that we should not compress data, if you want to get some numbers out of them. Popular compression formats are like JPEG and GIF. Compression of images deals with throwing away redundant part or mathematically interpolating some parts of the image. This causes artifacts in the image and it could even be "manipulation" of data. We must avoid using compression for the images we use for measurements. These compression formats are also called "lossy" formats, as the process of compression loses data. PNG is a compression format that does not alter the original pixel values.
+\textit{Compression}: Another important point that we must keep in our mind is
+that we should not compress data, if you want to get some numbers out of them.
+Popular compression formats are like JPEG and GIF. Compression of images deals
+with throwing away redundant part or mathematically interpolating some parts of
+the image. This causes artifacts in the image and it could even be
+"manipulation" of data. We must avoid using compression for the images we use
+for measurements. These compression formats are also called "lossy" formats, as
+the process of compression loses data. PNG is a popular compression format that does not
+alter the original pixel values.
 
 \begin{indentexercise}{1}
 Open the example image \textbf{wt1.tif}. Do
@@ -754,27 +786,53 @@ is listed in the information window, which was read out from the header
 of the image. Then do \ijmenu{[Image > Properties]},
 also showing the scale. 
 \end{indentexercise}
-
+\begin{indentexercise}{2}
+  In this exercise, you will learn how to interact with image stacks (n
+  Dimensional images).
+  Open sample image stack \textbf{yeastDivision3DT.tif}.
+  This is a 3D time series stack. You could scroll through the frames by moving
+  the scroll bar at the bottom of the frame.
+  Since this is a 3D time series, you will see that each time point is a
+  sub-stack of images at different optical sections. 
+  
+  To view the stack in a more
+  convenient way, you could convert the stack to a hyperstack by 
+  
+  \ijmenu{[Image > Hyperstacks > Stack to Hyperstack\dots ]}.\footnote{If this conversion does not work properly, the first thing you could
+  check is if the setting of the image dimension is properly set.
+  To check this, \ijmenu{[Image > Properties\dots]} and check if slice (z)
+  number and frame number (time points) are set correctly.
+  For the sample image we use in this exercise, z should be 8 and frames should
+  be 46.}
+  
+   In ``Hyperstack'' mode, two scroll bars become present at the bottom of the
+   window. One is for scrolling through z slices and the other for time points.
+   Each scroll bar could be moved independently of the other dimension, so you
+   could for example go through the time series at a same constant z-position,
+   or go through z-slices at a certain time point.
+   To go back to the normal stack mode, use 
+   
+   \ijmenu{[Image > Hyperstacks > Hyperstack to Stack\dots]}.
+\end{indentexercise}
 \subsection{Resizing images. (Shrinking and Enlarging) }
 
-When we say "resizing" images, this
-does not mean zooming in or out the image\footnote{\ Zooming is done by
-the magnification tool (icon of magnification glass) and this simply
-enlarges or shrinks the pixels, not modifying the original data. \par
-}. Resizing changes the original data. If we have an image of size 10
-pixels by 10 pixels and resize it to 200\%, the image becomes 20 x 20.
-If we resize it by 50\%, then the image becomes 5 x 5. Resizing is a
-simple task that could be done by \ijmenu{[Image > Adjust > Size\ldots]}. This is a simple operation but one must
-take care about how pixels will be produced while enlarging and reduced
-while shrinking. If the enlarging is simply two times larger, we could
-imagine that each pixel will be copied three times to produce a block
-of four pixels to complete the task. The pixel values of the newly
-inserted pixels will then be identical to the source pixel. 
+When we say "resizing" images, this does not mean zooming in or out the
+image\footnote{\ Zooming is done by the magnification tool (icon of
+magnification glass) and this simply enlarges or shrinks the pixels, not
+modifying the original data. \par }. Resizing changes the original data. If we
+have an image of size 10 pixels by 10 pixels and resize it to 200\%, the image
+becomes 20 x 20.
+If we resize it by 50\%, then the image becomes 5 x 5. Resizing is a simple task
+that could be done by \ijmenu{[Image > Adjust > Size\ldots]}. This is a simple
+operation but one must take care about how pixels will be produced while
+enlarging and reduced while shrinking. If the enlarging is simply two times
+larger, we could imagine that each pixel will be copied three times to produce a
+block of four pixels to complete the task. The pixel values of the newly
+inserted pixels will then be identical to the source pixel.
 
-But what happens if we want to enlarge the image by 150 \%? To simplify
-the situation, think about an image with 2 x 2 pixels. Then the
-resulting image becomes 3 x 3. To understand the effect, do the
-following exercise. 
+But what happens if we want to enlarge the image by 150 \%? To simplify the
+situation, think about an image with 2 x 2 pixels. Then the resulting image
+becomes 3 x 3. To understand the effect, do the following exercise.
 
 
 \begin{indentexercise}{1}
