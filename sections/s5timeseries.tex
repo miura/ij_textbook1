@@ -32,12 +32,12 @@ literature \citep{miuraABEB2005}.
 
 \subsection{Importing Image Sequence}
 
-Image sequences captured through microscopes in most cases consists of
-multiple of single image frames with numbering (\textit{e.g.} image0001.tif, image0002.tif, image0003.tif\ldots). By
-importing such files, we can create a window called
-"stack". Image stacks are said to be "3D" because there are three
-dimensions, x and y axes, and either z axis or time (in the following,
-we abbreviate the former as "x-y-z" and the latter as "x-y-t"). 
+Image sequences captured through microscopes in most cases consists of multiple
+of single image frames with numbering (\textit{e.g.} image0001.tif,
+image0002.tif, image0003.tif\ldots). By importing such files, we can create a
+window called "stack". Image stacks are said to be "3D" because there are three
+dimensions, x and y axes, and either z axis or time (in the following, we
+abbreviate the former as "x-y-z" and the latter as "x-y-t").
 
 Stacks could be saved as a single file. The file header will contain the
 information on number of frames that the image contains. This number
@@ -66,10 +66,10 @@ HyperVolumeShuffler PlugIn.
 
 \begin{indentexercise}{1}
 Import multiple files as an image stack.
-\ijmenu{[File > Import > Image Sequence\ldots]} will open a dialog window and you must specify the
-first file of the image series. Select sample sequence
-\textbf{eg5\_spindle\_50000.tif\ldots} Then another dialog window
-pops up (Fig. \ref{fig:img129}). 
+\ijmenu{[File > Import > Image Sequence\ldots]} will open a dialog window and
+you must specify the first file of the image series. Select sample sequence
+\textbf{eg5\_spindle\_50000.tif\ldots} Then another dialog window pops up (Fig.
+\ref{fig:img129}).
 
 %figure
 \begin{figure}[H]
@@ -80,13 +80,12 @@ pops up (Fig. \ref{fig:img129}).
 \end{center}
 \end{figure}
 
-ImageJ automatically detects the number of files in the folder, and then
-another window opens to ask for the number of images you want to
-import, which number you want to start with, increment between the
-numbering of the file, and also part of the name that is unchanged
-through out all the files you want to import. There are other options
-such as scaling and conversion of the image but-depth, but these
-operations could be also done afterwards. The imported image sequence
+ImageJ automatically detects the number of files in the folder, and then another
+window opens to ask for the number of images you want to import, which number
+you want to start with, increment between the numbering of the file, and also
+part of the name that is unchanged through out all the files you want to import.
+There are other options such as scaling and conversion of the image but-depth,
+but these operations could be also done afterwards. The imported image sequence
 is within one window, or a stack.
 \end{indentexercise}
 
@@ -120,8 +119,9 @@ Try changing the playback speed by \ijmenu{[Image > Stack > Animation options]} 
 
 \subsection{Difference Images}
 
-In many cases, mathematical manipulation on image sequences is effective
-in visualizing dynamics. "Difference images" (also called "subtraction images") is one of such techniques.
+In many cases, mathematical manipulation on image sequences is effective in
+visualizing dynamics. "Difference images" (also called "subtraction images") is
+one of such techniques.
 A difference image of successive frames in a sequence is given by:
 \begin{equation}
 D_{j}(x,y)=I_{j+1}(x,y) - I_{j}(x,y)
@@ -162,9 +162,10 @@ plane. This function is especially useful for visualizing entire
 trajectories of moving particles on a single plane.
 
 \begin{indentexercise}{1}
-Open image \textbf{listeriacells.stk}. 
-Then do all types of projections you could choose by \ijmenu{[Image > Stack > Z projection\ldots]}.\\
-\textbf{Question}: Which is the best method for leaving the bacteria tracks? 
+Open image \textbf{listeriacells.stk}.
+Then do all types of projections you could choose by \ijmenu{[Image > Stack > Z
+projection\ldots]}.\\
+\textbf{Question}: Which is the best method for leaving the bacteria tracks?
 \end{indentexercise}
 
 \subsection{Measurement of Intensity dynamics}
@@ -285,11 +286,19 @@ Go back to the stack, \ijmenu{[Edit > Selection > Restore Selection]}. Then \ijm
 \end{center}
 \end{figure}
 
-Install macro "K\_read\_kymoLineROI.txt" by \ijmenu{[PlugIns > Macros >Install\ldots]} and then select the macro file in file chooser, and click OK. Do \ijmenu{[PlugIns > Macros > Show Line
-Coordinates and Speed]}. Results will appear in the Log window. 
+Install macro "K\_read\_kymoLineROI.txt" by \ijmenu{[PlugIns > Macros
+>Install\ldots]} and then select the macro file in file chooser, and click OK.
+Do \ijmenu{[PlugIns > Macros > Show Line Coordinates and Speed]}. Results will
+appear in the Log window.
 
-Note: Jens Rietdorf and Arne Seitz made a Kymograph plug-in for ImageJ. It enables multiple ROI selections, to make your life easier. \\
+Note 1: Jens Rietdorf and Arne Seitz made a Kymograph plug-in for ImageJ. It
+enables multiple ROI selections, to make your life easier. \\
 \url{http://www.embl.de/eamnet/html/kymograph.html}
+
+Note 2: If you want to quantify kymograph with ambiguous patterns, you could try
+using ``kymoquant'', an ImageJ macro.
+For more details, see
+\url{http://cmci.embl.de/downloads/kymoquant}
 
 \end{indentexercise}
 
