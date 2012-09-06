@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Thu Sep 06 10:06:49 CEST 2012
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=
+mainTexFile=CMCIBasicCourse201102Bib.tex
+outputFile=CMCIBasicCourse201102Bib.pdf
+langSpell=en
+markDer=true
+srcDir=
