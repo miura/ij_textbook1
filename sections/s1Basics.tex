@@ -731,7 +731,17 @@ Actual numbers in each LUT could be checked using ``'list' button at the left-bo
 \label{fig:LUT[lots}
 \end{figure} 
 
-\subsection{Image File Formats: Header and Data, Stacks, Multi-dimensional images}
+\subsection{Image File Formats}
+
+In this part I will discuss on issues related to image file formats including:
+
+\begin{itemize}
+	\item Header and Data
+	\item Image stacks
+	\item Multi-dimensional images
+	\item Hyperstack
+	\item Data Compression
+\end{itemize}
 
 Image file contains two types of information. 
 One is the image data, the matrix of numerical values. 
@@ -745,7 +755,7 @@ $Total file size = header size + data size$
 There are many different types of image formats, such as TIFF, BMP, PICT and so
 on. Each format has differently sized header, and also the location of the
 information. In biology, microscope companies create their own formats to
-include more parameters about the image, such as the type of microscope used,
+include more information about the image, such as the type of microscope used,
 used objectives, binning, shutter speed, time intervals, user name and so on.
 
 Presence of company-specific formats complicates us because that image could
@@ -760,6 +770,17 @@ that the difference resides mainly in the header. The data part is in most cases
 same, something like what we have seen already using text image (for more
 details on header, refer to the appendix \ref{app1} ).
 
+\begin{indentexercise}{1}
+
+\textbf{accessing the image properties}
+
+Open the example image \textbf{wt1.tif}. Do
+\ijmenu{[Image > Show Info\dots]}. Scale (pixels/inch)
+is listed in the information window, which was read out from the header
+of the image. Then do \ijmenu{[Image > Properties]},
+also showing the scale. 
+\end{indentexercise}
+
 \textit{Multidimensional data}: When you take time-lapse images or z-stack, then
 there will be a series of images with same prefix and serial number like
 image0001.tif, image0002.tif, image0003.tif\dots\ and so on. These files could
@@ -767,31 +788,51 @@ be imported by ImageJ and watch the sequence like a movie. Such an image series
 is called "stack" in ImageJ and can be saved as a single file. File extension is
 typically ".tif", which is same as the single frame file. In Metamorph, popular
 software used in biology, uses .stk as the file extension. These files can be
-loaded directly in ImageJ. We will study more on the actual use of the image
-stacks in section \ref{sec:timeseries}.
+loaded directly in ImageJ. 
 
-\textit{Compression}: Another important point that we must keep in our mind is
-that we should not compress data, if you want to get some numbers out of them.
-Popular compression formats are like JPEG and GIF. Compression of images deals
-with throwing away redundant part or mathematically interpolating some parts of
-the image. This causes artifacts in the image and it could even be
-"manipulation" of data. We must avoid using compression for the images we use
-for measurements. These compression formats are also called "lossy" formats, as
-the process of compression loses data. PNG is a popular compression format that does not
-alter the original pixel values.
+Time-lapse sequence (we could call it ``2DT stack'') or Z-stack (We could call it ``3D stack'') is relatively simple because they are both made up of a series of two dimensional images. More highly dimensioned data are common these days. In many occasions we take a time series of z-stacks maybe also with multiple channels. The order of two dimensional images within such multidimensional stacks then becomes an important issue. If we take an example of 3D time series, a possible order of 2D images could start first with z-slices and then time series. In this case, the frame sequence will be something like this:
 
-\begin{indentexercise}{1}
-Open the example image \textbf{wt1.tif}. Do
-\ijmenu{[Image > Show Info\dots]}. Scale (pixels/inch)
-is listed in the information window, which was read out from the header
-of the image. Then do \ijmenu{[Image > Properties]},
-also showing the scale. 
-\end{indentexercise}
+imgZ0-T1.tif\\
+imgZ1-T1.tif\\
+imgZ2-T1.tif\\
+imgZ0-T2.tif\\
+imgZ1-T2.tif\\
+imgZ2-T2.tif\\
+imgZ0-T3.tif\\
+\ldots
+
+The number after ``Z'' is the slice number and that after ``T'' is the file name. We often call this order ``XYZT''. Alternatively, 2D images could be ordered with time points first and then z-slices. In this case images will be stacked as:
+
+imgZ0-T1.tif\\
+imgZ0-T2.tif\\
+\ldots\\
+imgZ1-T1.tif\\
+imgZ1-T2.tif\\
+\ldots\\
+imgZ2-T1.tif\\
+imgZ2-T2.tif\\
+\ldots
+
+We call this order ``XYTZ''. If we have multiple channels, we could even have an order like ``XYCZT''\footnote{XYCZT is a typical order but many microscope companies and software do not follow such typical one.} and so on. Since in normal stack we could scroll only along single dimension, order of the dimensions in stacks changes how they look like when you try to watch them. 
+
+To avoid such complication with dimension ordering, there is an advanced format of stack called \textit{Hyperstack}. It could have up to three scroll bars at the bottom for channels (C), slices (Z) and time points (T) so one could easily scroll through the dimension of your choice \ref{fig:heyperstack_mitosis}. 
+
+%figure
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=9cm]{fig/Hyperstack_Mitosis.png}
+\caption{ A Hyperstack data, showing spindle dynamics. This 5D data could be downloaded by \ijmenu{[File > Open Samples > Mitosis]}}
+\label{fig:heyperstack_mitosis}
+\end{center}
+\end{figure}
+
+We will study more on the actual use of the image stacks in section \ref{sec:timeseries}.
+
 \begin{indentexercise}{2}
   In this exercise, you will learn how to interact with image stacks (n
   Dimensional images).
   Open sample image stack \textbf{yeastDivision3DT.tif}.
-  This is a 3D time series stack. You could scroll through the frames by moving
+  This is a 3D time series stack. You could browse through the frames by moving
   the scroll bar at the bottom of the frame.
   Since this is a 3D time series, you will see that each time point is a
   sub-stack of images at different optical sections. 
@@ -815,6 +856,19 @@ also showing the scale.
    
    \ijmenu{[Image > Hyperstacks > Hyperstack to Stack\dots]}.
 \end{indentexercise}
+
+
+\textit{Compression}: Image data tends to become huge as the size of the image become larger. There is convenient way to reduce the file size of images by data compression. But keep in your mind:
+we should not compress data, if you want to get some numbers out of them.
+Popular compression formats are like JPEG and GIF. Compression of images deals
+with throwing away redundant part or mathematically interpolating some parts of
+the image, or ignoring some small details. This causes artifacts in the image and it could even be
+"manipulation" of data. These compression formats are also called "lossy" formats, as
+the process of compression loses data.  For this reason, we better avoid using compression for the images we use
+for measurements as we cannot recover original uncompressed image once they are converted to JPEG or GIF formats. 
+
+PNG is a popular compression format that does not alter the original pixel values. Images could be reverted to the original. Such compression formats are called ``loss-less'' formats, so if you really need to compress files, use PNG format.  
+
 \subsection{Resizing images. (Shrinking and Enlarging) }
 
 When we say "resizing" images, this does not mean zooming in or out the
