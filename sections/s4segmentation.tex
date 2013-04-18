@@ -38,7 +38,7 @@ g(x,y)=
 \end{cases}
 \end{equation}
 
-where $g(x,y)$ is the thresholded image of
+Where $g(x,y)$ is the thresholded image of
 $f(x,y)$.
 
 In a sense, thresholding is an extreme case of contrast enhancement we
@@ -327,7 +327,7 @@ constricted part of the fused circles.
 If you want to know a bit more details, read the following quote how ImageJ does this.
 \begin{quote}
 Watershed segmentation is a way of automatically separating or cutting
-apart particles that touch. It first calculates the Euclidian distance
+apart particles that touch. It first calculates the Euclidean distance
 map (EDM) and finds the ultimate eroded points (UEPs). It then dilates
 each of the UEPs (the peaks or local maxima of the EDM) as far as
 possible - either until the edge of the particle is reached, or the
@@ -416,7 +416,7 @@ parameters:
 \item Size: "0-200" size above 200 pixel area will be excluded from the measurement
 \item Circularity: use default "0-1.0"
 \item Show: Outline
-\item Checkbox:
+\item Check box:
 \begin{itemize} 
 \item Check "Display Results" to display the result table.
 \item Check "Clear Results" to refresh the measurement recordings.
@@ -515,7 +515,7 @@ A separate window with segmented image will open (Fig. \ref{fig:img124}).
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=6cm]{img/CMCIBasicCourse201102-img124.png}
-\caption{ Segmentation Result of Trainable Segmentation Plugin}
+\caption{ Segmentation Result of Trainable Segmentation PlugIn}
 \label{fig:img124}
 \end{center}
 \end{figure}
@@ -527,9 +527,9 @@ Saved *.arff file could be loaded later to segment another image
 \textbf{OPTIONAL} : Segmented image could be used as a mask to analyze original image. 
 To do so, open both the original \textbf{rice.tif} image and binary image (segmented rice.tif image).
 Then \ijmenu{[Analyze > Set Measurement]}, and set \ijmenu{redirect to} drop down menu to
-original image (rice.tif). Then activate the segmented image window, theshold the image (but do not
+original image (rice.tif). Then activate the segmented image window, threshold the image (but do not
 "apply"), and do particle analysis. 
-Detecton of particles are done in the segmented image, and
+Detection of particles are done in the segmented image, and
 measurements will be redirected to corresponding particle areas in the
 original image.  
 \end{indentexercise}
