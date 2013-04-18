@@ -82,8 +82,8 @@ more straight and diagonal (Fig. \ref{fig:img31} right, red curve).
 %double figure
 \begin{figure}[H]
  \centering
- \subfloat[]{\label{fig:img30}\includegraphics[height = 45mm]{img/CMCIBasicCourse201102-img30.png}}
- \subfloat[]{\label{fig:img31}\includegraphics[height = 45mm]{img/CMCIBasicCourse201102-img31.png}}
+ \subfloat[]{\label{fig:img30}\includegraphics[height = 45mm]{fig/CMCIBasicCourse201102-img30.png}}
+ \subfloat[]{\label{fig:img31}\includegraphics[height = 45mm]{fig/CMCIBasicCourse201102-img31.png}}
  \caption{ (a) Histogram Equalization: Very simple case.
 The actual calculation uses cumulative plots (b) of the histogram of original
 image, and uses it as a look up table to convert original pixel value,
@@ -110,7 +110,7 @@ Local Histogram Equalization (Optional):
 \item Histogram equalization could be done on local bases. This becomes
 powerful, as more local details could be contrast enhanced. You could
 try this with the same image g1.tif, by \ijmenu{[Pligins > CMCICourseModules > CLAHE]} 
-(if you have installed course plugin in ImageJ) or if you are using Fiji, \ijmenu{[Process > Enhance Local Contrast (CLAHE)] }
+(if you have installed the course plugin in ImageJ) or if you are using Fiji, \ijmenu{[Process > Enhance Local Contrast (CLAHE)] }
 \end{indentexercise}
 
 
@@ -204,7 +204,7 @@ scientists measure protein concentration by measuring absorbance of UV
 light or by labeling proteins with dyes or fluorescence and measure the
 intensity of emission. This is because light absorbance or the
 intensity of fluorescence intensity is proportional to the density of
-protein in the irradiated volume within cuvett. Very similar to this
+protein in the irradiated volume within cuvette. Very similar to this
 when fluorescence image of cells are taken, pixel values (which is the
 fluorescence intensity) are proportional to the density of the labeled
 protein at each pixel positions. For this reason, measurement of
@@ -220,7 +220,7 @@ window.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=8.017cm,height=11.298cm]{img/CMCIBasicCourse201102-img32.png}
+\includegraphics[width=8.017cm,height=11.298cm]{fig/CMCIBasicCourse201102-img32.png}
 \caption{Set Measurement Window}
 \label{fig:img32}
 \end{center}
@@ -254,8 +254,8 @@ multiplication of area and the mean gray value.
 %double figure
 \begin{figure}[htbp]
  \centering
- \subfloat[]{\label{fig:img33}\includegraphics[height=4cm]{img/CMCIBasicCourse201102-img33.jpg}}
- \subfloat[]{\label{fig:img34}\includegraphics[height=4cm]{img/CMCIBasicCourse201102-img34.jpg}}
+ \subfloat[]{\label{fig:img33}\includegraphics[height=4cm]{fig/CMCIBasicCourse201102-img33.jpg}}
+ \subfloat[]{\label{fig:img34}\includegraphics[height=4cm]{fig/CMCIBasicCourse201102-img34.jpg}}
  \caption{ (a) Tracing Cell Edge by Segmented ROI and Measuring the Intensity within selected area. }
  \label{fig:CellIntensityMeasurement}
 \end{figure} 
@@ -268,7 +268,7 @@ where there is no cell.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[height=4.5cm]{img/CMCIBasicCourse201102-img35.jpg}
+\includegraphics[height=4.5cm]{fig/CMCIBasicCourse201102-img35.jpg}
 \caption{Measurement of Background}
 \label{fig:img35}
 \end{center}
@@ -327,9 +327,9 @@ right side of the figure below?
 %double figure
 \begin{figure}[htbp]
  \centering
- \subfloat[]{\label{fig:img36}\includegraphics[width=2.762cm,height=5.803cm]{img/CMCIBasicCourse201102-img36.jpg}}
- \subfloat[]{\label{fig:img37}\includegraphics[width=2.762cm,height=5.803cm]{img/CMCIBasicCourse201102-img37.jpg}}
- \caption{ (a) Histgram of \textbf{gel\_inv.tif} before enhancing contrast. (b) Some bad adjustments example. }
+ \subfloat[]{\label{fig:img36}\includegraphics[width=2.762cm,height=5.803cm]{fig/CMCIBasicCourse201102-img36.jpg}}
+ \subfloat[]{\label{fig:img37}\includegraphics[width=2.762cm,height=5.803cm]{fig/CMCIBasicCourse201102-img37.jpg}}
+ \caption{ (a) Histogram of \textbf{gel\_inv.tif} before enhancing contrast. (b) Some bad adjustments example. }
  \label{fig:quizEnhanceContrast}
 \end{figure} 
 
@@ -368,7 +368,7 @@ plugin \textbf{Colocalization\_Finder}\footnote{download from \url{http://rsb.in
 and install it.
 
 Degree of colocalization could be then parametrized by using statistical
-values such as Pearson"s coefficient and
+values such as Pearson's coefficient and
 Mander's coefficient. These values have advantages and
 disadvantages depending on the image properties. For detailed
 description on these issues, refer to \citet*{BolteJM2006}.
@@ -403,9 +403,9 @@ Assignment 1-2-3: }
 \begin{enumerate}
 \item Optimize the contrast of image
 \textbf{m51\_8bit.tif}. Be careful not to
-saturate the pixels so you don"t throw away important
+saturate the pixels so you don't throw away important
 information in the lower pixel values. Check the histogram.
-Don"t close the histogram window
+Don't close the histogram window
 
 \item After applying the adjustment above (clicking
 "Apply" button), check the histogram

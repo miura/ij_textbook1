@@ -65,7 +65,7 @@ area changes. This corresponds to the changing of thresholding value.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=4cm]{img/CMCIBasicCourse201102-img106.png}
+\includegraphics[width=4cm]{fig/CMCIBasicCourse201102-img106.png}
 \caption{ Thresholding by using Brightness/Contrast Control Dialog.}
 \label{fig:img106}
 \end{center}
@@ -99,7 +99,7 @@ sliding bar below and study the effects on highlighted area in image.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=7cm]{img/CMCIBasicCourse201102-img107.png}
+\includegraphics[width=7cm]{fig/CMCIBasicCourse201102-img107.png}
 \caption{ Thresholding Dialog.}
 \label{fig:img107}
 \end{center}
@@ -167,7 +167,7 @@ Open image microtubule.tif. We expect that the values will exceed 255 (8-bit) so
 To the original image apply convolution in x-axis. 
 Do \ijmenu{[Process > Filter > Convolve]} and input the following kernel:
 
-%\includegraphics[width=1.87cm,height=1.87cm]{img/CMCIBasicCourse201102-img108.png}
+%\includegraphics[width=1.87cm,height=1.87cm]{fig/CMCIBasicCourse201102-img108.png}
 \[
  \begin{matrix}
   1 & 0 & -1 \\
@@ -178,7 +178,7 @@ Do \ijmenu{[Process > Filter > Convolve]} and input the following kernel:
 Be sure to make space between elements. Then to the duplicated image,
 apply convolution with the following kernel:
 
-%\includegraphics[width=2.364cm,height=1.87cm]{img/CMCIBasicCourse201102-img109.png}
+%\includegraphics[width=2.364cm,height=1.87cm]{fig/CMCIBasicCourse201102-img109.png}
 \[
  \begin{matrix}
   1 & 2 & 1 \\
@@ -203,7 +203,7 @@ Then to squared images, do \ijmenu{[Process > Image Calculator]} for the additio
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=4cm]{img/CMCIBasicCourse201102-img110.jpg}
+\includegraphics[width=4cm]{fig/CMCIBasicCourse201102-img110.jpg}
 \caption{ Image Calculation}
 \label{fig:ImageCalculatorDialog}
 \end{center}
@@ -235,7 +235,7 @@ start up. To show B selection field, click
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=10cm]{img/CMCIBasicCourse201102-img111.png}
+\includegraphics[width=10cm]{fig/CMCIBasicCourse201102-img111.png}
 \caption{ Image Expression Parser (Fiji)}
 \label{fig:ImageExpressionParser}
 \end{center}
@@ -255,10 +255,10 @@ image such as shown below.
 \begin{figure}[H]
 \centering
 \subfloat[]{\label{fig:img112}
-\includegraphics[height=3cm]{img/CMCIBasicCourse201102-img112.jpg}
+\includegraphics[height=3cm]{fig/CMCIBasicCourse201102-img112.jpg}
 }
 \subfloat[]{\label{fig:img113}
-\includegraphics[width=8cm]{img/CMCIBasicCourse201102-img113.png}
+\includegraphics[width=8cm]{fig/CMCIBasicCourse201102-img113.png}
 }
 \caption{ RGB merge of detected edge over the original
 image. (a) Dialog for assigning channels. (b) Example of merged color image, with original image in blue and edge-detected image in red}
@@ -278,10 +278,10 @@ topological surface, where the values of f(x,y) correspond to heights:
 \begin{figure}[htbp]
 \centering
 \subfloat[]{\label{fig:img114}
-\includegraphics[width=8cm]{img/CMCIBasicCourse201102-img114.png}
+\includegraphics[width=8cm]{fig/CMCIBasicCourse201102-img114.png}
 }
 \subfloat[]{\label{fig:img115}
-\includegraphics[width=2.3cm]{img/CMCIBasicCourse201102-img115.png}
+\includegraphics[width=2.3cm]{fig/CMCIBasicCourse201102-img115.png}
 }
 \caption{ Watershed Principle}
 \label{fig:WatershedPrinciple}
@@ -314,7 +314,7 @@ objects.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=2.381cm,height=2.408cm]{img/CMCIBasicCourse201102-img116.png}
+\includegraphics[width=2.381cm,height=2.408cm]{fig/CMCIBasicCourse201102-img116.png}
 \caption{ Circles.tif}
 \label{fig:img116}
 \end{center}
@@ -338,7 +338,7 @@ overlap too much. (quote from ImageJ web site)
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=13.418cm,height=2.701cm]{img/CMCIBasicCourse201102-img117.png}
+\includegraphics[width=13.418cm,height=2.701cm]{fig/CMCIBasicCourse201102-img117.png}
 \caption{ Watershed Segmentation}
 \label{fig:img117}
 \end{center}
@@ -349,7 +349,7 @@ a binary image is the distance from every pixel to the nearest nonzero-valued pi
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=10.85cm,height=5.242cm]{img/CMCIBasicCourse201102-img118.png}
+\includegraphics[width=10.85cm,height=5.242cm]{fig/CMCIBasicCourse201102-img118.png}
 \caption{ A small binary image (left) and its distance transform (right)}
 \label{fig:img118}
 \end{center}
@@ -370,7 +370,7 @@ this function.
 Single Particle Detection
 Load \textbf{Circles.tif} and segment two circles by watershed operation
 as we did in the previous section. Then select Wand Tool 
-\includegraphics[width=0.5cm]{img/CMCIBasicCourse201102-img119.png}
+\includegraphics[width=0.5cm]{fig/CMCIBasicCourse201102-img119.png}
  from the tool bar. Click one of the circles. Check that a ROI is
 automatically created at the edge of the circle.
 \end{indentexercise}
@@ -433,7 +433,7 @@ only part of the particles are included.
 %figure
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=10cm]{img/CMCIBasicCourse201102-img120.jpg}
+\includegraphics[width=10cm]{fig/CMCIBasicCourse201102-img120.jpg}
 \caption{ Multiple particle Analysis}
 \label{fig:img120}
 \end{center}
@@ -466,7 +466,7 @@ class" in the left panel (Fig. \ref{fig:img121}).
 %figure
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=9.947cm,height=6.872cm]{img/CMCIBasicCourse201102-img121.png}
+\includegraphics[width=9.947cm,height=6.872cm]{fig/CMCIBasicCourse201102-img121.png}
 \caption{ Trainable Segmentation Window}
 \label{fig:img121}
 \end{center}
@@ -485,7 +485,7 @@ something like Fig. \ref{fig:img122}.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=9.001cm,height=6.447cm]{img/CMCIBasicCourse201102-img122.png}
+\includegraphics[width=9.001cm,height=6.447cm]{fig/CMCIBasicCourse201102-img122.png}
 \caption{ Marking signal and background}
 \label{fig:img122}
 \end{center}
@@ -502,7 +502,7 @@ listed in Class listing by double clicking.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=9cm]{img/CMCIBasicCourse201102-img123.png}
+\includegraphics[width=9cm]{fig/CMCIBasicCourse201102-img123.png}
 \caption{ After first round of trainable segmentation.}
 \label{fig:img123}
 \end{center}
@@ -514,7 +514,7 @@ A separate window with segmented image will open (Fig. \ref{fig:img124}).
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=6cm]{img/CMCIBasicCourse201102-img124.png}
+\includegraphics[width=6cm]{fig/CMCIBasicCourse201102-img124.png}
 \caption{ Segmentation Result of Trainable Segmentation PlugIn}
 \label{fig:img124}
 \end{center}
@@ -554,7 +554,7 @@ You can draw histogram of the results in the "Results" window by using a
 function associated with the Result window \ijmenu{[Edit > Distribution\ldots]}.\\
 
 {\centering 
-\includegraphics[width=7cm]{img/CMCIBasicCourse201102-img125.png}
+\includegraphics[width=7cm]{fig/CMCIBasicCourse201102-img125.png}
 \par}
 
 \textbf{\sffamily
@@ -563,7 +563,7 @@ Assignment 1-4-2  DIC images of cells. }
 Find the boundary of this cell (dic\_cell.tif) using any of your favorite image segmentation techniques.\\
 
 {\centering 
-\includegraphics[width=7cm]{img/CMCIBasicCourse201102-img126.png}
+\includegraphics[width=7cm]{fig/CMCIBasicCourse201102-img126.png}
 \par}
 
 \textbf{\sffamily
@@ -580,7 +580,7 @@ calculate
 Note: image segmentation may be complicated by the low light levels in the image. \\
 
 {\centering 
-\includegraphics[width=10cm]{img/CMCIBasicCourse201102-img127.jpg}
+\includegraphics[width=10cm]{fig/CMCIBasicCourse201102-img127.jpg}
 \par}
 
 \textbf{\sffamily
@@ -594,6 +594,6 @@ the cells. You may operate on any of the color channels in the image
 many of the cells are touching.  \\
 
 {\centering 
-\includegraphics[width=10cm]{img/CMCIBasicCourse201102-img128.jpg}
+\includegraphics[width=10cm]{fig/CMCIBasicCourse201102-img128.jpg}
 \par}
 

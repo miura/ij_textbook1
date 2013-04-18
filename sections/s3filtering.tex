@@ -39,7 +39,7 @@ as the new pixel value.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=7cm]{img/CMCIBasicCourse201102-img38.png}
+\includegraphics[width=7cm]{fig/CMCIBasicCourse201102-img38.png}
 \caption{ An image and a Kernel (figure taken from DIP)}
 \label{fig:img38}
 \end{center}
@@ -53,7 +53,7 @@ example (Fig. \ref{fig:img39}).
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=11.718cm]{img/CMCIBasicCourse201102-img39.png}
+\includegraphics[width=11.718cm]{fig/CMCIBasicCourse201102-img39.png}
 \caption{ 1-dimensional convolution and correlation (figure taken from DIP)}
 \label{fig:img39}
 \end{center}
@@ -113,38 +113,38 @@ perform convolutions.
 %\textit{correlation}. In the simplest case, correlation can
 %be described as a comparison of two fields at all possible relative
 %positions. More specifically, if 
-%\includegraphics[width=0.185cm,height=0.344cm]{img/CMCIBasicCourse201102-img40.png}
+%\includegraphics[width=0.185cm,height=0.344cm]{fig/CMCIBasicCourse201102-img40.png}
 %is the correlation of two one-dimensional fields 
-%\includegraphics[width=0.212cm,height=0.503cm]{img/CMCIBasicCourse201102-img41.png}
+%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img41.png}
 %and 
-%\includegraphics[width=0.212cm,height=0.503cm]{img/CMCIBasicCourse201102-img42.png}
+%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img42.png}
 %, 
-%\includegraphics[width=1.455cm,height=0.503cm]{img/CMCIBasicCourse201102-img43.png}
+%\includegraphics[width=1.455cm,height=0.503cm]{fig/CMCIBasicCourse201102-img43.png}
 %, then 
-%\includegraphics[width=0.635cm,height=0.556cm]{img/CMCIBasicCourse201102-img44.png}
+%\includegraphics[width=0.635cm,height=0.556cm]{fig/CMCIBasicCourse201102-img44.png}
 %reflects how well 
-%\includegraphics[width=0.212cm,height=0.503cm]{img/CMCIBasicCourse201102-img45.png}
+%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img45.png}
 %and 
-%\includegraphics[width=0.212cm,height=0.503cm]{img/CMCIBasicCourse201102-img46.png}
+%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img46.png}
 %match (in an inner-product sense) when relatively displaced by
 %\textit{r}.\href{http://www.cs.utk.edu/~mclennan/anon-ftp/FCMC-tr/footnode.html#516}{
-%\includegraphics[width=0.397cm,height=0.397cm]{img/CMCIBasicCourse201102-img47.png}
+%\includegraphics[width=0.397cm,height=0.397cm]{fig/CMCIBasicCourse201102-img47.png}
 %}
 % Mathematically, 
 %
-%\includegraphics[width=13.227cm,height=0.716cm]{img/CMCIBasicCourse201102-img48.png}
+%\includegraphics[width=13.227cm,height=0.716cm]{fig/CMCIBasicCourse201102-img48.png}
 %
 %Higher dimensional correlations are the same, except that \textit{r} is
 %a relative displacement \textit{vector} rather than a
 %scalar. 
 %
 %\textit{Convolution}, 
-%\includegraphics[width=1.561cm,height=0.503cm]{img/CMCIBasicCourse201102-img49.png}
+%\includegraphics[width=1.561cm,height=0.503cm]{fig/CMCIBasicCourse201102-img49.png}
 %, is essentially the same as correlation, except that the field 
-%\includegraphics[width=0.212cm,height=0.503cm]{img/CMCIBasicCourse201102-img50.png}
+%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img50.png}
 %is reflected before the comparison takes place: 
 %
-%\includegraphics[width=13.227cm,height=0.716cm]{img/CMCIBasicCourse201102-img51.png}
+%\includegraphics[width=13.227cm,height=0.716cm]{fig/CMCIBasicCourse201102-img51.png}
 %
 %Convolution is useful because: (1) its algebraic properties are more
 %like multiplication, and thus more familiar, than correlation; and (2)
@@ -161,7 +161,7 @@ In two dimensional matrix, see the example in Fig. \ref{fig:img52}.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=10cm]{img/CMCIBasicCourse201102-img52.png}
+\includegraphics[width=10cm]{fig/CMCIBasicCourse201102-img52.png}
 \caption{ Two-dimensional convolution (figure taken from DIP)}
 \label{fig:img52}
 \end{center}
@@ -186,7 +186,7 @@ used for attenuating noise (Median kernel is better for shot-noise
 removal but for learning purpose we stick to the smoothing), is done by
 applying the following kernel to the image. 
 
-%\includegraphics[width=1.305cm,height=1.87cm]{img/CMCIBasicCourse201102-img53.png}
+%\includegraphics[width=1.305cm,height=1.87cm]{fig/CMCIBasicCourse201102-img53.png}
 \[
  \begin{matrix}
   1 & 1 & 1 \\
@@ -195,7 +195,7 @@ applying the following kernel to the image.
  \end{matrix}
 \]
 
-Let"s take an example of an image with a vertical line
+Let's take an example of an image with a vertical line
 in the middle.
 
 
@@ -209,7 +209,7 @@ in the middle.
  \end{matrix}
 \]
 
-%\includegraphics[width=2.928cm,height=3.104cm]{img/CMCIBasicCourse201102-img54.png}
+%\includegraphics[width=2.928cm,height=3.104cm]{fig/CMCIBasicCourse201102-img54.png}
 
 Just for now, we forget about the padding for explanation, and first
 apply the kernel to the top-left corner for
@@ -242,7 +242,7 @@ You might have now understood that the
 averaging the values in the surrounding. Applying the kernel through
 the image, the new image will be: 
 
-%\includegraphics[width=2.752cm,height=3.104cm]{img/CMCIBasicCourse201102-img55.png}
+%\includegraphics[width=2.752cm,height=3.104cm]{fig/CMCIBasicCourse201102-img55.png}
 
 \[
  \begin{matrix}
@@ -260,7 +260,7 @@ is the boundary effect unavoidable with any filtering by convolution.
 We could attenuate this effect if we do padding by duplicating
 neighboring pixels. Then the result of convolution then becomes
 
-%\includegraphics[width=2.681cm,height=3.104cm]{img/CMCIBasicCourse201102-img56.png}
+%\includegraphics[width=2.681cm,height=3.104cm]{fig/CMCIBasicCourse201102-img56.png}
 \[
  \begin{matrix}
   0 & 3 & 3 & 3 & 0 \\
@@ -293,7 +293,7 @@ could be visualized directly while editing.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=4.471cm]{img/CMCIBasicCourse201102-img57.png}
+\includegraphics[width=4.471cm]{fig/CMCIBasicCourse201102-img57.png}
 \caption{ Convolver Window.}
 \label{fig:img57}
 \end{center}
@@ -303,7 +303,7 @@ could be visualized directly while editing.
 
 \subsubsection{Sharpen }
 
-%\includegraphics[width=2.258cm,height=1.87cm]{img/CMCIBasicCourse201102-img58.png}
+%\includegraphics[width=2.258cm,height=1.87cm]{fig/CMCIBasicCourse201102-img58.png}
 \[
  \begin{matrix}
   -1 & -1 & -1 \\
@@ -323,7 +323,7 @@ of the square of two result images will be calculated (called
 "Sobel Filter": for more details,
 see Appendix \ref{app3}) \ 
 
-%\includegraphics[width=2.364cm,height=1.87cm]{img/CMCIBasicCourse201102-img59.png}
+%\includegraphics[width=2.364cm,height=1.87cm]{fig/CMCIBasicCourse201102-img59.png}
 \[
  \begin{matrix}
   1 & 2 & 1 \\
@@ -333,7 +333,7 @@ see Appendix \ref{app3}) \
 \]
 and
 
-%\includegraphics[width=1.87cm,height=1.87cm]{img/CMCIBasicCourse201102-img60.png}
+%\includegraphics[width=1.87cm,height=1.87cm]{fig/CMCIBasicCourse201102-img60.png}
 \[
  \begin{matrix}
   1 & 0 & -1 \\
@@ -354,7 +354,7 @@ different sigma 2 (5x5), 3 (7x7) and 7 (15x15).
 
 Gauss 5 x 5 (Sigma = 2)
  
-%\includegraphics[width=2.785cm,height=3.104cm]{img/CMCIBasicCourse201102-img61.png}
+%\includegraphics[width=2.785cm,height=3.104cm]{fig/CMCIBasicCourse201102-img61.png}
 \[
  \begin{matrix}
   1 & 1 & 2 & 1 & 1\\
@@ -367,7 +367,7 @@ Gauss 5 x 5 (Sigma = 2)
 
 Gauss 7 x 7 (Sigma = 3)
 
-%\includegraphics[width=4.163cm,height=4.374cm]{img/CMCIBasicCourse201102-img62.png}
+%\includegraphics[width=4.163cm,height=4.374cm]{fig/CMCIBasicCourse201102-img62.png}
 \[
  \begin{matrix}
   1 & 1 & 1 & 2 & 1 & 1 & 1\\
@@ -381,7 +381,7 @@ Gauss 7 x 7 (Sigma = 3)
 \]
 Gauss 15 x 15 (Sigma = 7)
 
-%\includegraphics[width=10.76cm,height=9.454cm]{img/CMCIBasicCourse201102-img63.png}
+%\includegraphics[width=10.76cm,height=9.454cm]{fig/CMCIBasicCourse201102-img63.png}
 % to make a large matrix, http://newsgroups.derkeiler.com/Archive/Comp/comp.text.tex/2008-07/msg00905.html
 \setcounter{MaxMatrixCols}{16}
 \[
@@ -415,7 +415,7 @@ a 3 x 3 size, ImageJ samples 3 x 3 neighbors surrounding the target
 pixel. Graphically, if the sampled region looks like below (target
 position contains 2 now) 
 
-%\includegraphics[width=1.552cm,height=1.87cm]{img/CMCIBasicCourse201102-img64.png}
+%\includegraphics[width=1.552cm,height=1.87cm]{fig/CMCIBasicCourse201102-img64.png}
 \[
  \begin{matrix}
   1 & 7 & 9 \\
@@ -451,7 +451,7 @@ the result after applying dilation on a rectangle.
 
  \begin{figure}[htbp]
  \begin{center}
- \includegraphics[width=9.222cm]{img/CMCIBasicCourse201102-img65.png}
+ \includegraphics[width=9.222cm]{fig/CMCIBasicCourse201102-img65.png}
  \caption{ Dilation (figure taken from DIP).}
  \label{fig:img65}
  \end{center}
@@ -467,7 +467,7 @@ entirely in the foreground (Fig. \ref{fig:img66}).
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=8cm]{img/CMCIBasicCourse201102-img66.png}
+\includegraphics[width=8cm]{fig/CMCIBasicCourse201102-img66.png}
 \caption{ Erosion (figure taken from DIP)}
 \label{fig:img66}
 \end{center}
@@ -491,7 +491,7 @@ Larger count causes less degree of erosion or dilation.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=4cm]{img/CMCIBasicCourse201102-img67.png}
+\includegraphics[width=4cm]{fig/CMCIBasicCourse201102-img67.png}
 \caption{ Setting Iteration.}
 \label{fig:img67}
 \end{center}
@@ -544,7 +544,7 @@ noisy-finger print. Discuss the difference in outputs.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=6.5cm]{img/CMCIBasicCourse201102-img68.png}
+\includegraphics[width=6.5cm]{fig/CMCIBasicCourse201102-img68.png}
 \caption{ Morphological Image Processing dialog, to design structuring element.}
 \label{fig:img68}
 \end{center}
@@ -595,7 +595,7 @@ background.
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=11.875cm]{img/CMCIBasicCourse201102-img69.jpg}
+\includegraphics[width=11.875cm]{fig/CMCIBasicCourse201102-img69.jpg}
 \caption{ Background Subtraction (from ImageJ site).}
 \label{fig:img69}
 \end{center}
@@ -619,7 +619,7 @@ There are several other methods including
 \end{enumerate}
 
 Pseudo high-pass filtering could be done by subtracting 
-largely blurred image by Gaussian blurr (such as with sigma of 20)  
+largely blurred image by Gaussian blur (such as with sigma of 20)  
 from the original image. Otherwise, band-pass function under \ijmenu{[Process >
 FFT]} could be used for high-pass filtering.  
 
@@ -680,7 +680,7 @@ Macros Recorder\ldots]}. A recorder window starts up:
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=8.678cm,height=4.942cm]{img/CMCIBasicCourse201102-img70.png}
+\includegraphics[width=8.678cm,height=4.942cm]{fig/CMCIBasicCourse201102-img70.png}
 \caption{ Macro Recorder Window}
 \label{fig:img70}
 \end{center}
@@ -696,10 +696,10 @@ and click OK, and check that the image is background subtracted (Fig. \ref{fig:s
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img71}
-\includegraphics[height=6cm]{img/CMCIBasicCourse201102-img71.png}
+\includegraphics[height=6cm]{fig/CMCIBasicCourse201102-img71.png}
 }
  \subfloat[]{\label{fig:img72}
-\includegraphics[height=6cm]{img/CMCIBasicCourse201102-img72.png}}
+\includegraphics[height=6cm]{fig/CMCIBasicCourse201102-img72.png}}
  \caption{ Spindle images (a) before and (b) after the
 background subtraction.}
  \label{fig:spindleBacksubtraction}
@@ -713,14 +713,14 @@ added. This text should be like it is shown in Fig. \ref{fig:img73}.
 \ilcom{run("Subtract background\ldots", "rolling=5 disable");}
 \end{quote}
 
-number after \ijmenu{rolling=} could be
+The number after \ijmenu{rolling=} could be
 various according to your input, and also other arguments might be
 present after that depending on the checks you did during the Subtract
 Background dialog. 
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=8cm]{img/CMCIBasicCourse201102-img73.png}
+\includegraphics[width=8cm]{fig/CMCIBasicCourse201102-img73.png}
 \caption{ Recorder window after Subtract Background command.}
 \label{fig:img73}
 \end{center}
@@ -735,7 +735,7 @@ window (Fig. \ref{fig:img74}).
 %figure
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=8.881cm,height=9.116cm]{img/CMCIBasicCourse201102-img74.png}
+\includegraphics[width=8.881cm,height=9.116cm]{fig/CMCIBasicCourse201102-img74.png}
 \caption{ Batch Process window.}
 \label{fig:img74}
 \end{center}
@@ -778,11 +778,11 @@ Open \textbf{microtubule.tif} by \ijmenu{[File > Open]}. Then apply FFT by \ijme
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img75}
-\includegraphics[width=3.889cm,height=1.393cm]{img/CMCIBasicCourse201102-img75.png}}
+\includegraphics[width=3.889cm,height=1.393cm]{fig/CMCIBasicCourse201102-img75.png}}
  \subfloat[]{\label{fig:img76}
-\includegraphics[width=2.447cm,height=2.706cm]{img/CMCIBasicCourse201102-img76.png}}
+\includegraphics[width=2.447cm,height=2.706cm]{fig/CMCIBasicCourse201102-img76.png}}
  \subfloat[]{\label{fig:img77}
-\includegraphics[width=3.889cm,height=1.393cm]{img/CMCIBasicCourse201102-img77.png}}
+\includegraphics[width=3.889cm,height=1.393cm]{fig/CMCIBasicCourse201102-img77.png}}
  \caption{ Reversibility of FFT. (a) Original, (b) FFT, (c) Inverse FFT.}
  \label{fig:FFTreversibility}
 \end{figure} 
@@ -800,13 +800,13 @@ of stripe pattern (Fig. \ref{fig:FFTtransformedStripesDirections}).
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img78}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img78.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img78.png}}
  \subfloat[]{\label{fig:img79}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img79.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img79.png}}
  \subfloat[]{\label{fig:img80}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img80.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img80.png}}
  \subfloat[]{\label{fig:img81}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img81.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img81.png}}
  \caption{ Original images (Spatial-domain images).}
  \label{fig:FFTOriginalStripesDirections}
 \end{figure} 
@@ -815,13 +815,13 @@ of stripe pattern (Fig. \ref{fig:FFTtransformedStripesDirections}).
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img82}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img82.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img82.png}}
  \subfloat[]{\label{fig:img83}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img83.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img83.png}}
  \subfloat[]{\label{fig:img84}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img84.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img84.png}}
  \subfloat[]{\label{fig:img85}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img85.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img85.png}}
  \caption{ FFT images (Frequency-domain images). High intensity values are highlighted in red.}
  \label{fig:FFTtransformedStripesDirections}
 \end{figure} 
@@ -843,13 +843,13 @@ frequency of pattern in the original spatial-domain image decreases.
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img86}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img86.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img86.png}}
  \subfloat[]{\label{fig:img87}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img87.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img87.png}}
  \subfloat[]{\label{fig:img88}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img88.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img88.png}}
  \subfloat[]{\label{fig:img89}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img89.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img89.png}}
  \caption{ Original images (Spatial-domain images) with various frequency.}
  \label{fig:FFTOriginalStripesFrequencies}
 \end{figure} 
@@ -858,13 +858,13 @@ frequency of pattern in the original spatial-domain image decreases.
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img90}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img90.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img90.png}}
  \subfloat[]{\label{fig:img91}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img91.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img91.png}}
  \subfloat[]{\label{fig:img92}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img92.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img92.png}}
  \subfloat[]{\label{fig:img93}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img93.png}}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img93.png}}
  \caption{ FFT images (Frequency-domain images) of images with various frequency.}
  \label{fig:FFTtransformedStripesFrequencies}
 \end{figure} 
@@ -898,7 +898,7 @@ Convolution we studied in section~\ref{subsecConvolution} was a iterative
 procedure. Convolution kernel was applied every time you slide the position of
 the kernel by one pixel in x or y direction. This processing could be much
 simpler by using the FFT image, just by multiplying FFT kernel to it. We
-experence this in the exercise below. 
+experience this in the exercise below. 
 
 \begin{indentexercise}{1} Convolution in Frequency-domain.
 
@@ -912,7 +912,7 @@ this:
 0 & -1 & 0
 \end{matrix}
 \]
-Save the kernel somewhere in your computer as ‘laplace3x3.txt’.
+Save the kernel somewhere in your computer as laplace3x3.txtï¿½.
 
 Open sample image blobs.tif by
 \ijmenu{[File > Open]}.
@@ -936,15 +936,15 @@ Duplicate the image, so that we can do both spatial-domain convolution and
 frequency domain convolution. 
 
 We first do the convolution in spatial-domain, similar to what we
-have done already in the section~\ref{subsecConvolution} but we do this for
-compatison with convolution in frequency domain.\\
+have done already in the section~\ref{subsecConvolution} We do this again for
+a comparison with convolution in frequency domain.\\
 
 \textbf{Spatial-Domain Convolution}
 
 \ijmenu{[Process > Filter > Convolution]}
 
 In the convolution panel, click ``open'' and choose the Laplacian you created in
-above. Be sure to check ``Check Nomalized''. Result shoud look like
+above. Be sure to check ``Normalized''. Result should look like
 %figure
 \begin{figure}[htbp]
 \begin{center}
@@ -956,12 +956,12 @@ above. Be sure to check ``Check Nomalized''. Result shoud look like
 
 \textbf{Frequency-Domain Convolution}
 
-We first prepare the the Laplacian kernel image. Open the kernel
+We first prepare a Laplacian kernel image. Open the kernel
 laplacian3x3.txt by:
 
-\ijmenu{[Image Import Text Image]}
+\ijmenu{[Image > Import > Text Image]}
 
-It should be very small, but if you zoom up the image is should look like:
+It should be very small, but if you zoom up the image it should look like:
 
 %figure
 \begin{figure}[htbp]
@@ -991,7 +991,7 @@ Then we do the convolution by:
 
 \ijmenu{[Process > FFT > FD math\dots]}
 
-choose blob.gif and laplace3x3.txt for image1 and image2 respectively. 
+Choose blob.gif and laplace3x3.txt for image1 and image2 respectively. 
 Operation should be ``Convolve''. Uncheck ``Do Inverse transform'', and OK.
 Image named ``Result'' appears. 
 
@@ -999,7 +999,7 @@ Image named ``Result'' appears.
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=4cm]{fig/fig1_3_fftconvolv8.png}
-\caption{Frequency domain convolvolution of Blob image}
+\caption{Frequency domain convolution of Blob image}
 \label{fig:fftconv8}
 \end{center}
 \end{figure}
@@ -1012,7 +1012,7 @@ Then do the inverse FFT by:
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=4cm]{fig/fig1_3_fftconvolv7.png}
-\caption{Frequency domain convolvolution of Blob image, now in Spatial domain}
+\caption{Frequency domain convolution of Blob image, now in Spatial domain}
 \label{fig:fftconv7}
 \end{center}
 \end{figure}
@@ -1024,11 +1024,10 @@ FD math.
 \subsection{Frequency-domain Filtering}
 
 Filtering using FFT image (2D power spectrum) is a way of improving image quality and
-also for efficient segmentation. One typical example would be noise
-reduction. As we have seen in Fig. \ref{fig:imgFFT}, noise is high frequency
-isotropic signal that will be in the periphery of FFT image. We
-could then remove noise by simply throwing away peripheral signals in FFT
-image to reduce noise. 
+also for a better segmentation result. One typical example is to reduce noise. As we have seen in Fig. \ref{fig:imgFFT}, noise produces high frequency
+isotropic signal that appears in the periphery of FFT image. We
+could remove noise by simply throwing away peripheral signals in FFT
+image to reduce noise in the original image. 
 
 \begin{indentexercise}{1} Removing noise using FFT image. 
 
@@ -1045,30 +1044,30 @@ filtering.
 \end{indentexercise}
 
 Similar to this exercise, we could separate a spatial domain image to high-frequency part
-and low-frequency part to isolate two overlapping signals to each, such as shown
-with an example below.
+and low-frequency part, such as shown
+in an example below.
  
 Adding high-frequency (Fig. \ref{fig:img95}) and low-frequency (Fig. \ref{fig:img96}) stripe images 
-results in an overlapped image of two frequencies (Fig. \ref{fig:img97}). This image math could be done
-easily using \ijmenu{[Process > Image Math]} . It is not easy
-to isolate each of two original images from this overlapped image by spatial domain filtering, but
-it could be done in a pretty simple way if you FFT Fig. \ref{fig:img97} image and use the frequency-domain image (Fig. \ref{fig:img99}). 
-FFT image could be separated to two images, one from the center (called "low-pass", Fig. \ref{fig:img100}) 
+results in an overlapped image of two frequencies (Fig. \ref{fig:img97}: This image math could be done
+easily using \ijmenu{[Process > Image Math]} ). From this overlapped image it is not easy
+to isolate two original images by spatial domain filtering, but
+it could be done in a simple way with the frequency-domain image (Fig. \ref{fig:img99}). 
+FFT image could be separated in to two images, one from the center (called "low-pass", Fig. \ref{fig:img100}) 
 and the other from peripheral (called "high-pass",  Fig. \ref{fig:img101}). 
-\ijmenu{[Process > FFT > Invert FFT]} of each FFT image would result low-frequency stripe image  (Fig. \ref{fig:img103}) and
-high-frequency stripe image (Fig. \ref{fig:img105}).
+\ijmenu{[Process > FFT > Invert FFT]} of each FFT image would result in the low-frequency stripe image  (Fig. \ref{fig:img103}) and
+the high-frequency stripe image (Fig. \ref{fig:img105}).
 
 %triple figure
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img95}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img95.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img95.png}
 }
  \subfloat[]{\label{fig:img96}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img96.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img96.png}
 }
  \subfloat[]{\label{fig:img97}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img97.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img97.png}
 }
  \caption{ Images of (a) high frequency pattern, (b) low frequency pattern, (c) a and b combined.}
  \label{fig:patternCombining}
@@ -1079,13 +1078,13 @@ high-frequency stripe image (Fig. \ref{fig:img105}).
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img99}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img99.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img99.png}
 }
  \subfloat[]{\label{fig:img100}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img100.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img100.png}
 }
  \subfloat[]{\label{fig:img101}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img101.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img101.png}
 }
  \caption{ (a) FFT image (2D power spectrum) of Fig. \ref{fig:img97} could be separated to (b) low frequency part near the origin and (c) high frequency part in the periphery.}
  \label{fig:2DpowerSeparation}
@@ -1096,10 +1095,10 @@ high-frequency stripe image (Fig. \ref{fig:img105}).
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img102}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img102.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img102.png}
 }
  \subfloat[]{\label{fig:img103}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img103.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img103.png}
 }
  \caption{ (a) Lower frequency part could then be invert-FFT to visualize (b) only the low-frequency pattern.}
  \label{fig:invertToGetLowFrequencyImage}
@@ -1109,10 +1108,10 @@ high-frequency stripe image (Fig. \ref{fig:img105}).
 \begin{figure}[htbp]
  \centering
  \subfloat[]{\label{fig:img104}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img104.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img104.png}
 }
  \subfloat[]{\label{fig:img105}
-\includegraphics[width=3cm]{img/CMCIBasicCourse201102-img105.png}
+\includegraphics[width=3cm]{fig/CMCIBasicCourse201102-img105.png}
 }
  \caption{ (a) Higher frequency part could then be invert-FFT to visualize (b) only the high-frequency pattern.}
  \label{fig:invertToGetHighFrequencyImage}
@@ -1123,7 +1122,7 @@ Above was an example of low-pass filtering (for isolating low frequency
 stripes) and high-pass filtering (for isolating high frequency signal).
 We could utilize more complex filters to isolated more specific
 frequency signals. Such filter is called \textit{band pass
-filter}. Band pass filtering is
+filter}. This is
 available in \ijmenu{[Process > FFT > Band Pass Filter\ldots]}. 
 
 
