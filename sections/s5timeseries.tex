@@ -7,7 +7,7 @@
 In this section, we learn how to analyze dynamics using image sequences.
 A time series of digital images, usually called
 "stack", contains temporal dynamics of
-position and intensity, and kinetics can be obtained from these data.
+position and intensity, and kinetics can be obtained from these data\footnote{For basics to deal with stack, go to \ref{sec:stackBasics}}.
 In general there are three types of dynamics.
 
 \begin{enumerate}
@@ -30,96 +30,10 @@ chemotaxis-related protein accumulation dynamics during the
 of type (3) dynamics is more specific and advanced, so refer to other
 literature \citep{miuraABEB2005}.
 
-\subsection{Importing Image Sequence}
-
-Image sequences captured through microscopes in most cases consists of multiple
-of single image frames with numbering (\textit{e.g.} image0001.tif,
-image0002.tif, image0003.tif\ldots). By importing such files, we can create a
-window called "stack". Image stacks are said to be "3D" because there are three
-dimensions, x and y axes, and either z axis or time (in the following, we
-abbreviate the former as "x-y-z" and the latter as "x-y-t").
-
-Stacks could be saved as a single file. The file header will contain the
-information on number of frames that the image contains. This number
-will be automatically detected when the stack is opened next time, and
-reproduces the stack again. When the sequence is a time series of
-three-dimensional stacks, the dimension size of the file is four, and
-there are two different ways on how the files are stacked: (1) xy -- z
--- t or (2) xy -- t -- z. The order we see common is (1) but in some
-cases you might find out that the order is in (2). If you need to
-change the order from one to the other, you could use
-"HyperVolume Shuffler" plugin to
-change the order. In dimensions above three, there no information is
-kept within the file about how the file is ordered. One must know it by
-keeping a note separately, or decide the order by going through the
-sequence. 
-
-HyperVolumeShuffler Plugin\\
-\url{http://rsb.info.nih.gov/ij/plugins/hypervolume-shuffler.html}
-
-Dimension could be even higher. When there are multiple channels with 4D
-image, say channel 1 (ch1) and 2 (ch2) each for different labels within
-a same cell, then the file is 5D. There could be many possibilities in
-the order of the file but this could also be sorted using the
-HyperVolumeShuffler PlugIn. 
-
-
-\begin{indentexercise}{1}
-Import multiple files as an image stack.
-\ijmenu{[File > Import > Image Sequence\ldots]} will open a dialog window and
-you must specify the first file of the image series. Select sample sequence
-\textbf{eg5\_spindle\_50000.tif\ldots} Then another dialog window pops up (Fig.
-\ref{fig:img129}).
-
-%figure
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=4.657cm,height=7.091cm]{fig/CMCIBasicCourse201102-img129.png}
-\caption{ Importing multiple frames as a Stack}
-\label{fig:img129}
-\end{center}
-\end{figure}
-
-ImageJ automatically detects the number of files in the folder, and then another
-window opens to ask for the number of images you want to import, which number
-you want to start with, increment between the numbering of the file, and also
-part of the name that is unchanged through out all the files you want to import.
-There are other options such as scaling and conversion of the image but-depth,
-but these operations could be also done afterwards. The imported image sequence
-is within one window, or a stack.
-\end{indentexercise}
-
-Don't close the stack, exercise continues. 
-
-\begin{indentexercise}{2}
-In the ImageJ tool bar, there is an icon >> at the right most position. 
-Click and from drop down menu, select "Stack tools". 
-Video player-like interface appears in the tool bar (\ref{fig:img130}). 
-Try different buttons. 
-In addition to playback icon button, \ijmenu{[Image > Stacks > Start Animation]} will also play back the movie. 
-Try changing the playback speed by \ijmenu{[Image > Stack > Animation options]} (Fig. \ref{fig:img131}). 
-%figure
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=10cm]{fig/CMCIBasicCourse201102-img130.png}
-\caption{ ImageJ tool bar in Stack Tool mode.}
-\label{fig:img130}
-\end{center}
-\end{figure}
-
-%figure
-\begin{figure}[hbtp]
-\begin{center}
-\includegraphics[width=5.45cm,height=4.683cm]{fig/CMCIBasicCourse201102-img131.png}
-\caption{ Animation Option Window}
-\label{fig:img131}
-\end{center}
-\end{figure}
-\end{indentexercise}
 
 \subsection{Difference Images}
 
-In many cases, mathematical manipulation on image sequences is effective in
+In some cases, mathematical operations on image sequences is effective in
 visualizing dynamics. "Difference images" (also called "subtraction images") is
 one of such techniques.
 A difference image of successive frames in a sequence is given by:
