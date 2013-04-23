@@ -792,7 +792,7 @@ for measurements as we cannot recover original uncompressed image once they are 
 \label{sec:stackBasics}
 Multidimensional data, in which we define here as a set of image data with dimensions more than x and y, or 2D, have intrinsic limitation in displaying them on two dimensional screen. Efforts have been made to represent multidimensionality in various ways. One way is the ``image stack''.
 
-\subsubsection{3D stacks}
+\subsubsection{stacks}
 When you take time-lapse sequence or z-sections using commercial microscope system, image files are generally saved in the company specific file formats (\textit{e.g.} .lif files). Importing these images into ImageJ could simply be done using LOCI bioformats plugin. The image is then appears as a series of images contained within a window with a scroll bar at the bottom. By scrolling, one could go through the third dimension like a movie. This is the simplest form of multidimensional representation in 2D. 
 
 %fig of a stack. 
@@ -879,6 +879,40 @@ To exclusively work on stacks, there is an icon >> at the right most position in
 \end{figure}
 \end{indentexercise}
 
+\subsubsection{Editing Stacks}
+
+There are many occasions that you need to edit stacks such as
+\begin{itemize}
+\item Truncate a stack because you only need to analyze part of the movie.
+\item To make a presentation you want to combine two different stacks.
+\item Need to add a stack at the end of another stack.
+\item To make a stack by attaching each frame in a stack by a frame of another, such as to have two channels side-by side,
+\item You need only every second frame or slices to reduce the stack size by a half. 
+\item To split two channel time series to individual time points. 
+\item You need to insert a small inset within a stack. 
+\end{itemize}
+For such demands, tools for stack resides below \ijmenu{[Image > Stack > Tools]}. Figure \ref{fig:editStack1} and figure \ref{fig:editStack2} schematically shows what various commands does. 
+%figure
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=\textwidth]{fig/stackEditing1.png}
+\caption{Editing Stacks 1. Courtesy of Sebasti\'{e}n Tosi, IRB Barcelona.}
+\label{fig:editStack1}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=\textwidth]{fig/stackEditing2.png}
+\caption{Editing Stacks 2. Courtesy of Sebasti\'{e}n Tosi, IRB Barcelona.}
+\label{fig:editStack2}
+\end{center}
+\end{figure}
+
+
+\subsubsection{Visualization of Stacks}
+
 \subsubsection{4D stacks}
 
 Time-lapse sequence (we could call it ``2DT stack'' or xyt stack) or Z-stack (We could call it ``3D stack'' or xyz stack) is relatively simple because they are both made up of a series of two dimensional images. More highly dimensioned data are common these days. In many occasions we take a time series of z-stacks maybe also with multiple channels. The order of two dimensional images within such multidimensional stacks then becomes an important issue. If we take an example of 3D time series, a possible order of 2D images could start first with z-slices and then time series. In this case, the frame sequence will be something like this:
@@ -954,14 +988,6 @@ We will study more on the actual use of the image stacks in section \ref{sec:tim
    
    \ijmenu{[Image > Hyperstacks > Hyperstack to Stack\dots]}.
 \end{indentexercise}
-
-If you need to
-change the order from one to the other, you could use
-"HyperVolume Shuffler" plugin to
-change the order. In dimensions above three, there no information is
-kept within the file about how the file is ordered. One must know it by
-keeping a note separately, or decide the order by going through the
-sequence. 
 
 
 
