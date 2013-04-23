@@ -737,9 +737,6 @@ In this part I will discuss on issues related to image file formats including:
 
 \begin{itemize}
 	\item Header and Data
-	\item Image stacks
-	\item Multi-dimensional images
-	\item Hyperstack
 	\item Data Compression
 \end{itemize}
 
@@ -781,16 +778,110 @@ of the image. Then do \ijmenu{[Image > Properties]},
 also showing the scale. 
 \end{indentexercise}
 
-\textit{Multidimensional data}: When you take time-lapse images or z-stack, then
-there will be a series of images with same prefix and serial number like
-image0001.tif, image0002.tif, image0003.tif\dots\ and so on. These files could
-be imported by ImageJ and watch the sequence like a movie. Such an image series
-is called "stack" in ImageJ and can be saved as a single file. File extension is
-typically ".tif", which is same as the single frame file. In Metamorph, popular
-software used in biology, uses .stk as the file extension. These files can be
-loaded directly in ImageJ. 
+\textit{Compression}: Image data tends to become huge as the size of the image become larger. There is convenient way to reduce the file size of images by data compression. But keep in your mind:
+you should not compress data, if you want to get some numbers out of them.
+Popular compression formats are like JPEG and GIF. Compression of images deals
+with throwing away redundant part or mathematically interpolating some parts of
+the image, or ignoring some small details. This causes artifacts in the image and it could even be
+"manipulation" of data. These compression formats are also called "lossy" formats, as
+the process of compression loses data.  For this reason, we better avoid using compression for the images we use
+for measurements as we cannot recover original uncompressed image once they are converted to JPEG or GIF formats. On the other hand, PNG is a popular compression format that does NOT alter the original pixel values. Images could be reverted to the original. Such compression formats are called ``loss-less'' formats, so if you need to compress files, using PNG format is preferred for scientific data.  
 
-Time-lapse sequence (we could call it ``2DT stack'') or Z-stack (We could call it ``3D stack'') is relatively simple because they are both made up of a series of two dimensional images. More highly dimensioned data are common these days. In many occasions we take a time series of z-stacks maybe also with multiple channels. The order of two dimensional images within such multidimensional stacks then becomes an important issue. If we take an example of 3D time series, a possible order of 2D images could start first with z-slices and then time series. In this case, the frame sequence will be something like this:
+
+\subsection{Multidimensional data}
+\label{sec:stackBasics}
+Multidimensional data, in which we define here as a set of image data with dimensions more than x and y, or 2D, have intrinsic limitation in displaying them on two dimensional screen. Efforts have been made to represent multidimensionality in various ways. One way is the ``image stack''.
+
+\subsubsection{3D stacks}
+When you take time-lapse sequence or z-sections using commercial microscope system, image files are generally saved in the company specific file formats (\textit{e.g.} .lif files). Importing these images into ImageJ could simply be done using LOCI bioformats plugin. The image is then appears as a series of images contained within a window with a scroll bar at the bottom. By scrolling, one could go through the third dimension like a movie. This is the simplest form of multidimensional representation in 2D. 
+
+%fig of a stack. 
+In some cases, multidimensional data takes a form of multiple
+single image frames with numbering such as 
+
+
+image0001.tif\\
+image0002.tif\\
+image0003.tif\dots\\ 
+
+By importing such files, we can create a stack in ImageJ. In Metamorph, one of the software used in biology, uses .stk as the file extension. These stk files can also be loaded directly in ImageJ. 
+
+A stack could be saved as a single file. File extension is
+typically ".tif", which is same as the single frame file. The file header will contain the
+information on number of frames that the image contains. This number
+will be automatically detected when the stack is opened next time, and
+reproduces the stack again. 
+
+\begin{indentexercise}{1}
+Import multiple files as an image stack.
+\ijmenu{[File > Import > Image Sequence\ldots]} will open a dialog window and
+you must specify the first file of the image series. Select sample sequence
+\textbf{eg5\_spindle\_50000.tif\ldots} Then another dialog window pops up (Fig.
+\ref{fig:img129}).
+
+%figure
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{fig/importSeriesDialog.png}
+\caption{ Importing multiple frames as a Stack}
+\label{fig:img129}
+\end{center}
+\end{figure}
+
+ImageJ automatically detects the number of files in the folder, and then another
+window opens to ask for the number of images you want to import, which number
+you want to start with, increment between the numbering of the file, and also
+part of the name that is unchanged through out all the files you want to import.
+
+For example, if your sequence starts with \textit{exp01}\ldots, then you could place the text \textit{exp01} in the text field of ``File name contains''. This then avoid loading other data set with prefix \textit{exp02} even if they are within the same folder. Regular expression could also be used in the ``or enter pattern'' text field\footnote{If you do not know what Regular Expression is, try the tutorial at \url{http://www.vogella.com/articles/JavaRegularExpressions/article.html}. For those who knows what regex is, use the Java regex.}. 
+
+There are other options such as scaling and conversion of the image but-depth,
+but these operations could be also done afterwards. The imported image sequence
+is within one window, or a stack.
+\end{indentexercise}
+
+Don't close the stack, exercise continues. 
+
+\begin{indentexercise}{2}
+
+In the ImageJ tool bar among all the tool icons, there is a button with ``Stk''. All the commands related to stack could be found there by clicking that icon. 
+
+%figure
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{fig/fijiMenu.png}
+\caption{ ImageJ tool bar in default mode.}
+\label{fig:img130}
+\end{center}
+\end{figure}
+
+\ijmenu{[Start Animation]} plays the sequence as animation. Within the main manue tree, this command resides at \ijmenu{[Image > Stacks > Tools > Start Animation]}. 
+Try changing the playback speed by \ijmenu{[Animation Options]}. This command pops up a dialog to set the playback speed. In the main menu, this same command is at \ijmenu{[Image > Stack > Tools > Animation options\ldots]} 
+
+To exclusively work on stacks, there is an icon >> at the right most position in the ImageJ menu bar. Click and then from drop down menu that appeared, select "Stack tools". Video player-like interface appears in the tool bar (\ref{fig:img130}). Try different buttons to see what they do. 
+
+%figure
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{fig/fijiMenu_StackMode.png}
+\caption{ ImageJ tool bar in Stack Tool mode.}
+\label{fig:img130}
+\end{center}
+\end{figure}
+
+%figure
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{fig/animationOptions.png}
+\caption{ Animation Option Window}
+\label{fig:img131}
+\end{center}
+\end{figure}
+\end{indentexercise}
+
+\subsubsection{4D stacks}
+
+Time-lapse sequence (we could call it ``2DT stack'' or xyt stack) or Z-stack (We could call it ``3D stack'' or xyz stack) is relatively simple because they are both made up of a series of two dimensional images. More highly dimensioned data are common these days. In many occasions we take a time series of z-stacks maybe also with multiple channels. The order of two dimensional images within such multidimensional stacks then becomes an important issue. If we take an example of 3D time series, a possible order of 2D images could start first with z-slices and then time series. In this case, the frame sequence will be something like this:
 
 imgZ0-T1.tif\\
 imgZ1-T1.tif\\
@@ -813,7 +904,14 @@ imgZ2-T1.tif\\
 imgZ2-T2.tif\\
 \ldots
 
-We call this order ``XYTZ''. If we have multiple channels, we could even have an order like ``XYCZT''\footnote{XYCZT is a typical order but many microscope companies and software do not follow such typical one.} and so on. Since in normal stack we could scroll only along single dimension, order of the dimensions in stacks changes how they look like when you try to watch them. 
+We call this order ``XYTZ''. 
+
+The order we see common is the first one (XYZT) but in some
+cases you might find out that the order is the second one (XYTZ) .
+
+\subsubsection{Stacks with more than 4D}
+
+If we have multiple channels, we could even have an order like ``XYCZT''\footnote{XYCZT is a typical order but many microscope companies and software do not follow such typical one.} and so on. Since in normal stack we could scroll only along single dimension, order of the dimensions in stacks changes how they look like when you try to watch them. 
 
 To avoid such complication with dimension ordering, there is an advanced format of stack called \textit{Hyperstack}. It could have up to three scroll bars at the bottom for channels (C), slices (Z) and time points (T) so one could easily scroll through the dimension of your choice \ref{fig:heyperstack_mitosis}. 
 
@@ -857,17 +955,15 @@ We will study more on the actual use of the image stacks in section \ref{sec:tim
    \ijmenu{[Image > Hyperstacks > Hyperstack to Stack\dots]}.
 \end{indentexercise}
 
+If you need to
+change the order from one to the other, you could use
+"HyperVolume Shuffler" plugin to
+change the order. In dimensions above three, there no information is
+kept within the file about how the file is ordered. One must know it by
+keeping a note separately, or decide the order by going through the
+sequence. 
 
-\textit{Compression}: Image data tends to become huge as the size of the image become larger. There is convenient way to reduce the file size of images by data compression. But keep in your mind:
-we should not compress data, if you want to get some numbers out of them.
-Popular compression formats are like JPEG and GIF. Compression of images deals
-with throwing away redundant part or mathematically interpolating some parts of
-the image, or ignoring some small details. This causes artifacts in the image and it could even be
-"manipulation" of data. These compression formats are also called "lossy" formats, as
-the process of compression loses data.  For this reason, we better avoid using compression for the images we use
-for measurements as we cannot recover original uncompressed image once they are converted to JPEG or GIF formats. 
 
-PNG is a popular compression format that does not alter the original pixel values. Images could be reverted to the original. Such compression formats are called ``loss-less'' formats, so if you really need to compress files, use PNG format.  
 
 \subsection{Resizing images. (Shrinking and Enlarging) }
 
