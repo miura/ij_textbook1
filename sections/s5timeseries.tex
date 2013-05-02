@@ -61,7 +61,7 @@ This will then subtract frame 1 -- frame2, frame2 -- frame 3 \ldots
 and so on. Do you see Frapped Region in the difference image stack?
 \end{indentexercise}
 
-\subsection{Projections}
+\subsection{Projection of Time Series}
 
 A maximum intensity projection of an entire image stack is given by
 
@@ -70,10 +70,10 @@ M(x,y) =max_{j}(I_{j}(x,y))
 \end{equation}
 
 The maximum on the right hand side is the maximum in intensity value at
-a given pixel position over all stacks in an image. Maximum
+a given pixel position over all time frames in an image. Maximum
 projections collapse the entire dynamics of the stack onto a single
 plane. This function is especially useful for visualizing entire
-trajectories of moving particles on a single plane.
+trajectories of moving particles on a single plane. Additional merit is that this operation discards noise within the sequence. 
 
 \begin{indentexercise}{1}
 Open image \textbf{listeriacells.stk}.
