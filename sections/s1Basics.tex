@@ -225,7 +225,7 @@ study its effect and associated possible errors.
 
 \begin{indentexercise}{1}
 Let's first open a 16-bit image from the sample. 
-\ijmenu{[File > Open > m51.tif]}. Choose line selection tool and draw a vertical line 
+If you have the course plugin installed, choose the menu item \ijmenu{[EMBL > Samples > m51.tif]}. Otherwise, if you have sample images saved in your local machine, open the image by \ijmenu{[File > Open > m51.tif]}. Choose line selection tool and draw a vertical line 
 (should be yellow by default: called line ROI). Then do \ijmenu{[Analyze > Plot Profile\ldots]}. 
 A window pops up. See figures \ref{fig:img6} and \ref{fig:img7}.
 
@@ -253,7 +253,7 @@ The peak corresponds to the bright spot at the center of the image.
 Let's convert the image to 8-bit. First check the state
 of "Conversion" option by
 \ijmenu{[Edit > Option > Conversion]}. Be
-sure that the checkbox "scale when
+sure that the check box "scale when
 converting" is ON. 
 
 
@@ -295,7 +295,7 @@ the line ROI.
 \end{figure}
 
 Now, change the option \ijmenu{[Edit > Option >
-Conversion]} that the checkbox "scale when
+Conversion]} that the check box "scale when
 converting" is OFF. Open the 16-bit image again by
 \ijmenu{[File > Open > m51.tif]}. Then
 again, do \ijmenu{[Image > Type > 8-bit]}.
@@ -476,43 +476,43 @@ h(x, y) = f(x, y) + g(x, y)
 \end{equation}
 
 Note that this only works when the image width and height are
-identical. Above is an example of addition. More numerical assignments
+identical. Above is an example of addition. More numerical operations
 are available in ImageJ: \ 
 
 \begin{center}
 \tablehead{}
 \begin{supertabular}{|m{4.748cm}|m{6.282cm}|}
 \hline
-\selectlanguage{english}\sffamily Add &
-\selectlanguage{english}\sffamily img1 = img1+img2\\\hline
-\selectlanguage{english}\sffamily Subtract &
-\selectlanguage{english}\sffamily img1 = img1-img2\\\hline
-\selectlanguage{english}\sffamily Multiply &
-\selectlanguage{english}\sffamily img1 = img1*img2\\\hline
-\selectlanguage{english}\sffamily Divide &
-\selectlanguage{english}\sffamily img1 = img1/img2\\\hline
-\selectlanguage{english}\sffamily AND &
-\selectlanguage{english}\sffamily img1= img1 AND img2\\\hline
-\selectlanguage{ngerman}\sffamily OR &
-\selectlanguage{ngerman}\sffamily img1 = img1 OR img2\\\hline
-\selectlanguage{ngerman}\sffamily XOR &
-\selectlanguage{ngerman}\sffamily img1 = img1 XOR img2\\\hline
-\selectlanguage{ngerman}\sffamily Min &
-\selectlanguage{ngerman}\sffamily img1 = min(img1,img2)\\\hline
-\selectlanguage{ngerman}\sffamily Max &
-\selectlanguage{ngerman}\sffamily img1 = max(img1,img2)\\\hline
-\selectlanguage{ngerman}\sffamily Average &
-\selectlanguage{ngerman}\sffamily img1 = (img1+img2)/2\\\hline
-\selectlanguage{ngerman}\sffamily Difference &
-\selectlanguage{ngerman}\sffamily img1 =
+ Add &
+ img1 = img1+img2\\\hline
+ Subtract &
+ img1 = img1-img2\\\hline
+ Multiply &
+ img1 = img1*img2\\\hline
+ Divide &
+ img1 = img1/img2\\\hline
+ AND &
+ img1= img1 AND img2\\\hline
+ OR &
+ img1 = img1 OR img2\\\hline
+ XOR &
+ img1 = img1 XOR img2\\\hline
+ Min &
+ img1 = min(img1,img2)\\\hline
+ Max &
+ img1 = max(img1,img2)\\\hline
+ Average &
+ img1 = (img1+img2)/2\\\hline
+ Difference &
+ img1 =
 {\textbar}img1-img2{\textbar}\\\hline
-\selectlanguage{ngerman}\sffamily Copy &
-\selectlanguage{ngerman}\sffamily img1 = img2\\\hline
+ Copy &
+ img1 = img2\\\hline
 \end{supertabular}
 \end{center}
 
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[width=10.945cm,height=4.323cm]{fig/CMCIBasicCourse201102-img13.png}
 \caption{Taken from ImageJ web site. \url{http://rsb.info.nih.gov/ij/docs/menus/process.html}}
@@ -520,12 +520,14 @@ are available in ImageJ: \
 \end{center}
 \end{figure}
 
+The figure above represents the result of various image math operations. 
+
 \begin{indentexercise}{1}
 Image Math -- subtraction:\\
 Open Images \textbf{cells\_ActinDNA.tif} and \textbf{cells\_Actin.tif}.
 The first image is containing images from two channels. One is actin
 labeled, and the other is DNA labeled. We isolate the DNA signal out of
-the first image by image subtraction. Do \ijmenu{[Process > Image > Calculator\ldots]}. In the pop-up window, choose the appropriate combination to subtract \textbf{cells\_Actin.tif} from \textbf{cells\_ActinDNA.tif}. Don't forget to turn on the checkbox "Create New Window". 
+the first image by image subtraction. Do \ijmenu{[Process > Image > Calculator\ldots]}. In the pop-up window, choose the appropriate combination to subtract \textbf{cells\_Actin.tif} from \textbf{cells\_ActinDNA.tif}. Don't forget to turn on the check box "Create New Window". 
 \end{indentexercise}
 
 
@@ -535,14 +537,14 @@ Color images are in RGB format (could also be so pseudo-color image, or
 8-bit color, but this is just because of LUT. See section \ref{subsec:LUT}).
 Another popular format is "CMKY" but this
 format is optimized for printing purpose (you may have heard it already
-when you want to print something in Photolab). RGB stands for three
+when you want to print something in the Photolab). RGB stands for three
 primary colors. Red, Green and Blue. If all of them are bright at the
 same intensity, then the color is white (or gray). If only red is
 bright, then the color is red, and so on. A single RGB image thus has
 three different channels. In other words, three layers of different
 images are overlaid in a single RGB image. Each channel (layer) has a
 bit depth of 8-bit. So a single RGB image is 24-bit image. For this,
-the file size of color pics becomes three times larger than a grayscale
+the file size of color pics becomes three times larger than a gray scale
 8-bit image. Don't save 16bit image in RGB format,
 since you lose a lot of information, for automatic conversion from 16
 to 8 bit takes place. 
@@ -550,7 +552,7 @@ to 8 bit takes place.
 \begin{indentexercise}{1}
 Working with RGB image:
  
-\item (a) Open the image \textbf{RGB\_cell.tif} by \ijmenu{[File > Open]}. Then split the color image to 3 different frames \ijmenu{[Image > Color > Split Channels]}. 
+\item (a) Open the image \textbf{RGB\_cell.tif} by either \ijmenu{[EMBL > Samples]} or \ijmenu{[File > Open]}. Then split the color image to 3 different frames \ijmenu{[Image > Color > Split Channels]}. 
 
 \item (b) Merge three frames by \ijmenu{[Image Color > Merge Channels\ldots]}. 
 
@@ -569,7 +571,7 @@ In the dialog window, choose an image name for each channel. Uncheck
 swapping color assignments to see the effect. 
 
 \item (c) Working on each channel separately: Close all windows and
-open the "RGB\_cell.tif". Do
+open the "RGB\_cell.tif" again. Do
 \ijmenu{[Image > Color > Channel Tools\ldots]}. Then click button "More" and select "Create Composite".
 %figure
 \begin{figure}[H]
@@ -658,7 +660,7 @@ Resulting image should look like below.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=9cm]{fig/CMCIBasicCourse201102-img23.png}
-\caption{ Only channel2 is devoid of image within the selected ROI.}
+\caption{ Only channel 2 is devoid of image within the selected ROI.}
 \label{fig:img23}
 \end{center}
 \end{figure}
@@ -670,7 +672,7 @@ processing of single channel by simply selecting a channel by horizontal scroll 
 \subsection{Look-Up Table }
 \label{subsec:LUT}
 
-We now look at how matrix of numbers is converted to actual image. Let"s think about 
+We now look at how the matrix of numbers is converted to an image. Let's think about 
 a row of pixels with increasing pixel values from 0 to 255 (so there are 256 pixels in this row). 
 Computer monitor will show a gradient of intensity that is linearly increasing its brightness 
 from black to white. This is because the software is giving a command to the monitor, 
@@ -778,22 +780,35 @@ of the image. Then do \ijmenu{[Image > Properties]},
 also showing the scale. 
 \end{indentexercise}
 
-\textit{Compression}: Image data tends to become huge as the size of the image become larger. There is convenient way to reduce the file size of images by data compression. But keep in your mind:
-you should not compress data, if you want to get some numbers out of them.
+\textbf{Compression}: Image data tends to become huge as the size of the image become larger. There are convenient way to reduce the file size of images by data compression. When you take a snap shot using commercial digital camera or smart phone, saved images are always compressed.  
+But keep in your mind:
+you should not compress data in science, especially if you want to get some numbers out of them.
 Popular compression formats are like JPEG and GIF. Compression of images deals
 with throwing away redundant part or mathematically interpolating some parts of
 the image, or ignoring some small details. This causes artifacts in the image and it could even be
 "manipulation" of data. These compression formats are also called "lossy" formats, as
-the process of compression loses data.  For this reason, we better avoid using compression for the images we use
-for measurements as we cannot recover original uncompressed image once they are converted to JPEG or GIF formats. On the other hand, PNG is a popular compression format that does NOT alter the original pixel values. Images could be reverted to the original. Such compression formats are called ``loss-less'' formats, so if you need to compress files, using PNG format is preferred for scientific data.  
+the process of compression discards data.  For this reason, we better avoid using compression for the images we use
+for measurements as we cannot recover original uncompressed image once they are converted to JPEG or GIF formats. On the other hand, PNG is a popular compression format that does NOT alter the original pixel values. Images could be reverted to the original. Such compression formats are called ``loss-less'' formats, so if you need to compress files, using PNG format is preferred for scientific image data.  
 
 
 \subsection{Multidimensional data}
 \label{sec:stackBasics}
-Multidimensional data, in which we define here as a set of image data with dimensions more than x and y, or 2D, have intrinsic limitation in displaying them on two dimensional screen. Efforts have been made to represent multidimensionality in various ways. One way is the ``image stack''.
+
+In this section, we study following topics.
+
+\begin{itemize}
+    \item Image stacks
+    \item Editing Stacks
+    \item 4D stacks
+	\item Hyperstacks
+\end{itemize}
+
+Multidimensional data, in which we define here as a set of image data with dimensions more than x and y. Multidimensional data have intrinsic limitation in displaying them on two dimensional screen. Efforts have been made to represent multidimensionality in various ways. One way is the ``image stack''.
 
 \subsubsection{stacks}
-When you take time-lapse sequence or z-sections using commercial microscope system, image files are generally saved in the company specific file formats (\textit{e.g.} .lif files). Importing these images into ImageJ could simply be done using LOCI bioformats plugin. The image is then appears as a series of images contained within a window with a scroll bar at the bottom. By scrolling, one could go through the third dimension like a movie. This is the simplest form of multidimensional representation in 2D. 
+When you take time-lapse sequence or z-sections using commercial microscope system, image files are generally saved in the company specific file formats (\textit{e.g.} .lsm or .lif files). Importing these images into ImageJ could simply be done using LOCI bioformats plugin. In Metamorph, one of the software used in biology, uses .stk as the file extension. These stk files can also be loaded directly in ImageJ. 
+
+These image data appear as a series of images contained within a window with a scroll bar at the bottom. By scrolling, one could go through the third dimension like a movie. This is the simplest form of multidimensional representation in 2D display. 
 
 %fig of a stack. 
 In some cases, multidimensional data takes a form of multiple
@@ -802,18 +817,12 @@ single image frames with numbering such as
 
 image0001.tif\\
 image0002.tif\\
-image0003.tif\dots\\ 
+image0003.tif\dots
 
-By importing such files, we can create a stack in ImageJ. In Metamorph, one of the software used in biology, uses .stk as the file extension. These stk files can also be loaded directly in ImageJ. 
-
-A stack could be saved as a single file. File extension is
-typically ".tif", which is same as the single frame file. The file header will contain the
-information on number of frames that the image contains. This number
-will be automatically detected when the stack is opened next time, and
-reproduces the stack again. 
+We can import such numbered files recursively and create a stack in ImageJ. 
 
 \begin{indentexercise}{1}
-Import multiple files as an image stack.
+We import multiple image files as an image stack. Download a zipped file by \ijmenu{[EMBL > Samples > Spindle-Frames.zip]} \footnote{We do also have the stack directly downloadable, but we try to load numberd-tif images here.}. Unzip the file by double clicking. Then
 \ijmenu{[File > Import > Image Sequence\ldots]} will open a dialog window and
 you must specify the first file of the image series. Select sample sequence
 \textbf{eg5\_spindle\_50000.tif\ldots} Then another dialog window pops up (Fig.
@@ -835,9 +844,14 @@ part of the name that is unchanged through out all the files you want to import.
 
 For example, if your sequence starts with \textit{exp01}\ldots, then you could place the text \textit{exp01} in the text field of ``File name contains''. This then avoid loading other data set with prefix \textit{exp02} even if they are within the same folder. Regular expression could also be used in the ``or enter pattern'' text field\footnote{If you do not know what Regular Expression is, try the tutorial at \url{http://www.vogella.com/articles/JavaRegularExpressions/article.html}. For those who knows what regex is, use the Java regex.}. 
 
-There are other options such as scaling and conversion of the image but-depth,
-but these operations could be also done afterwards. The imported image sequence
-is within one window, or a stack.
+There are other options such as scaling and conversion of the image bit depth,
+but these operations could be done afterward. The imported image sequence is within one window, or a stack.
+
+A stack could be saved as a single file. File extension is
+typically ".tif", which is same as the single frame file. The file header will contain the
+information on number of frames that the image contains. This number
+will be automatically detected when the stack is opened next time, and
+reproduces the stack again. 
 \end{indentexercise}
 
 Don't close the stack, exercise continues. 
@@ -881,22 +895,22 @@ To exclusively work on stacks, there is an icon >> at the right most position in
 
 \subsubsection{Editing Stacks}
 
-There are many occasions that you need to edit stacks such as
+In many occasions you might need to edit stacks such as
 \begin{itemize}
-\item Truncate a stack because you only need to analyze part of the movie.
-\item To make a presentation you want to combine two different stacks.
+\item Truncate a stack because you only need to analyze a part of the sequence.
+\item For a presentation you need to combine two different stacks.
 \item Need to add a stack at the end of another stack.
-\item To make a stack by attaching each frame in a stack by a frame of another, such as to have two channels side-by side,
+\item To make a combined stack by attaching each frame in a stack by a frame of another stack. Typically, you want to have two channels of image side-by side,
 \item You need only every second frame or slices to reduce the stack size by a half. 
-\item To split two channel time series to individual time points. 
+\item To split two channel time series to individual time points without splitting the channels. 
 \item You need to insert a small inset within a stack. 
 \end{itemize}
-For such demands, tools for stack resides below \ijmenu{[Image > Stack > Tools]}. Figure \ref{fig:editStack1} and figure \ref{fig:editStack2} schematically shows what various commands does. 
+For such demands, tools for stack editing are available under the menu tree \ijmenu{[Image > Stack > Tools]}. Figure \ref{fig:editStack1} and figure \ref{fig:editStack2} schematically shows what each of these commands does. 
 %figure
 \begin{figure}[hbtp]
 \begin{center}
 \includegraphics[width=\textwidth]{fig/stackEditing1.png}
-\caption{Editing Stacks 1. Courtesy of Sebasti\'{e}n Tosi, IRB Barcelona.}
+\caption{Editing Stacks 1. These commands are under \ijmenu{[Image > Stack > Tools]}. Courtesy of Sebasti\'{e}n Tosi, IRB Barcelona.}
 \label{fig:editStack1}
 \end{center}
 \end{figure}
@@ -905,13 +919,54 @@ For such demands, tools for stack resides below \ijmenu{[Image > Stack > Tools]}
 \begin{figure}[hbtp]
 \begin{center}
 \includegraphics[width=\textwidth]{fig/stackEditing2.png}
-\caption{Editing Stacks 2. Courtesy of Sebasti\'{e}n Tosi, IRB Barcelona.}
+\caption{Editing Stacks 2. These commands are under \ijmenu{[Image > Stack > Tools]}. Courtesy of Sebasti\'{e}n Tosi, IRB Barcelona.}
 \label{fig:editStack2}
 \end{center}
 \end{figure}
 
 
-\subsubsection{Visualization of Stacks}
+\begin{indentexercise}{1}
+\textbf{Creating a Montage}\\
+Create a new image \ijmenu{[File > New > Image\ldots]} with the following properties. 
+\begin{itemize}
+\item Name: could be any thing
+\item Type: 8-bit
+\item Fill with: Black
+\item Width: 200
+\item Height: 200
+\item Slices: 10
+\end{itemize}
+Then draw time stamps in each frame by \ijmenu{Image > Stacks > Time Stamper} with the default properties but for the following:
+\begin{itemize}
+\item X location: 50
+\item Y location: 90
+\item Font Size: 36
+\end{itemize}
+
+Now, you should have printed time for each frame, 0 to 9 sec. To make a montage of this image stack, do \ijmenu{[Image > Stacks > make Montage\ldots]}. Set the following parameters and then click OK. 
+\begin{itemize}
+\item Columns: 5
+\item Rows: 2
+\item Border Width: 1
+\item Label Slices: checked.
+\end{itemize}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{fig/TimeStampMontage.png}
+\caption{Montage of the time-stamped stack.}
+\label{fig:editStack2}
+\end{center}
+\end{figure}
+
+If you have time, try to change the column and row numbers to create montage with different configuration. 
+
+\textbf{Concatenation}
+
+Then duplicate the time stamp stack, concatenate the duplicate to the original (\ijmenu{[Image > Stacks > Tools > Concatenate\ldots]}). Create a montage of this double sized stack. 
+
+\end{indentexercise}
+
 
 \subsubsection{4D stacks}
 
@@ -940,8 +995,8 @@ imgZ2-T2.tif\\
 
 We call this order ``XYTZ''. 
 
-The order we see common is the first one (XYZT) but in some
-cases you might find out that the order is the second one (XYTZ) .
+The order we see often is the first one (XYZT) but in some
+cases you might find that the order is in the second one (XYTZ). 
 
 \subsubsection{Stacks with more than 4D}
 
@@ -989,7 +1044,117 @@ We will study more on the actual use of the image stacks in section \ref{sec:tim
    \ijmenu{[Image > Hyperstacks > Hyperstack to Stack\dots]}.
 \end{indentexercise}
 
+\subsection{Command Finder}
 
+Commands for these stack related tools (especially like editing tools) resides deep inside the menu tree and it is not really convenient to access those commands by manually following the menu tree using mouse. For such a case, and if you could remember the name of the command, a quick way to run the command is to use \textbf{command finder}.
+
+There is a short cut key to start up the command finder: control-l in windows and in mac OSX command-l. On start up, the command finder interface looks like figure \ref{fig:commandfinderstart}. Type in the command that you want to use in the text field labeled ``search'', and then menu item is filters as you type in (fig. \ref{fig:commandfinderConcat}). Select the one you want and then click the button ``run''. This then will be same as selecting that command from the menu tree. This tool is also useful when you know the name of a command but forgot where it is in the menu tree, since it also shows where the command is by showing its menu path. 
+
+\begin{figure}[htbp]
+\centering
+\subfloat[The interface on start up.]{\label{fig:commandfinderstart}\includegraphics[width = 0.45\textwidth]{fig/commandFinder.png}}
+\quad
+\subfloat[Typing in some command name will filter the menu items and shows the hits.]{\label{fig:commandfinderConcat}\includegraphics[width = 0.45\textwidth]{fig/commandFinderConcat.png}} 
+\caption{Command Finder.}
+\label{fig:commandfinder}
+\end{figure}
+
+
+\subsection{Visualization of Multidimensional Images}
+
+We have the intrinsic limitation in displaying multidimensional images, but we still want to check data by our eyes. For this reason, ways to visualize multi-dimensional data have been developed. We go over some of those methods which are frequently used in this section. 
+
+\subsubsection{Projection}
+
+Projection is a way of decreasing an \textit{n}-dimensional image to an \textit{n-1}-dimensional image. For example, if we have a three dimensional XYZ stack, we could do a projection along Z-axis to squash the depth information and represent the data in 2D XY image. We lose the depth information but it helps us to see how the data looks like. The principle is like this: we could think of XYZ data as a cubic entity. This cube is gridded and composed of small cubic elements. If we have a Z-stack  with 512 pixels in both XY and with 10 slices in Z, we then have a 
+cube composed of 512 x 512 x 10 =  2,621,440 small cubes. These small cubes are called ``voxels'', instead of ``pixels''. Now, if we take a single XY position, there are 10 voxels at this XY position (figure \ref{fig:projectionscheme}).
+ 
+Imagine the column of 10 voxels: Each voxel has certain intensity, and we calculate statistics with these 10 values such as the mean, the minimum, the maximum, the standard deviation and so on. We could then represent this column by a single statistical value.  
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.8]{fig/projection.pdf}
+\caption{A three dimensional stack can be regarded as a gridded cube. The projection calculates various sorts of statistics for each two dimensional positions , which could be regarded as a stack of voxels, and store that value in the two dimensional image at the same position.}
+\label{fig:projectionscheme}
+\end{center}
+\end{figure}
+
+In this way, we can pick up a column of voxels from every XY positions, calculate statistics and create a two dimensional image with each of its XY position filled with voxel column statistics. This two dimensional image is the result of the \textbf{projection} along Z-axis, or what we call ``Z-projection''. Projection could also be in other axes, not only along Z-axis. If we do a projection along X-axis, we would then have a projection of the data to YZ plane. Projecting aloing Y-axis will result in a projection to XZ plane (this relates to the orthogonal viewing, which we try in the next section).
+
+\begin{indentexercise}{1}
+Open image \textbf{mitosis\_anaphase\_3D.tif}.
+Then do all types of projections you could choose by \ijmenu{[Image > Stack > Z
+projection\ldots]}.\\
+There are 
+\begin{itemize}
+\item Average Intesnity
+\item Max Intensity
+\item Min Intensity
+\item Sum of Slices
+\item Standard Deviation
+\item Median
+\end{itemize}
+
+\textbf{Question 1}: Which is the best method for knowing the shape of the chromosome?\\
+\textbf{Question 2}: Discuss the difference of projection types and why there is such difference.  
+\end{indentexercise}
+
+``Max Intensity'' projection is the most frequently used projection method in fluorescence microscopy images, as this method picks up bright signals. ``sum of slices'' method returns a 32bit image since results of addition could possibly exceed 8 bit or 16 bit range. 
+
+Note 1: If your data is a 3D time series hyper stack, there will be a small check box in the projection dialog "All Time Points". If you check the box, projection will be done for each time point and the result will be a 2D time series of projections.
+
+Note 2: You could also do the projection of 2D time series. Thought the command name is ``Z-Projection'', the principle of projection does not matter with the name of the axis.  
+
+\subsubsection{Orthogonal Views}
+
+The projection is a convenient method for visualizing 3D stack on 2D plane, but if you wan to preserve the original dimensions and still want to visualize data, one way is the classic 2D animation. This could be achieved easily with the scroll bar at the bottom of the each stack. But this has limitation: we could only move in the third dimension, Z or T. To scroll through X or Y, we use ``Orthognlal View''. 
+
+You could view a stack in this mode by \ijmenu{[Image > Stack > Orthogonal View]}. Running this command will open two new windows at the right side and below the stack. These two newly appeared windows are showing YZ plane and XZ plane. Displayed position is indicated by yellow crosses. These yellow lines are movable by mouse dragging. 
+
+\begin{figure}[h!]
+ \centering
+ \subfloat[XY]{\label{fig:OrthoViewXY}\includegraphics[height = 0.2\textheight]{fig/OrthoViewXY.png}} 
+% \quad
+ \subfloat[YZ]{\label{fig:OrthoViewYZ}\includegraphics[height = 0.2\textheight]{fig/OrthoViewYZ.png}}
+\\
+ \subfloat[XZ]{\label{fig:OrthoViewXZ}\includegraphics[height = 0.09\textheight]{fig/OrthoViewXZ.png}}
+ \caption{Orthogonal View of a 3D stack.}
+ \label{fig:orthogonalView}
+\end{figure}
+
+\begin{indentexercise}{2}
+Open image \textbf{mitosis\_anaphase\_3D.tif}.
+Run a command \ijmenu{[Image > Stack > Orthogonal View]}. Try scrolling through each axes: x, y and z. 
+\end{indentexercise}
+
+\subsubsection{3D viewer}
+
+Instead of struggling to visualize 3D in 2D planes, we could also use the power of 3D graphics to visualize three dimensional image data. 3D viewer is a plugin written by Benne Schimidt. It uses Java OpenGL (JOGL) to render three dimensional data as click-and-rotatable object on your desktop. We could just simply try doing it with the data we have been dealing with. 
+
+\begin{indentexercise}{2}
+Open image \textbf{mitosis\_anaphase\_3D.tif}.
+Run a command \ijmenu{[Plugins > 3D Viewer]}. A parameter input dialog opens on top of 3Dviewer window. Change the following parameters:
+\begin{itemize}
+\item Image: Choose mitosis\_anaphase\_3D.tif.
+\item Display as: Choose Surface.
+\item Color: Could be any color. In the example shown in fig.\ref{fig:3DviewerSurface}, white was chosen. 
+\item Threshold: Default value 50 should work OK, but you could also try changing it to greater or smaller values. This threshold value determines the surface. Pixel intensity above this value will be considered as object, else the background. 
+\item Resampling factor: default value (2) should be sufficient. If you change this value to 1, then it takes longer time for rendering. In case of our example image which is small, difference in the rendering time should be not really recognizable. 
+\end{itemize}
+
+After setting these values, clicking ``OK'' will render the image in the 3Dviewer window. Try click and rotate the object. 
+
+\begin{figure}[h!]
+ \centering
+ \subfloat[Parameter Input Dialog]{\label{fig:3DviewerParameters}\includegraphics[width = 0.45\textwidth]{fig/3DviewerOptions.png}} 
+ \quad
+ \subfloat[Surface rendered 3D stack]{\label{fig:3DviewerSurface}\includegraphics[width = 0.45\textwidth]{fig/3DviewerExample.png}}
+ \caption{Surface rendering by 3DViewer.}
+ \label{fig:3DviewerSurface}
+\end{figure}
+\end{indentexercise}
+
+More advanced usages are available such as visualizing two channels or showing 3D time series as a time series of 3D graphics or saving movies. For such usages, consult the tutorial in the 3DViewer website (\url{http://3dviewer.neurofly.de/}).  
 
 \subsection{Resizing images. (Shrinking and Enlarging) }
 
