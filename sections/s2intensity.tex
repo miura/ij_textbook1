@@ -3,13 +3,8 @@
 
 \section{Intensity}
 
-An image has two types of information: intensity and shapes (though they
-are both "intensity", shapes more
-like a meaningful distribution of intensity). In scientific
-fluorescence images, intensity of signal is very important because the
-signal intensity is directly related to the density of the substance.
-We now study how to interpret signals, and how to extract numerical
-values out of intensity distribution. 
+An image has only one type of information: a distribution of intensity. The image analysis in biology deals with this distribution in quantitative ways. We investigate the distribution from different angles using various algorithms and analyze biological phenomena such as shapes, cell movements and protein-protein interactions. For example in GFP labeled cells, intensity of signal is directly related to the density of the labeled biological component.
+We now start studying how to interpret signals, and how to extract biologically meaningful numerical values out of intensity distribution. 
 
 \subsection{Histogram}
 \label{subsec:histogram}
@@ -65,17 +60,16 @@ minimum and the maximum pixel values in the image and bit-depth. If the minimum 
 
 Equalization converts pixel values so that the values are distributed
 evenly within the dynamic range. Instead of describing this in detail
-using math formula, I explain with a simple example below (Fig. \ref{fig:equalizationSimple}). 
+using math formula, I will explain it with a simple example (see Fig. \ref{fig:equalizationSimple}). 
 We consider an image with its pixel value ranging
-between 0 and 9. We plot histogram from this image and the result looks
-like black bars in the figure below (Fig. \ref{fig:img30}). For equalization, a cumulative
-plot is first prepared from such histogram (adding up histogram values:
-Fig. \ref{fig:img31}, black curve). To equalize the presence of pixel values
-within range between 0-9, we need to have a straight diagonal
-cumulative plot (in other words, probability density of the presence of
-pixel value should be near-flat). To have such plot, we shift histogram
-bars at pixel values 5 and 7 to 7 and 9, respectively (now, bars are in
-red after shifting). With this conversion cumulative plot now looks
+between 0 and 9. We plot the histogram from this image, the result looks
+like in the figure \ref{fig:img30}. For equalization, a cumulative
+plot is first prepared from such histogram. This cumulative plot is computed by progressively integrating the histogram values (see 
+Fig. \ref{fig:img31}, black curve).
+To equalize (flatten) the pixel intensity distribution within the range 0-9, we would ideally require a straight diagonal
+cumulative plot (in other words, the probability density of the 
+pixel intensity distribution should be near-flat). To get such plot, we need to compensate the histogram by shifting values from the bars 5 and 7 to the bars 7 and 9, respectively (now, bars are in
+red after shifting). After this shifting the cumulative plot now looks
 more straight and diagonal (Fig. \ref{fig:img31} right, red curve).
 
 
@@ -94,7 +88,7 @@ applied point-by-point. }
 \begin{indentexercise}{2}
 Histogram Normalization and Equalization:
 \item Open sample image \textbf{g1.tif}, and then duplicate the image by
-\ijmenu{[Image > Duplicate]}. Click the duplicate and then \ijmenu{[Image > Process > Enhance Contrast]}. A dialog window pops up. Set "Saturated Pixels" to 0.0\% and check "Normalize", while uncheck "Equalize Histogram", then click OK.
+\ijmenu{[Image > Duplicate]}. Click the duplicate and then \ijmenu{[Image > Process > Enhance Contrast]}. A dialog window pops up. Set "Saturated Pixels" to 0.0\% and check "Normalize", while unchecking "Equalize Histogram", then click OK.
 Compare histogram of original and normalized images .  
 
 \item Duplicate g1.tif again by \ijmenu{[Image > Duplicate]}. Click the
@@ -107,7 +101,7 @@ Compare histogram of original, normalized and equalized images
 
 \begin{indentexercise}{3}
 Local Histogram Equalization (Optional):
-\item Histogram equalization could be done on local bases. This becomes
+\item Histogram equalization could also be performed on a local basis. This becomes
 powerful, as more local details could be contrast enhanced. You could
 try this with the same image g1.tif, by \ijmenu{[Pligins > CMCICourseModules > CLAHE]} 
 (if you have installed the course plugin in ImageJ) or if you are using Fiji, \ijmenu{[Process > Enhance Local Contrast (CLAHE)] }
@@ -164,10 +158,8 @@ again when you restart the ImageJ.
 
 \subsection{Intensity Measurement}
 
-As you place the mouse pointer over individual pixel, value of that
-pixel is indicated in the ImageJ menu bar. This is the easiest way to
-know pixel values (intensity), but it only works for each single
-pixels. Here we learn a way to get statistical information of a group
+As you move the mouse pointer over individual pixels, their intensity value are indicated in the ImageJ menu bar. This is the easiest way to
+read pixel intensities, but you can only get the values one by one. Here we learn a way to get statistical information of a group
 of pixels within ROI. This has more practical usages for research. 
 
 To measure pixel values of a ROI, ImageJ has a function \ijmenu{[Analyze >
@@ -175,7 +167,8 @@ Measure]}. Before using this function, you could specify the parameters
 you want to measure by \ijmenu{[Analyze > Set measurements]}. There are many parameters
 in the "Set measurement" window. Details on these parameters are listed in the
 Appendix \ref{app2}. For intensity measurements following parameters are
-important.
+important.
+
 
 \begin{itemize}
 \item \textbf{Mean Gray Value} - Average gray value within the selection. This
@@ -187,8 +180,7 @@ grayscale using the formula $gray=0.299red+0.587green+0.114blue$ or the
 formula $gray=(red+green+blue)/3$ if "Unweighted RGB to
 Grayscale Conversion" is checked in Edit/Options/Conversions.
 
-\item\textbf{Standard Deviation}{}- Standard deviation of the gray values
-used to generate the mean gray value.
+\item\textbf{Standard Deviation}{}- Standard deviation of the gray values.
 
 \item\textbf{Min \& Max Gray Level} - Minimum and maximum gray values within
 the selection.
@@ -196,7 +188,7 @@ the selection.
 \item\textbf{Integrated Density} - The sum of the values of the pixels in the
 image or selection. This is equivalent to the product of Area and Mean
 Gray Value. The Dot Blot Analysis example demonstrates how to use this
-option to analyze a dot blot assay.
+measurement to analyze a dot blot assay.
 \end{itemize}
 
 A short note on image-based fluorometry: In biochemical experiments,
@@ -261,7 +253,7 @@ multiplication of area and the mean gray value.
 \end{figure} 
 
 This value is not the actual intensity of the fluorescence within the
-cell. Since this value also contains the background intensity (offset).
+cell since it also includes the background intensity (offset).
 Measure the background intensity by creating a new ROI in the area
 where there is no cell.
 
@@ -276,16 +268,16 @@ where there is no cell.
 
 \end{indentexercise}
 
-NOTE: When ROI is not assigned (no yellow bounding rectangle or so),
-then the measurement of full image field will be measured.
+NOTE: When no ROI is active (no yellow bounding rectangle or so),
+then the measurement is performed on the whole image.
 
 \subsection{Image transformation: Enhancing Contrast}
 \label{subsec:enhancecontrast}
 Some of you might already have experience with the contrast enhancing of
 digital images, since in most of imaging software like the ones that
-come with digital camera usually have this function. Low contrast image
-has small difference in the tones that the object is difficult to see.
-If the contrast is too high, then the tone difference is too much that
+come with digital camera usually have this function. Low contrast images
+have small difference in the tones and the objects are difficult to observe.
+If the contrast is too high, then the tone difference is so much that
 the picture is "over exposed".
 Adjustment of contrast controls the tone difference to optimize the
 visual resolution. The contrast enhancement primarily changes the LUT,
@@ -301,16 +293,17 @@ altered. This could be regarded as
 "fraud" or
 "manipulation" in science, especially if
 you are measuring image intensity. If all images that you are trying to
-compare were contrast enhanced according to same numerical parameter,
-then the images could be compared. Even then, there will be another
+compare were equally contrast enhanced,
+then the images could eventually be compared. Even then, there will be another
 pit-fall if you artificially saturate the image: this happens often
 especially in the case of low bit-depth images. 
 
 \begin{indentexercise}{1}
 Open image gel\_inv.tif. Do \ijmenu{[Image > Adjust > Brightness/Contrast]}. 
 Pop-up window appears which looks like the
-figure below (left). The graph shown in the upper part of the window is
-histogram of the image just like you have seen in the section \ref{subsec:histogram} Histogram. 
+figure below (left). The graph shown in the upper part of the window is 
+the
+histogram of the image just like you have seen in section \ref{subsec:histogram} Histogram. 
 Since the image is 8-bit, scale in the x axis is 0 to 255.
 There is also a black diagonal line. This corresponds to the LUT of the
 image on the screen: pixel values in x is translated into the gray
@@ -357,7 +350,7 @@ optimize the image.
 
 \subsection{Image correlation between two images: co-localization plot}
 
-In many experiments we encounter situation where we need to compare the
+In many experiments we need to compare the
 localization of two or more proteins and examine whether those proteins
 are co-localized. In many cases this has been evaluated by visual
 inspections. But with digital images, it is possible to evaluate the
@@ -367,7 +360,7 @@ plot". To do this in ImageJ one could download a
 plugin \textbf{Colocalization\_Finder}\footnote{download from \url{http://rsb.info.nih.gov/ij/plugins/colocalization-finder.html}}
 and install it.
 
-Degree of colocalization could be then parametrized by using statistical
+The level of colocalization could be then parametrized by using statistical
 values such as Pearson's coefficient and
 Mander's coefficient. These values have advantages and
 disadvantages depending on the image properties. For detailed
@@ -382,8 +375,8 @@ be found in \citet{Waters2009}. This paper also provides detailed examination of
 \textbf{\sffamily
 Assignment 1-2-1:}
 
-Suppose that you had an 8-bit grayscale image of three objects of
-different distinct intensities against a bright background. What would
+Suppose that you have an 8-bit grayscale image showing three objects of 
+distinct intensities against a bright background. What would
 the corresponding histogram look like?
 
 \textbf{\sffamily
