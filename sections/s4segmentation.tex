@@ -8,18 +8,16 @@ Segmentation refers to the process in which an image is subdivided into
 constituent regions or objects. These objects can be further
 processed or analyzed for the extraction of quantitative information.
 Biological image data is usually messy and noisy, and as a result
-difficult to segment properly. Multiple image processing steps are
-often required for segmentation of such. We often combine segmentation
-with various morphological processing and filtering techniques such as
-described in the previous section to achieve accurate and robust
+difficult to segment properly. Multiple image pre-processing steps are
+often required to allow a good segmentation. We often combine segmentation
+with various morphological processing and filtering techniques (such as the ones described in the previous section) to achieve an accurate and robust
 segmentation of an image.
 Image segmentation algorithms are generally based on one of two basic
 properties of intensity values: discontinuity and similarity. In the
 first category, the approach is to partition an image based on abrupt
-changes in intensity. Edge-detection algorithms we will study below is
-in this category. In the second approach, an image is partitioned into
+changes in intensity, edge-detection algorithms falls in this category. In the second approach, an image is partitioned into
 regions that are similar according to set of predefined criteria.
-Thresholding and watershed segmentation are in this category.
+Thresholding and watershed segmentation fall in this category.
 
 \subsection{Thresholding}
 
@@ -107,7 +105,7 @@ sliding bar below and study the effects on highlighted area in image.
 
 \ijmenu{Set} button in the threshold
 window enables to you input the lower and upper threshold numerically.
-The original image file is not altered until you push the button
+The original image file is not altered until you click the button
 \ijmenu{Apply} at the bottom of the
 threshold window. Click \ijmenu{Apply}, and
 check the result of conversion by saving it as a text file, or simply
@@ -144,10 +142,19 @@ available Algorithms:
 \item Yen
 \end{itemize}
 
-For choosing an algorithm, one way is to look for original papers
+For choosing an algorithm, a proper way might be to look for original papers
 describing the algorithm and think which one would work best for your
-purpose, but in practice, you could try one by one and just choose one
-that fits your demand. 
+purpose (!), but in practice, you could try one by one and just choose one
+that fits your demand. Instead of manually trying out all available algorithms, you could test them in one action by \ijmenu{[Image > Adjust > Auto Threshold]} and then choose ``Try All'' in the dialog window (fig. \ref{fig:thresholdTryAll})
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{fig/ThresholdTryAll.png}
+\caption{For testing all algorithms, ``try all'' choice in AutoThreshold dialog is convenient. The image above is an output of doing this with the image blob.tif. Algorithm names are printed in small fonts below each image.} 
+\label{fig:thresholdTryAll}
+\end{center}
+\end{figure}
 
 In batch processing, command for automatic threshold would be like this:
 
@@ -156,10 +163,17 @@ In batch processing, command for automatic threshold would be like this:
 The first argument is the name of the algorithm and could be any of the
 ones listed above.
  
-\subsection{Edge Detection}
+\subsection{Feature Extraction - Edge Detection}
 
-Edge Detection technique explained in \ref{subsub:findedgekernel} Find Edge is useful for
-segmenting edge of object. We take an example of microtubule filament image. 
+Patterns witih image have features such as lines and corners. To detect them we employ procedure called ``Feature Extraction''. In the general sense, this means to extract certain object that you are focusing on. In a strict definition in image processing, this means to do some defined calculations with neighboring pixels to get a feature image. This output then can be used simply for segmentation, but also for machine learning based automatic classificaiton (we will try this technique in a later section). 
+
+The edge detection was already mentioned in the find edge kernel section (\ref{subsub:findedgekernel}). Edge detection is one of those feature extractors and is useful for segmenting object edges. 
+In the ImageJ menu we could use commands 
+\begin{itemize}
+\item \ijmenu{[Process > Find Edges]} (uses Sobel kernel) or 
+\item \ijmenu{[Plugins > Feature Extraction > FeatureJ > FeatureJ Edge] (uses gradient filter)} 
+\end{itemize}
+that do the job but here we try doing it step by step starting from manually preparing Sobel kernels. We process an image of microtubule filament. 
 
 \begin{indentexercise}{1}
 Open image microtubule.tif. We expect that the values will exceed 255 (8-bit) so convert the image to
@@ -243,7 +257,7 @@ start up. To show B selection field, click
 
 \end{quote}
 
-For comparing the original and the edge detected images, go back to the
+To compare the original and the edge detected images, go back to the
 image \textbf{microtubule} and do
 \ijmenu{[File > Revert]}. Then with "Result of Microtubule" do \ijmenu{[Image > Type > 8-bit]} 
 to scale down the bit-depth. Merge the images by
@@ -269,7 +283,7 @@ image. (a) Dialog for assigning channels. (b) Example of merged color image, wit
 
 \subsection{Morphological Watershed }
 
-In the previous sections, we discussed segmentation based on thresholding and edge detection. Morphological watersheds provide another way to segmentation of objects. One advantage of watersheds is that it produces continuous segmentation boundaries and often tends to produce stable segmentation results. In ImageJ, watershed algorithm could be found at \ijmenu{[Process > Binary > Watershed]}.
+In the previous sections, we discussed segmentation based on thresholding and edge detection. Morphological watersheds provide another way to segment objects. One advantage of the watershed algorithm is that it outputs continuous segmentation boundaries and often tends to produce stable segmentation results. In ImageJ, watershed algorithm could be found at \ijmenu{[Process > Binary > Watershed]}.
 
 To understand the watershed transform we view a grayscale image as a
 topological surface, where the values of f(x,y) correspond to heights:
@@ -358,7 +372,7 @@ a binary image is the distance from every pixel to the nearest nonzero-valued pi
 
 \subsection{Particle Analysis}
 
-After the segmentation, objects could be analyzed for extracting various
+After the segmentation, the objects could be analyzed for extracting various
 parameters. Powerful function in ImageJ for this purpose is particle
 analysis function. It counts the number of objects (particles) in the
 image, extract morphological parameters, measures intensity\ldots and
@@ -368,8 +382,9 @@ this function.
 
 \begin{indentexercise}{1}
 Single Particle Detection
+
 Load \textbf{Circles.tif} and segment two circles by watershed operation
-as we did in the previous section. Then select Wand Tool 
+as we did in the previous section. Then select the Wand Tool 
 \includegraphics[width=0.5cm]{fig/CMCIBasicCourse201102-img119.png}
  from the tool bar. Click one of the circles. Check that a ROI is
 automatically created at the edge of the circle.
@@ -394,7 +409,7 @@ following.
 
 Set Threshold again, and then click ``Apply'' in the Threshold dialog window. 
 The image then should be black and white. This binarized (segmented) image 
-will be used as a reference for setting boundary of each rice particle. 
+will be used as a reference for setting boundary of each rice grain. 
 
 Open file \textbf{rice.tif} again. Since there is already a window with same title, this second one 
 should have a title ``rice-1.tif''. By having this original image, boundary that will be set using binarized image 
@@ -449,13 +464,14 @@ different parameter values.
 
 Segmentation could also be done by letting computer to learn what you
 think as signal and background. To do so, one could use machine
-learning technology with your instruction. We use
-\textbf{Trainable Segmentation plugin}.
-In brief, you mark what you decide as signal and background, and then
-let the algorithm to "Train" the
-classifier of the image. Classifier is a flexible virtual machine
-that studies your markings and it comes up with a protocol to
-categorize each pixel into classes. 
+learning algorithms. 
+
+We use \textbf{Trainable Segmentation plugin}.
+In brief, you manually mark what you decide as signal and background, and then
+let the plugin to "Train"
+classifier. The plugin studies your markings by combining many possible features and it comes up with a model to
+categorize each pixel into classes to output a segmented image. 
+ 
 When you start the plugin, you
 will see a window with image you want to segment, and buttons in the
 surrounding. Panel in left side is for commands, and the panel in right
@@ -473,10 +489,17 @@ class" in the left panel (Fig. \ref{fig:img121}).
 \end{figure}
 
 \begin{indentexercise}{1}
-(This exercise is only available with Fiji)
-Open \textbf{rice.tif} and then select \ijmenu{[Plugins > Segmentation > Trainable Segmentation]}. Your task here is to segment rice grains using trainable segmentation. Zoom up the image
+(This exercise is only available with the Fiji distribution)
+
+Open \textbf{rice.tif} and then select 
+
+\ijmenu{[Plugins > Segmentation > Trainable Segmentation]}. 
+
+Your task here is to segment rice grains using trainable segmentation. Zoom up the image
 using magnifying tool as usual image. Then choose free hand ROI tool,
-start marking a rice grain. If you are satisfied with ROI, then click
+start marking a rice grain. 
+
+If you are satisfied with ROI, then click
 \ijmenu{Add to Class1}. Then
 again using freehand ROI tool, mark background. Then add this another
 class by \ijmenu{Add to Class2}. Your trainable segmentation window should look
@@ -495,7 +518,7 @@ Click \ijmenu{Train Classifier} in the left panel, then calculation starts that 
 calculation finishes, you will see that most of rice overlaid red and background in green (Fig. \ref{fig:img123}). Zoom out the image and check again. You might see that some of rice grains are not segmented well -- so we should train more. Use freehand ROI tool to mark that was unfortunately categorized
 as background, and add it to class 1 (\ijmenu{Add to Class 1}). Then \ijmenu{Train
 classifier}, check the segmentation results\ldots You
-could iterate such marking and training until you get a satisfactory
+could repeat such marking and training until you get a satisfactory
 segmentation result. TIP: You could delete specific trace already
 listed in Class listing by double clicking.
 
@@ -520,8 +543,7 @@ A separate window with segmented image will open (Fig. \ref{fig:img124}).
 \end{center}
 \end{figure}
 
-To save the training data you did, click \ijmenu{save data}. 
-Saved *.arff file could be loaded later to segment another image 
+During the training, a set o feature data and its classes is generated. To save this data used for training, click \ijmenu{save data}. Saved *.arff file could be loaded later to segment another image 
 (should be rice in this case, of course!) using \ijmenu{Load data} button.
 
 \textbf{OPTIONAL} : Segmented image could be used as a mask to analyze original image. 
