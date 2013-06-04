@@ -3,23 +3,21 @@
 
 \section{Filtering}
 
-Filtering improves the appearance of digital image. Then recognition of
-shapes becomes easier by noise removing and enhancement of the
+Filtering can improve the appearance of digital images. It can help  identifying shapes by reducing the noise and enhancing the
 structural edge. Not only for the appearance, filtering improve the
 efficiency of "segmentation" which we
 will study in the next section. Segmented image could be used as a mask
 to specify regions to be measured. Note that the filtering alters the
 image so one must realize that in most cases, processed images cannot
 be used for quantitative intensity measurement without precise
-knowledge on what would happen to the numerical values after the
-processing. 
+knowledge of how the processing affects the numerical values. 
 
 There are two different types of filtering: one involves the frequency
 domain of images (Fourier transformed image), while the others deals
-with spatial domain. We first study the spatial domain filtering and
+with spatial domain. We first study the spatial filtering and
 its central concept "convolution", and
 walk through various types of convolutions. We then study the frequency
-domain filtering (FFT). In FFT world, convolution of an image with
+domain filtering (FFT). In the FFT world, convolution of an image with
 filter kernel could be done simply by multiplication between two
 images. 
 
@@ -28,13 +26,10 @@ images.
 \subsection{Convolution}\label{subsecConvolution}
 
 In the \ijmenu{[Process]} menu, we see a long list of
-filters. An important concept for understanding what these commands
-will do to your image is "convolution".
-A small mask (called kernel) is moved along the image pixel by pixel
-and apply operations using the surrounding pixel values (see Fig.
-\ref{fig:img38}). The result of operation is over-written to that pixel position
-as the new pixel value.
-
+filters. Most of them are linear filters and can be implemented as "convolution" as we will shortly see. 
+To perform a convolution a small mask (called kernel) is moved over the image pixel by pixel and apply operations involving the surrounding pixel values (see Fig.
+\ref{fig:img38}). The result of operation is written to that pixel position
+in the output image. 
 
 %figure
 \begin{figure}[htbp]
@@ -74,9 +69,13 @@ element, do the multiplications and summing up again. Note the result
 as the second element of "full convolution
 result" (o). Like wise, we do such calculation step by
 step until last element of $w$ matches the last element of
-$f$ (n). After then, we throw away padded elements from the
+$f$ (n). After that, we throw away padded elements from the
 output 1D array to have a resulting array with same length as the
 original $f$ (p). 
+
+To summarize, convolution is implemented  sequentially as a local linear combination of the input image using the filter kernel weights. 
+
+We do not use \textit{correlation} in this course, but correlation is very much similar to convolution. In case of convolution the 1D kernel was rotated by 180 degrees. In correlation, no rotation is done and used as it is and the rest of the algorithm is same. Correlation is often used for pattern matching to find out the pixel intensity distribution in an image using a template image as a kernel. For example, many object tracking algorithm utilizes correlation for searching target object from one frame to the other. In ImageJ, PIV (particle image velocimetry) plugin\footnote{https://sites.google.com/site/qingzongtseng/piv} uses the correlation to estimate motion vector field. 
 
 %{\selectlanguage{english}\sffamily
 
@@ -103,60 +102,16 @@ $Convolution$, $\chi=\phi\otimes \psi$, is essentially the same as correlation, 
 \[
 \chi(r)=\int_{\Omega }^{}  \phi(r-s)\psi  (s)ds
 \]
-Convolution is useful because: (1) its algebraic properties are more
-like multiplication, and thus more familiar, than correlation; and (2)
-many physical processes (e.g. linear systems, such as dendritic nets)
-perform convolutions.
-
-%Two closely-related bilinear operations that are especially important
-%for information processing are \textit{convolution} and
-%\textit{correlation}. In the simplest case, correlation can
-%be described as a comparison of two fields at all possible relative
-%positions. More specifically, if 
-%\includegraphics[width=0.185cm,height=0.344cm]{fig/CMCIBasicCourse201102-img40.png}
-%is the correlation of two one-dimensional fields 
-%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img41.png}
-%and 
-%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img42.png}
-%, 
-%\includegraphics[width=1.455cm,height=0.503cm]{fig/CMCIBasicCourse201102-img43.png}
-%, then 
-%\includegraphics[width=0.635cm,height=0.556cm]{fig/CMCIBasicCourse201102-img44.png}
-%reflects how well 
-%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img45.png}
-%and 
-%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img46.png}
-%match (in an inner-product sense) when relatively displaced by
-%\textit{r}.\href{http://www.cs.utk.edu/~mclennan/anon-ftp/FCMC-tr/footnode.html#516}{
-%\includegraphics[width=0.397cm,height=0.397cm]{fig/CMCIBasicCourse201102-img47.png}
-%}
-% Mathematically, 
-%
-%\includegraphics[width=13.227cm,height=0.716cm]{fig/CMCIBasicCourse201102-img48.png}
-%
-%Higher dimensional correlations are the same, except that \textit{r} is
-%a relative displacement \textit{vector} rather than a
-%scalar. 
-%
-%\textit{Convolution}, 
-%\includegraphics[width=1.561cm,height=0.503cm]{fig/CMCIBasicCourse201102-img49.png}
-%, is essentially the same as correlation, except that the field 
-%\includegraphics[width=0.212cm,height=0.503cm]{fig/CMCIBasicCourse201102-img50.png}
-%is reflected before the comparison takes place: 
-%
-%\includegraphics[width=13.227cm,height=0.716cm]{fig/CMCIBasicCourse201102-img51.png}
-%
 %Convolution is useful because: (1) its algebraic properties are more
 %like multiplication, and thus more familiar, than correlation; and (2)
 %many physical processes (e.g. linear systems, such as dendritic nets)
 %perform convolutions.
 
-
 Quote from:
 \url{http://www.cs.utk.edu/\~mclennan/anon-ftp/FCMC-tr/node14.html}
 \end{quote} 
 
-In two dimensional matrix, see the example in Fig. \ref{fig:img52}. 
+See the example in Fig. \ref{fig:img52} for convolution with two dimensional matrices. 
 
 %figure
 \begin{figure}[htbp]
@@ -175,10 +130,10 @@ as the original (h).
 \subsection{Kernels}
 
 In \ijmenu{[Process]} menu, we have many operators such
-as smooth, sharpen, find edges\dots and so on. Many of them ate
-called "linear filters" because
-the result of filtering is a linear combination of the original image
-pixel values. We study various kernels in this section. 
+as smooth, sharpen, find edges\dots and so on. 
+
+
+Many of them are called "linear filters", so called because filtering the sum of two equally sized images is equivalent to filtering these images apart and summing the results. With non linear filters, these two different operations may end up in two different results\footnote{This property is absolutely fundamental and at the heart of transform domain based filtering. For instance discrete Fourier transform decomposes any discrete signal (image) in a finite sum of components (images): knowing the effect of the filter on each of these finite components is hence sufficient to fully characterize the filter and its effect on any signal (image)}. 
 
 \subsubsection{Smoothening}
 \ "Smoothening" operation, which is
@@ -272,8 +227,8 @@ neighboring pixels. Then the result of convolution then becomes
 \]
 
 \begin{indentexercise}{1}
- Working with kernel: in ImageJ, one could
-design original kernel and do convolution for images.
+ Working with kernel: in ImageJ, one can
+design specific kernels to be used for filtering images by convolution.
 Open \textbf{microtubule.tif} image and
 zoom up so you can see individual pixels. Do \ijmenu{[Process
 > Filter > Convolve]}. A pop-up window
@@ -318,7 +273,7 @@ noise is also enhanced.
 
 \subsubsection{Find Edge (gradient)}
 \label{subsub:findedgekernel}
-Following two kernels are applied independently. Square root of the sum
+The following two kernels are applied independently. Square root of the sum
 of the square of two result images will be calculated (called
 "Sobel Filter": for more details,
 see Appendix \ref{app3}) \ 
@@ -349,8 +304,7 @@ This kernel blurs (in positive sense, we call it
 "smooth") the image by convolution
 using a square Gaussian (bell-shaped) kernel. The width of the kernel,
 in pixels, is 2*\textit{sigma}+1, where \textit{sigma} is entered into
-a dialog box (ImageJ documentation). Following three kernels are with
-different sigma 2 (5x5), 3 (7x7) and 7 (15x15). 
+a dialog box (ImageJ documentation). The following Gaussian kernels are respectively obtained for sigma equal 2 (5x5), 3 (7x7) and 7 (15x15). 
 
 Gauss 5 x 5 (Sigma = 2)
  
@@ -434,7 +388,7 @@ We take the median of this sequence ($=5$) and replace the value 2 with
 
 Mathematical morphology is a powerful tool that can be used to extract
 features and components from an image. It is often used to pre-process
-or post-process of images to facilitate analysis. In this process a
+or post-process images to facilitate a posterior analysis. In this process a
 small shape (structuring element, not necessarily square like we did in
 the precious section) is translated across the image during the course
 of processing. Certain mathematical logic operations are performed on
@@ -473,15 +427,15 @@ entirely in the foreground (Fig. \ref{fig:img66}).
 \end{center}
 \end{figure}
 
-In above examples structuring elements are asymmetrically shaped. In
-ImageJ, structuring elements are squares so the dilation: erosion
+In above examples the structuring elements are asymmetrically shaped. In
+ImageJ, the structuring element used by the morphological filters of the \ijmenu{Process > Filters} menu is a square so that the
 effects are even along both axes. 
 
 \begin{indentexercise}{1}
-Load noisy-fingerprint.tif and broken-text.tif. Apply dilations or
-erosions with different iterations. 
+Load noisy-fingerprint.tif and broken-text.tif. Apply dilation or
+erosion several times by setting the number of iterations. 
 
-For setting iterations, do \ijmenu{[Process > Binary > Options]}. 
+To change this number use \ijmenu{[Process > Binary > Options]}. 
 Binary option window opens and you can set
 several parameters. "Count"
 matters with setting the number of overlapping pixels between
@@ -551,14 +505,23 @@ noisy-finger print. Discuss the difference in outputs.
 \end{figure}
 \end{indentexercise}
 
-\subsection{Minimum and Maximum}
+\subsection{Morphological Image Processing: Gray Scale Images}
 
-Morphological transformation on grayscale image is very useful for
-subtracting the background, such as to eliminating the shading of the
-image such as shown in fig below. Opening and closing we studied above
-works only with binary images. For gray scale images, one can use
-Minimum (like Open) and Maximum (like Close) under [Process
-Filters]. One could remove all features smaller than
+The morphological image processing is not limited to binary images. Grayscale images can also be the subject. In fact, the morphological image processing of binary image we have studied so far is a special case of the grayscale processing. We now enhance the technique with a slightly more general rule in order to apply the structuring element to grayscale images: 
+\begin{itemize}
+\item Erosion: we take the minimum value among the pixel positions where the structuring element is overlapping.   
+\begin{itemize}
+\item \ijmenu{[Process > Filter > Minimum]} (the grayscale version of ``open'')
+\end{itemize}
+\item Dilation: we take the maximum value among the pixel positions where the structuring element is overlapping. 
+\begin{itemize}
+\item \ijmenu{[Process > Filter > Maximum]} (the grayscale version of ``close'')
+\end{itemize}
+\end{itemize}
+
+The morphological processing of grayscale image is very useful for
+subtracting the background or eliminating the shading in an
+image (see figure below). One could remove all features smaller than
 the structuring element by "Minimum"
 operation of gray images. In the following example we will experience
 this.
@@ -567,12 +530,10 @@ this.
 \label{exer:removerice}
 Open rice.tif. Then \ijmenu{[Process > Filters > Minimum]}. In the dialog
 window, input the radius of the structuring element (structuring
-element is circular). Find a radius that removes rice from the image.
-Successfully removed image is the background image. Then remove the
-background image from the original image. 
+element is circular). Adjust the radius to remove the rice grains from the image and only keep the background. Then remove the
+resulting background image from the original image. 
 
-\textit{Note}: For bright field images, background actually should
-be removed by division rather than subtraction such as: 
+\textit{Note}: For bright field images, the background should actually be removed by division rather than subtraction such as: 
 \[
 Corrected\_Image = \frac{Specimen - Darkfield}{Brightfield - Darkfield} * 255
 \]
@@ -583,10 +544,10 @@ Corrected\_Image = \frac{Specimen - Darkfield}{Brightfield - Darkfield} * 255
 \subsection{Background Subtraction}
 
 Besides the background subtraction we studied above using Minimum and
-Maximum filtering, there are special function designed for the
-background subtraction (extension of morphological processing). ImageJ
-has a direct background subtraction by Rolling ball algorithm \footnote{
-Stanley Sternberg's article, "Biomedical Image Processing", IEEE Computer, January 1983). }
+Maximum filtering, there is a special function implemented for
+background subtraction in ImageJ (extension of morphological processing). This function is implemented as the so-called Rolling ball algorithm\footnote{
+Stanley Sternberg's article, "Biomedical Image Processing", IEEE Computer, January 1983) }. The algorithm is nothing but the gray scale morphological processing with ``rolling ball'' being a circular structuring element but is more convenient as a single command dedicated to the background subtraction. 
+
 In the dialog window when you execute this operation, you will be asked for
 the Rolling ball radius. This should be at least as large as
 the radius of the largest object in the image that is not part of the
@@ -609,8 +570,7 @@ Change the Rolling ball radius and study the effect. Question: what
 happens when the rolling ball radius is smaller?
 \end{indentexercise}
 
-Background subtraction explained so far uses morphological processing. 
-There are several other methods including
+There are several other background subtraction methods that do not depend on morphological filtering. 
  
 \begin{enumerate}
   \item High-pass filter
@@ -620,8 +580,8 @@ There are several other methods including
 
 Pseudo high-pass filtering could be done by subtracting 
 largely blurred image by Gaussian blur (such as with sigma of 20)  
-from the original image. Otherwise, band-pass function under \ijmenu{[Process >
-FFT]} could be used for high-pass filtering.  
+from the original image. The same processing could also be be achieved by a single command \ijmenu{Process > Filter > Unsharp Mask\ldots]}.  The band-pass function under \ijmenu{[Process >
+FFT]} could be used for the true high-pass filtering, but in my experience the result of pseudo-highpass filtering is more usable for segmentation purpose. 
 
 For polynomial fitting, ImageJ plugin ``Polynomial\_Fit'' written by Bob
 Dougherty could be used to estimate the background
@@ -637,7 +597,7 @@ images using calibration slide and ImageJ could be found in
  \cite{MiuraME2005}.
 
 For the background removal of fluorescence time series, bleaching of
-fluorescence should be considered. See recent article by
+fluorescence should also be considered. See recent article by
 \cite{Schwarzfischer2011}.
 
 Deconvolution removes out-of-focus emission signal. See appendix 8 for an
@@ -659,8 +619,7 @@ Binary > Fill Holes]}.
 \clearpage
 \subsection{Batch Processing Files}
 
-Once you established a processing protocol, then you could create a
-pipeline to process many files automatically one-by-one. Such task is
+Once you established a processing protocol, you can easily apply it to many files automatically (image by image). Such task is
 called \textit{batch processing}.
 Prerequisite for using batch processing function in ImageJ is that all
 files that you want to process are stored in a single folder. Another
@@ -675,7 +634,7 @@ Here, we use numbered-tiff file series as an example to do batch
 processing. Open
 \textbf{/sample\_images/spindle-frames/eg5\_spindle\_500016.tif}. In order to
 to record the processing command, do \ijmenu{[Plugins 
-Macros Recorder\ldots]}. A recorder window starts up:
+Macros Recorder\ldots]}. A recorder window pops up:
 
 %figure
 \begin{figure}[htbp]
@@ -688,8 +647,7 @@ Macros Recorder\ldots]}. A recorder window starts up:
 
 
 Then go back to the spindle image (activate the image window by clicking
-the title bar) and then do \ijmenu{[Process > Subtract > Background]}. Just put some values in the subtract background dialog,
-and click OK, and check that the image is background subtracted (Fig. \ref{fig:spindleBacksubtraction}). 
+the title bar) and then do \ijmenu{[Process > Subtract > Background]}. Try to input some values in the subtract background dialog, click OK, and check that the image is background subtracted (Fig. \ref{fig:spindleBacksubtraction}). 
 
 
 %double figure
@@ -713,10 +671,8 @@ added. This text should be like it is shown in Fig. \ref{fig:img73}.
 \ilcom{run("Subtract background\ldots", "rolling=5 disable");}
 \end{quote}
 
-The number after \ijmenu{rolling=} could be
-various according to your input, and also other arguments might be
-present after that depending on the checks you did during the Subtract
-Background dialog. 
+The number after \ijmenu{rolling=} should be adapted
+ to your input, some other arguments might also come after depending on which options you selected in the Subtract Background dialog box. 
 %figure
 \begin{figure}[htbp]
 \begin{center}
@@ -743,10 +699,10 @@ window (Fig. \ref{fig:img74}).
 
 
 To set the input folder (where files to be processed are stored), click
-"Input\ldots" button and select the
-folder. Then set the out put folder (where processed files will be
+"Input\ldots" and select the
+folder of your choice. Then set the output folder (where processed files will be
 stored, choose one that is empty), click
-"Output" button and select a folder.
+"Output" and select a folder.
 Check the options so that they look like above, then clicking
 "Process" button will start the batch
 processing of all files in the input folder. Check the images created
@@ -759,12 +715,11 @@ many more text commands, which you could extract by using
 "Recorder".
 \subsection{Fast Fourier Transform (FFT) of Image}
 
-FFT converts spatial-domain image data (what you are normally seeing
-image) to frequency domain data. FFT is used because 
+FFT converts a spatial-domain image data (what you are normally seeing) to a spatial frequency domain data. FFT is used because 
 \begin{enumerate}
-\item in some occasion, calculation could be done much faster in frequency domain
-than in spatial domain. \textit{i.e.} convolution. 
-\item Some image-processing techniques could only be done in frequency domain. 
+\item In some occasion, calculation cab be done much faster in frequency domain
+than in spatial domain. \textit{i.e.} convolution involving large kernels. 
+\item Some image-processing techniques can only be performed in the frequency domain. 
 \end{enumerate}
 
 \begin{indentexercise}{1}
@@ -789,10 +744,10 @@ Open \textbf{microtubule.tif} by \ijmenu{[File > Open]}. Then apply FFT by \ijme
 
 Here is an intuitive explanation of what frequency domain image is:
 Orientation of patterns in spatial domain image has a clear
-relationship with the resulting FFT image. We take example four images
-with stripes differently oriented, vertical, diagonal (right to left or
+relationship with the resulting FFT image. We take as example four images
+with differently oriented stripes, vertical, diagonal (right to left or
 left to right) and horizontal (Fig. \ref{fig:FFTOriginalStripesDirections})\footnote{\ To generate such stripe images for studying FFT, use macro code in Appendix \ref{app7}. }. When
-these images are transformed by FFT, resulting images show high
+these images are transformed by FFT, the resulting images exhibit high
 intensity peaks (which means higher value) that reflect the direction 
 of stripe pattern (Fig. \ref{fig:FFTtransformedStripesDirections}). 
 
@@ -830,7 +785,7 @@ of stripe pattern (Fig. \ref{fig:FFTtransformedStripesDirections}).
 For example, FFT image of stripes in horizontal direction (Fig. \ref{fig:img78}) shows high intensity peaks that are horizontally aligned (Fig. \ref{fig:img82}). 
 Stripes in vertical direction (Fig. \ref{fig:img80}) become vertically
 aligned peaks in FFT image (Fig. \ref{fig:img84}). 
-In general, values in FFT image would show peaks aligned in the direction of the repetitive pattern appeared in original spatial-domain image. If the pattern appears in all direction (isotropic pattern, such as concentric rings) would then end up in circular signal in FFT image. 
+In general, values in FFT image exhibit peaks aligned in the direction of the repetitive pattern of the original spatial-domain image. If the pattern does not have preferential direction (isotropic pattern, such as concentric rings) then the FFT image will also be isotropic. 
 
 Frequency of patterns in spatial-domain image also has a clear
 relationship with the resulting FFT image. See spatial-domain images
@@ -870,10 +825,8 @@ frequency of pattern in the original spatial-domain image decreases.
 \end{figure} 
 
 Frequency-domain image is a plot with vertical frequency in vertical
-axis and horizontal frequency in horizontal axis. Two axis crosses at
-the centre of the image. Schematic drawing of FFT image in below shows
-how FFT signal would be distributed in terms of original spatial-domain
-image. 
+axis and horizontal frequency in horizontal axis. The two axis crosses at
+the centre of the image. A schematic drawing of the FFT domain is shown below to indicate how the FFT image would be distributed depending on the original spatial-domain image. 
 
 % Unhandled or unsupported graphics:
 %\includegraphics[width=9.262cm,height=9.855cm]{CMCIBasicCourse201102-img94}
@@ -887,17 +840,16 @@ image.
  \end{center}
  \end{figure}
 
-Signals with lower frequency, such as objects, will be placed close to
+Signals with lower frequency, such as large objects with smooth transitions, will be mapped close to
 the origin (center of the 2D power spectrum image), while higher frequency signals
-such as noise will be placed further from the origin. Noise in general has no spatial bias, so the signal of noise will predominantly appear in all over the peripheral region of 2D power spectrum (FFT image). 
+such as noise will be mapped further from the origin. Typical noise has no spatial bias, so the noise signal will appear all over the power spectrum (FFT image). 
 Anisotropic patterns in original image will results in anisotropic signal in 2D power spectrum \textit{e.g.} horizontal pattern will cause horizontally aligned high intensity peaks. 
 
 \subsection{Frequency-domain Convolution}
 
-Convolution we studied in section~\ref{subsecConvolution} was a iterative
-procedure. Convolution kernel was applied every time you slide the position of
-the kernel by one pixel in x or y direction. This processing could be much
-simpler by using the FFT image, just by multiplying FFT kernel to it. We
+Convolution we studied in section~\ref{subsecConvolution} is a sequential
+procedure. The convolution kernel is applied every time you slide the position of
+the kernel by one pixel in x or y direction. This processing is much simpler when performed in the FFT domain: it can then implemented as a multiplication. We
 experience this in the exercise below. 
 
 \begin{indentexercise}{1} Convolution in Frequency-domain.
@@ -1023,8 +975,8 @@ FD math.
 
 \subsection{Frequency-domain Filtering}
 
-Filtering using FFT image (2D power spectrum) is a way of improving image quality and
-also for a better segmentation result. One typical example is to reduce noise. As we have seen in Fig. \ref{fig:imgFFT}, noise produces high frequency
+Filtering using FFT image (2D power spectrum) is a way of improving the image quality and
+also to allow a better segmentation. One typical example is to reduce noise. As we have seen in Fig. \ref{fig:imgFFT}, noise produces high frequency
 isotropic signal that appears in the periphery of FFT image. We
 could remove noise by simply throwing away peripheral signals in FFT
 image to reduce noise in the original image. 
