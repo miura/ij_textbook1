@@ -13,32 +13,60 @@ For TIFF format, detailed description could be found at:\\
 
 \subsection{App.1.5 Installing Plug-In}
 \label{app1.5}
-\textbf{ImageJ}
 
-To install Plug-In, download the Plug-In file (*.class or *.jar) and put the file
-in the "plugin" folder within ImageJ folder. 
-ImageJ must be restarted to see the plugin in the menu. 
-By default, Plug-in appears under
+By adding a plugin, you could have a new function in your ImageJ. ImageJ plugin is typically a single file (*.class or *.jar) that should be installed on top of ImageJ, and there are several ways to do this.
+
+\subsubsection{Searching a plugin}
+First, you must have a plugin file to install. There are many plugins available in Internet. An efficient way to search for a plugin is to search the ImageJ mailing list archive:
+
+\begin{itemize}
+\item \url{https://list.nih.gov/cgi-bin/wa.exe?A0=IMAGEJ}
+\end{itemize}
+
+Comments in associated posts are also valuable information to know how to use plugins. Followings are two major web pages where many plugins are listed:
+
+\begin{itemize}
+\item \url{http://imagej.nih.gov/ij/plugins/}
+\item \url{http://imagejdocu.tudor.lu/doku.php?id=plugin:start}
+\end{itemize}
+
+A new website that allows you to do plugin search is
+\begin{itemize}
+\item \url{http://biii.info}
+\end{itemize}
+This site is still in alpha state, and contents will eventually increase more. 
+
+\subsubsection{Installation of a plugin}
+
+There are several ways to install plugin. 
+\begin{enumerate}
+\item Manually placing the plugin file in the plugins folder located in the ImageJ folder.
+\item Do \ijmenu{[Plugins > Install PlugIn\dots]} and select the plugin file.
+\item Drag \& Drop the plugin file to ImageJ menu bar. 
+\end{enumerate}
+
+In all cases, you need to either select the command \ijmenu{[Help > Refresh Menu]} or restart ImageJ. Then the plugin appears in the ImageJ menu. By default, plugin appears under
 \ijmenu{[Plugins]}.
-If you want to change the location of the plugin in the menu, one can
-change the place by using \ijmenu{[Plugins > Utilities > Control Panel]}.
+If you want to change the location of the plugin within the menu tree, one can change the place by using \ijmenu{[Plugins > Utilities > Control Panel]}.
 
+\subsubsection{Fiji update sites}
+
+In fiji it's possible to add so-called ``update sites'' and install a plugin. This new mechanism, appeared in late 2013, allows automatic tracking of update status in the Fiji server. If your local file is older than the one in the server, your local one could be upgraded automatically. To use this function, refer to the following site. 
+
+\url{http://fiji.sc/How_to_follow_a_3rd_party_update_site}
+
+\subsubsection{Tip}
 If you have too many Plugins, there will be significant probability of so called
-"Class conflicts". Classes are the modules in ImageJ and Plugins. 
-If there are two identical classes in
-ImageJ, then these classes causes the conflict in the process. To avoid
-this, one could have multiple ImageJ and install Plugin in each
-of them for different purposes, that there will be no Plugin overloads. 
-
-\textbf{Fiji}
-
-Select  \ijmenu{[Plugins > Install Plugins\dots]} then choose the
-plugin file (.jar or .class file). 
+"Class conflicts" to happen. Classes are the modules in ImageJ and Plugins. 
+If there are two classes with identical name in
+ImageJ, then these classes causes the conflict in the process. If you encounter this situation and still want to use them both, you could have multiple ImageJ and install plugins separately for different purposes. 
 
 
 \clearpage
-\subsection{App.1.75 List of accompanying PDF}
-\label{app1.75}
+\subsection{App.1.75 List of PDF}
+\label{app1.75the }
+
+Some of these PDF are accessible via course plugin. Otherwise, please google or ask Kota. 
 \begin{itemize}
 \item ImageJ\_Manual.pdf 
 \subitem ImageJ Manual written by Tony Collins@Cell Imaging Core facility,
@@ -345,9 +373,8 @@ other particles.
 \subsection{App.6 Image Processing and Analysis: software, scripting language}
 \label{app6}
 
-ImageJ is not only the tool for scientific image processing and
-analysis. I list some other software and tools used by EMBL researchers
-here and add some description about each of them. For more details, please refer to an article by \citet{WalterNATM2010}.
+ImageJ is not only the tool for the scientific image processing and
+analysis. I list some other software and tools used by EMBL researchers in below. For more details, please refer to an article by \citet{WalterNATM2010}.
 
 \textbf{MatLab (Mathworks), \$}
 
@@ -368,25 +395,20 @@ worth for some trial.
 \textbf{Imaris (Bitplane), \$}
 
 
-
-Imaris is also a commercial software, especially powerful in interactive
+Imaris is a commercial software especially powerful in interactive
 3D visualization. 3D time course (sometimes called
-"4D") with multiple channels (then
-this would be called 5D) could also be visualized and interactively
+"4D") with multiple-channels (then
+this would be called 5+D) could also be visualized and interactively
 adjusted with their appearance. Some analysis packages are optionally
-available. I sometimes use optional package "Imaris
+available. I sometimes use an optional package "Imaris
 Track" for tracking spotty signals. Algorithm for
 linking particles is excellent (uses graph-theory based algorithm
-developed in Danuser lab). In EMBL, you could try using this software
-by so called "floating license",
-which enables you to use the software from any computer within EMBL
-domain. The number of simultaneous usage is limited to three (as of
-June 2010). Another module that gives additional power to Imaris is
-"Imaris XT", which enables
-accessing Imaris objects from Matlab, Java or ImageJ. I have some
+developed in Danuser lab). In EMBL you could try using this software
+by so called "floating license", which enables you to use the software from any computer within EMBL domain. The number of simultaneous usage is limited to three (as of June 2010). Another module that gives additional power to Imaris is
+"Imaris XT", which enables you to
+access Imaris objects from Matlab, Java or ImageJ. I have some
 example Java codes, so if you are interested I could give you as an
-example. Imaris is pretty expensive, and apparent disadvantage. 
-
+example. Imaris is pretty expensive and this part is apparently a disadvantage. 
 
 
 \textbf{Python, Free}
@@ -394,35 +416,32 @@ example. Imaris is pretty expensive, and apparent disadvantage.
 Python is not a software package, but is a scripting language. There are
 many other scripting languages like Ruby, but the merit of Python is
 that there are numerous libraries for image processing and analysis. In
-terms of scripting, accessibility is similar or more powerful than
-Matlab, since its bridging capability to many computer languages such
-as C, C\textsuperscript{++} and Java. Considering that the trend of
+terms of scripting Python is more powerful than
+Matlab since its bridging capability to many computer languages such
+as C, C++ and Java. Considering that the trend of
 image processing and analysis is getting more and more towards
 cross-language library usage, Python is a good choice to learn for
 high-end processing and analysis.
 
-\textbf{Cell Profiler, Free}
+\textbf{CellProfiler, Free}
 
 This free software is a bit less with available functions compared to
 ImageJ, but is easier and robust in constructing pipelines for image
 processing and analysis. One could interactively construct pipeline and
-do high-throughput processing and analysis for many data. 
-
-
+do high-throughput processing and analysis for many data. It also allows to integrate ImageJ macro within pipeline. 
 
 \clearpage
 \subsection{App.7 Macro for Generating Striped images}
 \label{app7}
 
-Below is an ImageJ macro code for generating stripes to do some
-experiments on FFT. You could copy \& paste this in a new macro window
+Below is an ImageJ macro code for generating stripes to study FFT behavior. You could copy \& paste this in a new macro window
 and install to generate stripes with various frequencies and orientation.  
 
-\lstinputlisting[numbers=none]{MacrostripeGenerator.ijm}
+\lstinputlisting[numbers=none]{code/MacrostripeGenerator.ijm}
 \clearpage
 
 \subsection{App.8 Deconvolution Exercise}
-\label{app4}
+\label{app8}
 
 Exercise starts from next page. 
 
@@ -437,5 +456,44 @@ the contents under plugins directory.
 \end{enumerate}
 
 \includepdf[pages=-]{pdf/decon_exercisesIJ.pdf}
+
+\clearpage
+\subsection{App.9 Protocol for background removal using blank frame image}
+\label{app9}
+
+\subsubsection{Bright field images}
+
+\begin{enumerate}
+\item Remove your sample from the microscope stage.
+\item Capture two images, one with light source turned on ($I_{on}$) and off ($I_{off}$).
+\item Calculate corrected image (uneven illumination corrected):
+\[
+I^{'}=\frac{I - I_{off}}{I_{on} - I_{off}}\cdot scale
+\]
+\begin{itemize}
+\item 8-bit: scale = $255$
+\item 16bit: scale = $2^{16}-1$
+\item 32bit-float: scale = 1 (or what ever the range you want)
+\end{itemize} 
+\end{enumerate}
+
+\subsubsection{Fluorescence images}
+
+\begin{enumerate}
+\item Place a calibration slide on the microscope stage.
+\item Capture two images, one with light source turned on ($I_{on}$) and off ($I_{off}$).
+\item Calculate difference of mean intensity of $I_{on}$ and $I_{off}$.
+\[
+R = \widehat{I_{on}} - \widehat{I_{off}}
+\]
+\item Calculate a deviation image:
+\[
+I_{dev} = \frac{I_{on}-I_{off}}{R}
+\]
+\item Calculate corrected image (uneven illumination corrected):
+\[
+I^{'}=(I - I_{off}) \cdot I_{dev}
+\]
+\end{enumerate}
 
 \clearpage
