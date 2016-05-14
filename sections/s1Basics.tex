@@ -11,7 +11,7 @@ of data". For this latter point, please also refer to
 \citet{Rossner2004}. There are some limits on acceptable image processing
 to maintain the scientific validity. Standards on scientific image
 processing could be found in "Digital Imaging:
-Ethics" by \citet{cromey2007}. 
+Ethics" by \citet{Cromey2010}. 
 
 \subsection{Digital image is a matrix of numbers}
 \label{subsec:imageEQmatrix}
@@ -21,7 +21,7 @@ Zooming in / out of the image does not change the content of the image.}. Width
 and height of the image are defined by the number of pixels in x and y
 directions. Each pixel has brightness, or intensity (or more strictly,
 amplitude) somewhere between black and white represented as a number. Within
-an image file saved in a computer hard disk, the intensity value of each pixels are written. The value is converted to the grayness of that pixel on monitor screen.
+an image file saved in a computer hard disk, the intensity value of each pixel is written. The value is converted to the grayness of that pixel on monitor screen.
 We usually do not see these values, or numbers, in the image displayed on
 monitor, but we could access these numbers in the image file by converting 
 the image file to a text file \footnote{It's also possible in a limited way by
@@ -120,7 +120,7 @@ header" section).
 
 
 \subsection{Image Bit-Depth}
-
+\label{subsec:bitdepth}
 Image file has a defined bit depth. You might have already
 heard terms like "8-bit" or
 "16-bit" and these are the bit depth. 8-bit
@@ -129,6 +129,7 @@ steps: in other words, the grayness between black and white is divided
 into 256 steps. In the same way 16-bit translates to $2^{16} = 65536$ steps, hence for 16-bit images one can assign gray-level to pixels in a much more
 precise way; in other words "grayness
 resolution" is higher. 
+
 \begin{quote}
 Microscope images are generated
 mostly by CCD camera (or something similar). 
@@ -136,10 +137,10 @@ CCD chip has a matrix of sensors. Each sensor receives
 photons and converts the number of photons to a value for a
 pixel at the corresponding position within the image. Larger bit-depth
 enables more detailed conversion of signal intensity (infinite steps) to pixel values (limited steps).
- \end{quote}
+\end{quote}
 Why do we use "$2^{n}$"? This
-is because computers code the information with binary numbers. In binary the elementary units are called bits and there only possible values are 0 and 1 (in the decimal system these units are called digits and can take values from 0 to 9).
-Coding values with 8-bit means for example that this value is represented as a 8 bit number, something like "$00001010$" ( $= 10$ in
+is because computers code the information with binary numbers. In binary the elementary units are called bits and the only possible values are 0 and 1 (in the decimal system these units are called digits and can take values from 0 to 9).
+Coding values with 8-bit means for example that this value is represented as an 8 bit number, something like "$00001010$" ( $= 10$ in
 decimal). Then the minimum value is =
 "$00000000$" ("0" in decimal) and the maximum is $11111111$
 ("255" in decimal). 8-bit image allows 256
@@ -163,12 +164,12 @@ represented in integer but floating-point type enables decimal points
 (real number) for the pixel value such as
 "15.445". Though 32-bit floating point
 image can be used for image calculation, many functions in ImageJ do
-not handle them properly so cares should be taken when using this image format. If
+not handle them properly, so cares should be taken when using this image format. If
 you want to know more about the 32-bit format, read the following box
-(a bit complicated; you could just pass through)
+(a bit complicated; you could just pass through):
 
 \begin{quotation}
-32 bit FLOATING POINT images utilizes efficient use of the 32 bits.
+32 bit FLOATING POINT images utilize efficient use of the 32 bits.
 Instead of using 32 bits to describe 4,294,967,296 integer numbers, 23
 bits are allocated to a fraction, 8 bits to an exponent, and 1 bit to a
 sign, as follows:\\
@@ -331,7 +332,7 @@ value is, numbers larger than 255 becomes 255.
 \subfloat[]{\label{fig:img11}
 \includegraphics[width=5cm]{fig/CMCIBasicCourse201102-img11.jpg}
 }
-\caption{ (a) Intensity profile of \ref{fig:img5}. If the conversion was done with scaling, then the profile would look like (b). }
+\caption{ (a) Intensity profile of \ref{fig:img5}. If the conversion is done with scaling, then the profile would look like (b). }
 \label{fig:8bitConverted}
 \end{figure} 
 
@@ -406,7 +407,7 @@ Commands for mathematical operations in ImageJ are as follows.
 
 Add 10 to the image: Do \ijmenu{[Process > Math > Add{\dots]}}. A dialog window pops up and you can for instance 
 input 10 and press OK. Now, place the mouse pointer over the image
-to check that the pixel values actually became 10. Then select the pen
+to check that the pixel values actually become 10. Then select the pen
 tool from the tool bar, and draw a diagonal line in the window. Check
 again the pixel value. The line you just drew has pixel value 255. Then
 add 10 again to the image by \ijmenu{[Process > Math > Add{\dots]}}. Check the pixels by placing the pointer.
@@ -670,7 +671,7 @@ Resulting image should look like below.
 \end{center}
 \end{figure}
 
-In this case, the intensity of the green channel in the ROI is now set to 0 ("clear"). You could do such
+In this case, the intensities of the green channel in the ROI are now set to 0 ("clear"). You could do such
 processing of single channel by simply selecting a channel with the horizontal scroll bar and do the processing directly, such as drawing square ROI and deleting that part in that channel in "composite" view. 
 \end{indentexercise}
 
@@ -710,6 +711,8 @@ sliding your sight to the left and find out which pizza to order).
 
 
 
+
+
 \begin{indentexercise}{1}
 For 8-bit images, there is a default LUT normally called "grayscale". 
 To see the LUT, open the image \textbf{Cell\_Colony.jpg} and then 
@@ -717,7 +720,7 @@ do \ijmenu{[Image > Color > Show LUT]}. LUT window pops up showing
 the relationship between pixel value and pixel intensity. 
 Try to change the LUT by \ijmenu{[Image > Lookup Tables >Spectrum]}. 
 Pixel value does not change by this operation, but the pixel intensity changes 
-that the image appears differently now. Check the LUT again by do \ijmenu{[Image > Color > Show LUT]}. 
+that the image appears differently now. Check the LUT again by doing \ijmenu{[Image > Color > Show LUT]}. 
 Actual numbers in each LUT could be checked using ``'list' button at the left-bottom corner of each LUT window. 
 \end{indentexercise}
 
@@ -749,11 +752,11 @@ Actual numbers in each LUT could be checked using ``'list' button at the left-bo
 
 \subsection{Image File Formats}
 
-In this part I will discuss on issues related to image file formats including:
+In this part we will discuss on issues related to image file formats including:
 
 \begin{itemize}
-	\item Header and Data
-	\item Data Compression
+    \item Header and Data
+    \item Data Compression
 \end{itemize}
 
 Image file contains two types of information. 
@@ -779,7 +782,7 @@ is an excellent ImageJ plugin which enables importing specific image formats to 
 You do not have to know all the details about the architecture of various image
 formats (thanks to the bioformats plugin), but it is important for you to know
 that the difference resides mainly in the header. The data part is in most cases
-same, something like what we have seen already using text image (for more
+the same, something like what we have seen already using text image (for more
 details on header, refer to the appendix \ref{app1} ).
 
 \begin{indentexercise}{1}
@@ -793,10 +796,11 @@ of the image. Then do \ijmenu{[Image > Properties]},
 also showing the scale. 
 \end{indentexercise}
 
-\textbf{Compression}: Image file size become huge as the size of the image become larger. There are convenient ways to reduce image file size by data compression. When you take a snap shot using commercial digital camera or smart phone, saved images are always compressed.  
+\textbf{Compression}: Large image files consume a lot of storage space. There are convenient ways to reduce image file size by data compression. When you take a snap shot using a commercial digital camera or a smart phone, the saved image is always compressed.  
 But keep in your mind:
 
 There are two types of compression formats: \textbf{loss-less} and \textbf{lossy} formats. In loss-less formats, pixel values generated by CCD are preserved even after the compression is made. On the other hand in lossy formats, pixel values become different from the original measured values and cannot be restored. 
+
 PNG is a popular loss-less compression format that does NOT alter the original pixel values. With this format, compression of images are done by shrinking redundant parts: for example, instead of having 100 pixels of 0 values as a block, you could replace that part by saying ``here, there are 100 pixels of zeros''. If you need to compress files, using PNG format is preferred for scientific image data.  
 
 Other more popular compression formats are like JPEG and GIF. JPEG is ofen used in commercial diginal cameras.  In addition to the redundancy shrinking explained above, the compression procedure tries to mathematically interpolate some parts of the image to ignore small details. These are lossy formats as
@@ -855,15 +859,15 @@ ImageJ automatically detects the number of files in the folder, and then another
 window opens to ask for the number of images you want to import, the starting image, the increment between the numbering of the files, and also
 the common part of the names of the files you want to import.
 
-For example, if your sequence starts with \textit{exp01}\ldots, then you could place the text \textit{exp01} in the text field of ``File name contains''. This then avoid loading other data set with prefix \textit{exp02} even if they are within the same folder. Regular expression could also be used in the ``or enter pattern'' text field\footnote{If you do not know what Regular Expression is, try the tutorial at \url{http://www.vogella.com/articles/JavaRegularExpressions/article.html}. For those who knows what regex is, use the Java regex.}. 
+For example, if your sequence starts with \textit{exp01}\ldots, then you could place the text \textit{exp01} in the text field of ``File name contains''. This then avoids loading other data sets with prefix e.g. \textit{exp02} even if they are within the same folder. Regular expression could also be used in the ``or enter pattern'' text field\footnote{If you do not know what Regular Expression is, try the tutorial at \url{http://www.vogella.com/articles/JavaRegularExpressions/article.html}. For those who knows what regex is, use the Java regex.}. 
 
 There are other options such as scaling and conversion of the image bit depth,
-but these operations could be done afterward. The imported image sequence is within one window, or a stack.
+but these operations could be done afterwards. The imported image sequence is within one window, or a stack.
 
 A stack could be saved as a single file. File extension is
 typically ".tif", which is same as the single frame file. The file header will contain the
 information on the number of frames that the image contains. This number
-will be automatically detected when the stack is opened next time, so that the stack can be correctly reproduced. 
+will be automatically detected when the stack is opened next time\footnote{It is the case in Fiji, but may not be the case for other software.}, so that the stack can be correctly reproduced. 
 \end{indentexercise}
 
 Don't close the stack, exercise continues. 
@@ -877,21 +881,21 @@ In the ImageJ tool bar among all the tool icons, there is a button with ``Stk''.
 \begin{center}
 \includegraphics[width=0.9\textwidth]{fig/fijiMenu.png}
 \caption{ ImageJ tool bar in default mode.}
-\label{fig:img130}
+\label{fig:img130a}
 \end{center}
 \end{figure}
 
 \ijmenu{[Start Animation]} plays the sequence as animation. This command can be found at \ijmenu{[Image > Stacks > Tools > Start Animation]}. 
 Try changing the playback speed by \ijmenu{[Animation Options]}. This command pops up a dialog to set the playback speed. In the main menu, this same command is at \ijmenu{[Image > Stack > Tools > Animation options\ldots]} 
 
-To exclusively work on stacks, there is an icon >> at the right most position in the ImageJ menu bar. Click and then from drop down menu that appeared, select "Stack tools". Video player-like interface appears in the tool bar (\ref{fig:img130}). Try different buttons to see what action they perform. 
+To exclusively work on stacks, there is an icon >> at the right most position in the ImageJ menu bar. Click and then from drop down menu that appeared, select "Stack tools". Video player-like interface appears in the tool bar (Fig.~\ref{fig:img130b}). Try different buttons to see what actions they perform. 
 
 %figure
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{fig/fijiMenu_StackMode.png}
 \caption{ ImageJ tool bar in Stack Tool mode.}
-\label{fig:img130}
+\label{fig:img130b}
 \end{center}
 \end{figure}
 
@@ -910,14 +914,14 @@ To exclusively work on stacks, there is an icon >> at the right most position in
 In many occasions you might need to edit stacks such as
 \begin{itemize}
 \item Truncate a stack because you only need to analyze a part of the sequence.
-\item For a presentation you need to combine two different stacks.
-\item Need to add a stack at the end of another stack.
-\item To make a combined stack by attaching each frame in a stack by a frame of another stack. Typically, you want to have two channels of image side-by side,
-\item You need only every second frame or slices to reduce the stack size by a half. 
-\item To split two channel time series to individual time points without splitting the channels. 
-\item You need to insert a small inset within a stack. 
+\item Combine two different stacks.
+\item Add a stack at the end of another stack.
+\item Make a combined stack by attaching each frame in a stack by a frame of another stack. Typically, you want to have two channels of image side-by side,
+\item Extract every second frame or slices to reduce the stack size by a half. 
+\item Split two channel time series to individual time points without splitting the channels. 
+\item Insert a small inset within a stack. 
 \end{itemize}
-For such demands, tools for stack editing are available under the menu tree \ijmenu{[Image > Stack > Tools]}. Figure \ref{fig:editStack1} and figure \ref{fig:editStack2} schematically shows what each of these commands does. 
+For such demands, tools for stack editing are available under the menu tree \ijmenu{[Image > Stack > Tools]}. Fig.~\ref{fig:editStack1} and Fig.~\ref{fig:editStack2a} schematically show what each of these commands does. 
 %figure
 \begin{figure}[hbtp]
 \begin{center}
@@ -932,12 +936,12 @@ For such demands, tools for stack editing are available under the menu tree \ijm
 \begin{center}
 \includegraphics[width=\textwidth]{fig/stackEditing2.png}
 \caption{Editing Stacks 2. These commands are under \ijmenu{[Image > Stack > Tools]}. Courtesy of Sebasti\'{e}n Tosi, IRB Barcelona.}
-\label{fig:editStack2}
+\label{fig:editStack2a}
 \end{center}
 \end{figure}
 
 
-\begin{indentexercise}{3}
+\begin{indentexercise}{1}
 \textbf{Creating a Montage}\\
 Create a new image \ijmenu{[File > New > Image\ldots]} with the following properties. 
 \begin{itemize}
@@ -1012,9 +1016,9 @@ cases you might also find the second one (XYTZ).
 
 \subsubsection{Stacks with more than 4D}
 
-If we have multiple channels, we could even have an order like ``XYCZT''\footnote{XYCZT is a typical order but many microscope companies and software do not follow this typical order.} and so on. Since when viewed as a regular stack we can scroll only along a single dimension the order of stack dimensions is fundamental as it effects the order in which the images will appear. 
+If we have multiple channels, we could even have an order like ``XYCZT''\footnote{XYCZT is a typical order but many microscope companies and software do not follow this typical order.} and so on. Since when viewed as a regular stack we can scroll only along a single dimension, the order of stack dimensions is fundamental as it affects the order in which the images will appear. 
 
-To avoid such complication with dimension ordering, there is an advanced format of stack called \textit{Hyperstack}. It could have up to three scroll bars at the bottom for channels (C), slices (Z) and time points (T) so one could easily scroll through the dimension of your choice \ref{fig:heyperstack_mitosis}. 
+To avoid such complication with dimension ordering, there is an advanced format of stack called \textit{Hyperstack}. It can have up to three scroll bars at the bottom for channels (C), slices (Z) and time points (T) so one could easily scroll through the dimension of your choice (Fig.~\ref{fig:heyperstack_mitosis}). 
 
 %figure
 \begin{figure}[h!]
@@ -1025,7 +1029,7 @@ To avoid such complication with dimension ordering, there is an advanced format 
 \end{center}
 \end{figure}
 
-We will study more on the actual use of the image stacks in section \ref{sec:timeseries}.
+We will study more on the actual use of the image stacks in section ``Analysis of Time Series''%\ref{sec:timeseries}.
 
 \begin{indentexercise}{2}
   In this exercise, you will learn how to interact with image stacks (n
@@ -1060,7 +1064,7 @@ We will study more on the actual use of the image stacks in section \ref{sec:tim
 
 Commands for these stack related tools (especially editing tools) reside deep inside the menu tree and it is not really convenient to access those commands by manually following the menu tree using mouse. For such a case, and if you could remember the name of the command, a quick way to run the command is to use \textbf{command finder}.
 
-There is a short cut key to start up the command finder: control-l in windows and in mac OSX command-l. On start up, the command finder interface looks like figure \ref{fig:commandfinderstart}. Type in the command that you want to use in the text field labeled ``search'', and then menu item is filters as you type in (fig. \ref{fig:commandfinderConcat}). Select the one you want and then click the button ``run''. This is the same as selecting that command from the menu tree. This tool is also useful when you know the name of a command but forgot where it is in the menu tree, since it also shows where the command is by showing its menu path. 
+There is a short cut key to start up the command finder: the key ``L''. On start up, the command finder interface looks like figure \ref{fig:commandfinderstart}. Type in the command that you want to use in the text field labeled ``search'', and then the menu items are filtered as you type in (fig. \ref{fig:commandfinderConcat}). Select the one you want and then click the button ``run''. This is the same as selecting that command from the menu tree. This tool is also useful when you know the name of a command but forgot where it is in the menu tree, since it also shows where the command is by showing its menu path. 
 
 \begin{figure}[htbp]
 \centering
@@ -1078,13 +1082,13 @@ We have an intrinsic limitation in displaying multidimensional images, but we st
 
 \subsubsection{Color Coding}
 
-With multiple channels, we could have several different signal distributions per scene from different types of illuminations or from different types of proteins. One typical way to view such multiple channel image is to color code each channel \textit{e.g.} actin in red and Tubulin in green. We have already scene such images in the RGB section (\ref{subsec:rgb}). 
+With multiple channels, we could have several different signal distributions per scene from different types of illuminations or from different types of proteins. One typical way to view such multiple channel image is to color code each channel \textit{e.g.} actin in red and Tubulin in green. We have already seen such images in the RGB section (\ref{subsec:rgb}). 
 
-The color coding is not limited to the dimensions in Channels, but also for slices (Z) and time points (T). By assigning a color that depends on the slice number or time points, the depth information within a Z-stack or a time point information with in a time lapse movie could be represented as a specific color rather than by the position of that slice or frame within image stack.
+The color coding is not limited to the dimensions in Channels, but also for slices (Z) and time points (T). By assigning a color that depends on the slice number or time points, the depth information within a Z-stack or a time point information within a time lapse movie could be represented as a specific color rather than by the position of that slice or frame within image stack.
 
 
 \begin{indentexercise}{1}
-Open \ijmenu{[EMBL > Samples > TransportOfEndosomalVirus.tif ]}. Apply the color coding to this time-lapse movie \ijmenu{[Image > HyperStacks > Temporal-Color Code]}. In the dialog choose a color coding table from the drop-down list. Principle of the coding is same as the look-up table, and only the difference is that the color assignment is adjusted so that the color range of that table fits to the range of frames (fig. \ref{fig:temporalColorcoding}). 
+Open \ijmenu{[EMBL > Samples > TransportOfEndosomalVirus.tif ]}. Apply the color coding to this time-lapse movie \ijmenu{[Image > HyperStacks > Temporal-Color Code]}. In the dialog choose a color coding table from the drop-down list. Principle of the coding is same as the look-up table, and only the difference is that the color assignment is adjusted so that the color range of that table fits to the range of frames (Fig. \ref{fig:temporalColorcoding}). 
 
 
 \begin{figure}[h!]
@@ -1120,11 +1124,12 @@ In this way, we can pick up a column of voxels from every XY positions, compute 
 
 \begin{indentexercise}{2}
 Open image \textbf{mitosis\_anaphase\_3D.tif}.
-Then do all types of projections you could choose by \ijmenu{[Image > Stack > Z
+Then do all types of projections you could choose in \ijmenu{[Image > Stack > Z
 projection\ldots]}.\\
 There are 
 \begin{itemize}
-\item Average Intesnity
+
+    \item Average Intesnity
 \item Max Intensity
 \item Min Intensity
 \item Sum of Slices
@@ -1133,7 +1138,7 @@ There are
 \end{itemize}
 
 \textbf{Question 1}: Which is the best method for knowing the shape of the chromosome?\\
-\textbf{Question 2}: Discuss the difference of projection types and why there is such difference.  
+\textbf{Question 2}: Discuss the difference of projection types and why there is such a difference.  
 \end{indentexercise}
 
 ``Max Intensity'' projection is the most frequently used projection method in fluorescence microscopy images, as this method picks up bright signals. ``sum of slices'' method returns a 32bit image since results of addition could possibly exceed 8 bit or 16 bit range. 
@@ -1155,7 +1160,7 @@ You could view a stack in this mode by \ijmenu{[Image > Stack > Orthogonal View]
  \subfloat[YZ]{\label{fig:OrthoViewYZ}\includegraphics[height = 0.2\textheight]{fig/OrthoViewYZ.png}}
 \\
  \subfloat[XZ]{\label{fig:OrthoViewXZ}\includegraphics[height = 0.09\textheight]{fig/OrthoViewXZ.png}}
- \caption{Orthogonal View of a 3D stack.}
+ \caption{Orthogonal views of a 3D stack.}
  \label{fig:orthogonalView}
 \end{figure}
 
@@ -1200,7 +1205,7 @@ magnification glass) and this simply enlarges or shrinks the pixels.
 
 Instead if you really need to increase the number of pixels per distance, we call such processing as ``Resampling'' and we will examine this a bit in this section. 
 
-By the way, if we just want to have larger image by adding some margin, we call this ``resizing'', and the command for this resides in the menu tree under \ijmenu{[Image > Adjust > Canvas Size]}.
+By the way, if we just want to have larger image by adding some margin, we call this ``resizing'', and the command for this resides in the menu tree: \ijmenu{[Image > Adjust > Canvas Size]}.
 
 The resampling changes the original data. If we
 have an image of size 10 pixels by 10 pixels and resample it to 200\%, the image
@@ -1293,11 +1298,8 @@ the course. In the profile plot window, a
 "list" button is at the left-bottom corner.
 Click the button. You will then see a new window containing a column of
 numbers. These numbers can be copy \& pasted to spread sheet software
-such as LibreOffice or MS Excel( or import the buffer to R). You could then plot the profile
-in those applications. 
-
-Compare original 16bit profile, 8-bit profiles with and without scaling by plotting three curves in a graph,
-and discuss the difference. 
+such as LibreOffice Calc or MS Excel. Overlay the three curves in a graph,
+and observe the differences. 
 
 \textbf{\sffamily
 Assignments 1-1-4: Simple math on Images}
