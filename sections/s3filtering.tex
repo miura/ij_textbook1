@@ -2,9 +2,9 @@
 % Kota Miura (miura@embl.de)
 
 \section{Filtering}
-
+\label{sec:Filtering}
 Filtering can improve the appearance of digital images. It can help  identifying shapes by reducing the noise and enhancing the
-structural edge. Not only for the appearance, filtering improve the
+structural edge. Not only for the appearance, filtering improves the
 efficiency of "segmentation" which we
 will study in the next section. Segmented image could be used as a mask
 to specify regions to be measured. Note that the filtering alters the
@@ -24,7 +24,7 @@ images.
 
 
 \subsection{Convolution}\label{subsecConvolution}
-
+\label{sec:Convolution}
 In the \ijmenu{[Process]} menu, we see a long list of
 filters. Most of them are linear filters and can be implemented as "convolution" as we will shortly see. 
 To perform a convolution a small mask (called kernel) is moved over the image pixel by pixel and apply operations involving the surrounding pixel values (see Fig.
@@ -64,7 +64,7 @@ This is just for the convenience of calculation (k). Then you multiply
 each element pairs (5 pairs in this case) and sum up the results. since
 all partners in $f$ are 0, the sum of multiplication is 0. We note this
 as the first element of "full convolution
-result" (o). We then slide $w$ to the left by one
+result" (o). We then slide $w$ to the right by one
 element, do the multiplications and summing up again. Note the result
 as the second element of "full convolution
 result" (o). Like wise, we do such calculation step by
@@ -133,7 +133,7 @@ In \ijmenu{[Process]} menu, we have many operators such
 as smooth, sharpen, find edges\dots and so on. 
 
 
-Many of them are called "linear filters", so called because filtering the sum of two equally sized images is equivalent to filtering these images apart and summing the results. With non linear filters, these two different operations may end up in two different results\footnote{This property is absolutely fundamental and at the heart of transform domain based filtering. For instance discrete Fourier transform decomposes any discrete signal (image) in a finite sum of components (images): knowing the effect of the filter on each of these finite components is hence sufficient to fully characterize the filter and its effect on any signal (image)}. 
+Many of them are called "linear filters", so called because filtering the sum of two equally sized images is equivalent to filtering these images apart and summing the results. With non-linear filters, these two operations may end up in different results\footnote{This property is absolutely fundamental and at the heart of transform domain based filtering. For instance discrete Fourier transform decomposes any discrete signal (image) in a finite sum of components (images): knowing the effect of the filter on each of these finite components is hence sufficient to fully characterize the filter and its effect on any signal (image)}. 
 
 \subsubsection{Smoothening}
 \ "Smoothening" operation, which is
@@ -299,7 +299,7 @@ and
 
 
 \subsubsection{Gaussian Blur}
-
+\label{subsubsec:gaussian}
 This kernel blurs (in positive sense, we call it
 "smooth") the image by convolution
 using a square Gaussian (bell-shaped) kernel. The width of the kernel,
@@ -378,14 +378,14 @@ position contains 2 now)
  \end{matrix}
 \]
 
-Then we align these numbers in the ascending order. 
+Then we sort these numbers in the ascending order. 
 
 \ \ 1 2 3 4 5 6 7 8 9
 
 We take the median of this sequence ($=5$) and replace the value 2 with
 5.
 \subsection{Morphological Image Processing}
-
+\label{sec:Morpho}
 Mathematical morphology is a powerful tool that can be used to extract
 features and components from an image. It is often used to pre-process
 or post-process images to facilitate a posterior analysis. In this process a
@@ -427,7 +427,7 @@ entirely in the foreground (Fig. \ref{fig:img66}).
 \end{center}
 \end{figure}
 
-In above examples the structuring elements are asymmetrically shaped. In
+In the above examples the structuring elements are asymmetrically shaped. In
 ImageJ, the structuring element used by the morphological filters of the \ijmenu{Process > Filters} menu is a square so that the
 effects are even along both axes. 
 
@@ -436,7 +436,7 @@ Load noisy-fingerprint.tif and broken-text.tif. Apply dilation or
 erosion several times by setting the number of iterations. 
 
 To change this number use \ijmenu{[Process > Binary > Options]}. 
-Binary option window opens and you can set
+Binary option window opens (Fig.~\ref{fig:img67}) and you can set
 several parameters. "Count"
 matters with setting the number of overlapping pixels between
 structuring element and the object that determines output 0 or 1.
@@ -453,8 +453,8 @@ Larger count causes less degree of erosion or dilation.
 \end{indentexercise}
 
 \begin{quote}
-From ImageJ manual: Iterations specifies the number of times erosion,
-dilation, opening, and closing are performed. Count specifies the
+From ImageJ manual: ``Iterations" specifies the number of times erosion,
+dilation, opening, and closing are performed. ``Count" specifies the
 number of adjacent background pixels necessary before a pixel is
 removed from the edge of an object during erosion and the number of
 adjacent foreground pixels necessary before a pixel is added to the
@@ -485,7 +485,7 @@ opening and closing to the images by \ijmenu{[Process
 (Optional) Next, we do morphological processing using anisotropic structuring
 element. 
 
-Invoke \ijmenu{[Plugins > CMCICourseModules > Morphology]} and design vertical structuring element first with (1)
+Invoke \ijmenu{[Plugins > CMCICourseModules > Morphology]} (Fig.~\ref{fig:img68}) and design vertical structuring element first with (1)
 diameter = 3. This is simply by inputting
 "3" in the Diameter field. Click tiles
 to activate/deactivate positions. Click
@@ -506,7 +506,7 @@ noisy-finger print. Discuss the difference in outputs.
 \end{indentexercise}
 
 \subsection{Morphological Image Processing: Gray Scale Images}
-
+label{subsec:morphogray}
 The morphological image processing is not limited to binary images. Grayscale images can also be the subject. In fact, the morphological image processing of binary image we have studied so far is a special case of the grayscale processing. We now enhance the technique with a slightly more general rule in order to apply the structuring element to grayscale images: 
 \begin{itemize}
 \item Erosion: we take the minimum value among the pixel positions where the structuring element is overlapping.   
@@ -542,16 +542,49 @@ Corrected\_Image = \frac{Specimen - Darkfield}{Brightfield - Darkfield} * 255
 
 
 \subsection{Background Subtraction}
+\label{subsec:BackgroundSubtraction}
 
-Besides the background subtraction we studied above using Minimum and
-Maximum filtering, there is a special function implemented for
+We focus on background subtraction in this section. Besides the background subtraction by morphological filtering explained already in above, there are other ways to subtract background. This variety primarily depends on the fact that there are different types of image background as follows:
+
+\begin{enumerate}
+\item Baseline intensity: an offset intensity that comes from the image acquisition system. This does not depend on the illumination light.  
+\item ``Hot pixels'' due to detector failure, such as single pixel in CCD chip being defective and not sensing light. 
+\item Illumination unevenness. The center of observed field is often illuminated with a higher intensity then periphery. 
+\item Blurring (out of focus image).
+\item Noise: Noise is not background problem and removal of noise will not be discussed here, but many people call it ``background'' as well. 
+\end{enumerate}
+
+For the first three types of backgrounds (baseline, hot pixels, uneven illumination), the best way to remove them is by independently acquiring two types of background images. Using exactly the same optical set-up as you do during the experiment, you could capture two images of a blank plate or slide with illumination light turned on ($I_{on}$) or off ($I_{off}$). $I_{off}$ is then used to subtract the offset (the baseline intensity). The way to use $I_{on}$ for compensating  hot pixels and illumination unevenness is different in bright field and in fluorescence images. In short, bright field image is divided by the blank image. On the other hand, fluorescence images is multiplied by the ratio of blank image to the mean intensity of the blank image. See Appendix 9 (\ref{app9}) for more details. As these are essential microscopy techniques readers may refer to a more detailed protocol in following resources. 
+
+Practical information on background subtraction for bright field images is
+available in ImageJ wiki\footnote{\url{http://imagejdocu.tudor.lu/doku.php?id=howto:working:how_to_correct_background_illumination_in_brightfield_microscopy}}. 
+
+The protocol for the background subtraction of fluorescence
+images using calibration slide and ImageJ could be found in
+ \cite{MiuraME2005}.
+ 
+For the third type of background (uneven illumination), it's also possible to estimate the $I_{on}$ image (the blank field image) purely by image processing. There are four methods. 
+
+\begin{enumerate}
+\item morphological filtering
+\item high-pass filtering
+\item pseudo-high-pass filtering
+\item flat-field correction by fitting polynomial equation
+\end{enumerate}
+
+In the case of fluorescence microscopy do not use these techniques for compensating uneven illumination (excitation light) as fluorophore itself is not evenly distributed. It is strongly recommended to use calibration slide or even better, to prepare a custom calibration slide \footnote{For preparing a very thin calibration slide, see the following web page: \url{http://nic.ucsf.edu/blog/?p=922}} for the correction of uneven illumination in fluorescence microscopy. On the other hand these techniques are effective when they are used for removing blurring in fluorescence images, as blurred components coming from out-of-focus optical planes are hazy and low frequency. Each of these techniques are explained in the following. 
+
+\subsubsection{Morphological filtering}
+
+A morphological filtering method using ``Minimum'' and ``Maximum' was already explained. With a similar algorithm, there is a specific function implemented for
 background subtraction in ImageJ (extension of morphological processing). This function is implemented as the so-called Rolling ball algorithm\footnote{
-Stanley Sternberg's article, "Biomedical Image Processing", IEEE Computer, January 1983) }. The algorithm is nothing but the gray scale morphological processing with ``rolling ball'' being a circular structuring element but is more convenient as a single command dedicated to the background subtraction. 
+Stanley Sternberg's article, "Biomedical Image Processing", IEEE Computer, January 1983) }. The algorithm is nothing but the gray scale morphological processing with ``rolling ball'' being a circular structuring element but is more convenient as a single command dedicated to the background subtraction (see an example in Fig.~\ref{fig:img69}). 
 
 In the dialog window when you execute this operation, you will be asked for
-the Rolling ball radius. This should be at least as large as
-the radius of the largest object in the image that is not part of the
-background.
+the rolling ball radius. This should be at least as large as
+the radius of the largest object in the image that is not part of the background. 
+
+The option "Sliding paraboloid" replaces the ``Rolling ball'' with a paraboloid, and recommended to be selected. It has less edge effects that results in artifacts in the cell edge and also a radius smaller than 1 could be used. For images with small sized objects, this is definitely a benefit. 
 
 %figure
 \begin{figure}[htbp]
@@ -570,42 +603,78 @@ Change the Rolling ball radius and study the effect. Question: what
 happens when the rolling ball radius is smaller?
 \end{indentexercise}
 
-There are several other background subtraction methods that do not depend on morphological filtering. 
+\subsubsection{High-pass filtering}
+%There are several other background subtraction methods that do not depend on morphological filtering. 
  
-\begin{enumerate}
-  \item High-pass filter
-  \item Flat-field correction by polynomial fitting
-  \item Deconvolution
-\end{enumerate}
+%\begin{enumerate}
+%  \item High-pass filter
+%  \item Flat-field correction by polynomial fitting
+%  \item Deconvolution
+%\end{enumerate}
+Since uneven illumination in background is a low frequency signal in image, one could apply high-pass filtering to diminish the uneven illumination effect: The band-pass function \ijmenu{[Process >
+FFT > Band pass\dots]} could be used for the high-pass filtering. However, in my experience, the result of pseudo-high-pass filtering explained below has been more usable for successful segmentation. You could try both and decide which is better for your sample.  
+
+\subsubsection{Pseudo high-pass filtering}
 
 Pseudo high-pass filtering could be done by subtracting 
 largely blurred image by Gaussian blur (such as with sigma of 20)  
-from the original image. The same processing could also be be achieved by a single command \ijmenu{Process > Filter > Unsharp Mask\ldots]}.  The band-pass function under \ijmenu{[Process >
-FFT]} could be used for the true high-pass filtering, but in my experience the result of pseudo-highpass filtering is more usable for segmentation purpose. 
+from the original image. The same processing could also be achieved by a single command \ijmenu{Process > Filter > Unsharp Mask\ldots]}.
 
+\begin{indentexercise}{2}
+\begin{enumerate}
+\item Open \textbf{virusF1.tif}.
+\item Duplicate the image: \ijmenu{[Image > Duplicate]}
+\item Blur the duplicate by \ijmenu{[Process > Filter > Gaussian blur\ldots]}. Set \ilcom{sigma = 5}. 
+\item \ijmenu{[Process > Image Calculator\ldots]} and set options as:
+\begin{itemize}
+\item image1 = virusF1.tif
+\item operation = subtraction
+\item image2 = virusF1-1.tif
+\item check ``Create New Window''
+\end{itemize}
+\item Inspect the resulted image. Hazy background should be removed. Try changing the sigma and check their effects on results. 
+\end{enumerate}
+
+This set of operation could be done in a single action by \ijmenu{[Process > Filter > Unsharp mask\ldots]}.
+ 
+\end{indentexercise}
+
+\subsubsection{Flat-field correction by fitting polynomial equation}
 For polynomial fitting, ImageJ plugin ``Polynomial\_Fit'' written by Bob
 Dougherty could be used to estimate the background
-\footnote{\url{http://www.optinav.com/Polynomial_Fit.htm}}.
-
-Practical information on background subtraction for bright field images is
-available in ImageJ wiki\footnote{\url{http://imagejdocu.tudor.lu/imagej-documentation-wiki/how-to/how-to-correct-background-illumination-in-brightfield-microscopy}}. 
-For flat field correction protocol, see "Optical Microscopy Primer"
+\footnote{\url{http://www.optinav.com/Polynomial_Fit.htm}}. For more information, see "Optical Microscopy Primer"
 site\footnote{\url{http://micro.magnet.fsu.edu/primer/digitalimaging/imageprocessingintro.html}}.
 
-Protocol for the background subtraction for fluorescence
-images using calibration slide and ImageJ could be found in
- \cite{MiuraME2005}.
+\begin{indentexercise}{3}
+
+\item Install Polynomal Fitting plugin by downloading it from \url{http://www.optinav.com/Polynomial_Fit.htm}
+
+\begin{enumerate}
+\item Open \textbf{virusF1.tif}.
+\item Do the polynomial fitting by \ijmenu{[Plugins > Polynomal Fit]}. Set x = 5, y = 5. These parameters sets the sampling frequency for the fitting. 
+\item \ijmenu{[Edit > Options > Conversions]}. Check that the ``Scale when converting'' is turned OFF (unchecked).
+\item Since polynomial fitting plugin outputs a 32-bit image, convert the image to 8-bit for the subtraction from original image. \ijmenu{[Image > Type > 8-bit]}. 
+\item \ijmenu{[Process > Image calculator]} and set parameters as following:
+\begin{itemize}
+\item image1 = virusF1.tif
+\item operation = subtraction
+\item image2 = Poly\_Fit\_5\_5virusF1.tif
+\item check ``Create New Window''
+\end{itemize}
+\end{enumerate}
+\end{indentexercise}
+
+\subsubsection{Background removal in time series}
 
 For the background removal of fluorescence time series, bleaching of
 fluorescence should also be considered. See recent article by
 \cite{Schwarzfischer2011}.
 
-Deconvolution removes out-of-focus emission signal. See appendix 8 for an
-extensive tutorial using ImageJ plugin. You could also refer to a classic review
+The fourth type of background is the blurring due to the out of focus plane image and this could be removed by deconvolution algorithm. See appendix 8 for an extensive tutorial using ImageJ plugin. You could also refer to a classic review
 \citep{Wallace2001}.
 
-\subsection{Other Functions: Fill holes, Skeltonize, Outline}
-
+\subsection{Other Functions: Fill holes, Skeletonize, Outline}
+\label{subsec:skelfilloutline}
 Frequently, after some morphological operation we need to fill the holes
 in a binary image. For example, we detect the boundary of a cell and
 want to obtain an object which is filled and covers the cell. In this
@@ -634,7 +703,7 @@ Here, we use numbered-tiff file series as an example to do batch
 processing. Open
 \textbf{/sample\_images/spindle-frames/eg5\_spindle\_500016.tif}. In order to
 to record the processing command, do \ijmenu{[Plugins 
-Macros Recorder\ldots]}. A recorder window pops up:
+Macros Recorder\ldots]}. A recorder window pops up (Fig.~\ref{fig:img70}):
 
 %figure
 \begin{figure}[htbp]
@@ -682,7 +751,7 @@ The number after \ijmenu{rolling=} should be adapted
 \end{center}
 \end{figure}
 
-Copy and paste this text command, and paste it somewhere to keep it.
+Copy this text command, and paste it somewhere to keep it.
 Then do \ijmenu{[Process > Batch > Macro\ldots]}. This will create a new window titled
 "batch Process". Paste the text
 command you prepared above in the text field of this batch Process
@@ -710,14 +779,15 @@ in the output folder to see images are actually the processed version
 of input folder.
 \end{indentexercise}
 
-In above exercise, we had only one processing command, but you could add
+In the above exercise, we had only one processing command, but you could add
 many more text commands, which you could extract by using
-"Recorder".
+"Recorder". You can also add codes from a Macro file by clicking ``Open".
+
 \subsection{Fast Fourier Transform (FFT) of Image}
 
 FFT converts a spatial-domain image data (what you are normally seeing) to a spatial frequency domain data. FFT is used because 
 \begin{enumerate}
-\item In some occasion, calculation cab be done much faster in frequency domain
+\item In some occasion, calculation can be done much faster in frequency domain
 than in spatial domain. \textit{i.e.} convolution involving large kernels. 
 \item Some image-processing techniques can only be performed in the frequency domain. 
 \end{enumerate}
@@ -789,7 +859,7 @@ In general, values in FFT image exhibit peaks aligned in the direction of the re
 
 Frequency of patterns in spatial-domain image also has a clear
 relationship with the resulting FFT image. See spatial-domain images
-shown in below. Stripe frequency decreases from left to right. In
+shown below in Fig.~\ref{fig:FFTOriginalStripesFrequencies}. Stripe frequency decreases from left to right. In
 corresponding FFT images shown in the second row, high-intensity pixels
 (high-lighted in red) become closer to the center of FFT image as the
 frequency of pattern in the original spatial-domain image decreases. 
@@ -849,13 +919,13 @@ Anisotropic patterns in original image will results in anisotropic signal in 2D 
 
 Convolution we studied in section~\ref{subsecConvolution} is a sequential
 procedure. The convolution kernel is applied every time you slide the position of
-the kernel by one pixel in x or y direction. This processing is much simpler when performed in the FFT domain: it can then implemented as a multiplication. We
+the kernel by one pixel in x or y direction. This processing is much simpler when performed in the FFT domain: it can then be implemented as a multiplication. We
 experience this in the exercise below. 
 
 \begin{indentexercise}{1} Convolution in Frequency-domain.
 
 Edit Laplacian filter kernel using the convolution interface
-(\ijmenu{[Process > Filter > COnvolution]}). 3 x 3 Laplacian kernel looks like
+(\ijmenu{[Process > Filter > Convolution]}). 3 x 3 Laplacian kernel looks like
 this:
 \[
 \begin{matrix}
@@ -864,9 +934,9 @@ this:
 0 & -1 & 0
 \end{matrix}
 \]
-Save the kernel somewhere in your computer as laplace3x3.txt�.
+Save the kernel somewhere in your computer as laplace3x3.txt.
 
-Open sample image blobs.tif by
+Open the sample image blobs.tif by
 \ijmenu{[File > Open]}.
 %figure
 \begin{figure}[htbp]
@@ -888,7 +958,7 @@ Duplicate the image, so that we can do both spatial-domain convolution and
 frequency domain convolution. 
 
 We first do the convolution in spatial-domain, similar to what we
-have done already in the section~\ref{subsecConvolution} We do this again for
+have done already in section~\ref{subsecConvolution}. We do this again for
 a comparison with convolution in frequency domain.\\
 
 \textbf{Spatial-Domain Convolution}
@@ -945,7 +1015,7 @@ Then we do the convolution by:
 
 Choose blob.gif and laplace3x3.txt for image1 and image2 respectively. 
 Operation should be ``Convolve''. Uncheck ``Do Inverse transform'', and OK.
-Image named ``Result'' appears. 
+An image named ``Result'' appears (Fig.~\ref{fig:fftconv8}). 
 
 %figure
 \begin{figure}[htbp]
@@ -956,7 +1026,7 @@ Image named ``Result'' appears.
 \end{center}
 \end{figure}
 
-Then do the inverse FFT by:
+Then do the inverse FFT (Fig.~\ref{fig:fftconv7}) by:
 
 \ijmenu{[Process > FFT > Inverse FFT]}
 
@@ -990,7 +1060,7 @@ a rectangular ROI covering vertical streak at the center of the FFT
 image, and then \ijmenu{[Image > Clear > Outside]} to
 convert peripheral signals to 0 (black. If Clear Outside produced white
 periphery, check \ijmenu{[Edit > Options > Colors]} to
-see if the background color is black). \ijmenu{[Process 
+see if the background color is black). Do \ijmenu{[Process 
 > FFT > Invert FFT]} to see the spatial-domain image after
 filtering.
 \end{indentexercise}
@@ -1001,7 +1071,7 @@ in an example below.
  
 Adding high-frequency (Fig. \ref{fig:img95}) and low-frequency (Fig. \ref{fig:img96}) stripe images 
 results in an overlapped image of two frequencies (Fig. \ref{fig:img97}: This image math could be done
-easily using \ijmenu{[Process > Image Math]} ). From this overlapped image it is not easy
+easily using \ijmenu{[Process > Image Calculator]} ). From this overlapped image it is not easy
 to isolate two original images by spatial domain filtering, but
 it could be done in a simple way with the frequency-domain image (Fig. \ref{fig:img99}). 
 FFT image could be separated in to two images, one from the center (called "low-pass", Fig. \ref{fig:img100}) 
@@ -1070,7 +1140,7 @@ the high-frequency stripe image (Fig. \ref{fig:img105}).
 \end{figure} 
 
 
-Above was an example of low-pass filtering (for isolating low frequency
+Above is an example of low-pass filtering (for isolating low frequency
 stripes) and high-pass filtering (for isolating high frequency signal).
 We could utilize more complex filters to isolated more specific
 frequency signals. Such filter is called \textit{band pass
