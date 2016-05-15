@@ -61,7 +61,7 @@ minimum and the maximum pixel values in the image and bit-depth. If the minimum 
 Equalization converts pixel values so that the values are distributed
 evenly within the dynamic range. Instead of describing this in detail
 using math formula, I will explain it with a simple example (see Fig. \ref{fig:equalizationSimple}). 
-We consider an image with its pixel value ranging
+We consider an image with its pixel values ranging
 between 0 and 9. We plot the histogram from this image, the result looks
 like in the figure \ref{fig:img30}. For equalization, a cumulative
 plot is first prepared from such histogram. This cumulative plot is computed by progressively integrating the histogram values (see 
@@ -126,10 +126,10 @@ remove the unnecessary part of the image, to reduce calculation time.
 
 \begin{indentexercise}{2}
 Masking. Open any image. Select a region by
-rectangular ROI. Then \ijmenu{[Edit > clear]}.
+rectangular ROI. Then \ijmenu{[Edit > clear]} followed by
 \ijmenu{[Edit > Clear Outside]}. After checking what
 happened, do \ijmenu{[Edit Fill]}. (same operation could
-be done by \ijmenu{[Edit > Selection > Crate Mask]})
+be done by \ijmenu{[Edit > Selection > Create Mask]})
 \end{indentexercise}
 
 \begin{indentexercise}{3}
@@ -166,7 +166,7 @@ To measure pixel values of a ROI, ImageJ has a function \ijmenu{[Analyze >
 Measure]}. Before using this function, you could specify the parameters 
 you want to measure by \ijmenu{[Analyze > Set measurements]}. There are many parameters
 in the "Set measurement" window. Details on these parameters are listed in the
-Appendix \ref{app2}. For intensity measurements following parameters are
+Appendix \ref{app2}. For intensity measurements the following parameters are
 important.
 
 
@@ -213,7 +213,7 @@ window.
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=8.017cm,height=11.298cm]{fig/CMCIBasicCourse201102-img32.png}
-\caption{Set Measurement Window}
+\caption{Set Measurements Window}
 \label{fig:img32}
 \end{center}
 \end{figure}
@@ -275,7 +275,7 @@ then the measurement is performed on the whole image.
 \label{subsec:enhancecontrast}
 Some of you might already have experience with the contrast enhancing of
 digital images, since in most of imaging software like the ones that
-come with digital camera usually have this function. Low contrast images
+come with digital cameras usually have this function. Low contrast images
 have small difference in the tones and the objects are difficult to observe.
 If the contrast is too high, then the tone difference is so much that
 the picture is "over exposed".
@@ -303,13 +303,13 @@ Open image gel\_inv.tif. Do \ijmenu{[Image > Adjust > Brightness/Contrast]}.
 Pop-up window appears which looks like the
 figure below (left). The graph shown in the upper part of the window is 
 the
-histogram of the image just like you have seen in section \ref{subsec:histogram} Histogram. 
+histogram of the image just like you have seen in section \ref{subsec:histogram}. 
 Since the image is 8-bit, scale in the x axis is 0 to 255.
 There is also a black diagonal line. This corresponds to the LUT of the
 image on the screen: pixel values in x is translated into the gray
 value on the screen (brightness on the screen is y-axis). 
 
-The slope and position of the LUT can be altered by click and dragging
+The slope and position of the LUT can be altered by clicking and dragging
 four sliding bars under the graph, each with the name minimum, maximum,
 brightness and contrast. Try changing these values and studying the
 effect on the image. 
@@ -330,7 +330,7 @@ right side of the figure below?
 
 \begin{indentexercise}{2}
 Continued from above: the original image file
-is not changed at this stage. When you push
+is not changed at this stage. When you push the
 "Apply" button at the bottom-right
 corner, the original image is altered numerically. Try set the LUT as
 you like, and push the Apply: what happened to the Histogram and the
