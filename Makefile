@@ -10,3 +10,6 @@ view: $(NAME).pdf
 
 mview: $(NAME).pdf
 	open $<
+
+clean:
+	rm -f ${NAME}.{ps,pdf,log,aux,out,dvi,bbl,blg}
